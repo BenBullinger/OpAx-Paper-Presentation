@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Problem Formulation}{6}{0}{2}
+\beamer@sectionintoc {3}{Related Work and Contributions}{9}{0}{3}
+\beamer@sectionintoc {4}{Methodology: Optimism in Information Space}{14}{0}{4}
+\beamer@sectionintoc {5}{Theoretical Guarantees}{20}{0}{5}
+\beamer@sectionintoc {6}{Empirical Evaluation}{24}{0}{6}
+\beamer@sectionintoc {7}{Discussion \& Conclusion}{29}{0}{7}

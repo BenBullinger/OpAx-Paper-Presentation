@@ -361,6 +361,18 @@ def main(args):
 
 
 if __name__ == '__main__':
+    # Attempt to force ffmpeg usage for video recording
+    # Ensure this path is correct for your ffmpeg installation
+    # You can find it by running `which ffmpeg` in your terminal
+    ffmpeg_path = "/opt/homebrew/bin/ffmpeg" # Common path for Homebrew on Apple Silicon
+    if os.path.exists(ffmpeg_path):
+        os.environ['FFMPEG_BINARY'] = ffmpeg_path
+        print(f"INFO: Set FFMPEG_BINARY to {ffmpeg_path}")
+    else:
+        print(f"WARNING: ffmpeg not found at {ffmpeg_path}. Video recording might use moviepy or fail.")
+        # Optionally, you could try to find ffmpeg in PATH if this specific path doesn't exist,
+        # but explicitly setting it is more robust if you know the path.
+
     parser = argparse.ArgumentParser(description='Active-Exploration-run')
 
     # general experiment args
