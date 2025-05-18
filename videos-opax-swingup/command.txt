@@ -1,0 +1,3 @@
+python3 experiments/pendulum_exp/active_exploration_exp_pendulum.py \
+    --exp_name short_pendulum_test \
+    --record_test_video
