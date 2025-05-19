@@ -20,6 +20,10 @@
 \usepackage{soul}
 \usepackage{multimedia}
 \usepackage{media9}
+%\usepackage{subcaption}
+\usepackage{subfig}
+%\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 
 % Chung-En
 \setbeamercolor{frametitle}{fg=ETHBlue} % set color of frame title
@@ -77,8 +81,7 @@
 
 
 % --- Presentation Metadata ---
-\title{Paper Presentation: ``Optimistic Active Exploration of Dynamical Systems''\vspace{0.1in}\\
-\small Based on the work of Sukhija et al. (NeurIPS 2023)}
+\title{Paper Presentation: ``Optimistic Active Exploration of Dynamical Systems'' (Sukhija et al., 2023)}
 \subtitle{Based on Sukhija et al. (NeurIPS 2023)} % Use subtitle for source
 \author{Chung-En Tsai \and Ben Bullinger} % Presenters
 \institute{ETH Zürich \\ Department of Computer Science}
@@ -575,43 +578,47 @@ Our problem can be divided into two parts:
     
 \end{frame}
 
-\begin{frame}{Experiments: Learning and Zero-Shot Generalization (ok)}
+\begin{frame}{Experiments: Learning and Zero-Shot Generalization}
 
-    \begin{columns}[T] % Align tops
-         \begin{column}{0.4\textwidth}
-             \begin{itemize}
-                 \item compared to other active exploration baselines, \texttt{OpAx} constantly performs well and is \alert{on par} with \texttt{H-UCRL}
-                 \item on the \alert{unseen} tasks the active exploration baselines and \texttt{OpAx} \alert{outperform \texttt{H-UCRL}} by a large margin
-             \end{itemize}
-         \end{column}
-         \begin{column}{0.6\textwidth}
-              \includegraphics[width=0.99\linewidth]{Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf}
-         \end{column}
-     \end{columns}
-     
+    \begin{itemize}
+         \item \texttt{OpAx} performs \alert{on par} with \texttt{H-UCRL} on trained tasks
+         \item \texttt{OpAx} \alert{outperforms} \texttt{H-UCRL} on some unseen tasks
+     \end{itemize}
+
 \end{frame}
 
-\begin{frame}{Experiments: Zero-Shot Pendulum Swing-Up (ok)}
-
+\begin{frame}{Experiments: Learning and Zero-Shot Generalization}
+    \vspace{-0.2in}
+    \begin{itemize}
+         \item \texttt{OpAx} performs \alert{on par} with \texttt{H-UCRL} on trained tasks
+         \item \texttt{OpAx} \alert{outperforms} \texttt{H-UCRL} on some unseen tasks
+     \end{itemize}
     \begin{columns}[T] % Align tops
-         \begin{column}{0.5\textwidth}
-            \begin{center}
-                \movie[label=false,height=0.5\linewidth,width=0.5\linewidth]{\texttt{H-UCRL}}{Latex_Praesentation/videos/hucrl-zero-shot-swingup-4.mov}
-            \end{center}
+         \begin{column}{0.6\textwidth}
+            Evaluation (\fcolorbox{black}{black}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{H-UCRL}, \fcolorbox{black}{Fuchsia}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{OpAx}, \fcolorbox{black}{red}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: Random):\vspace{-0.2in}
+            \begin{figure}
+              \centering
+              \subfloat[Trained task\label{fig:a}]{\includegraphics[width=0.37\linewidth]{Latex_Praesentation/figures/pendulum-keep-down.png}}
+        
+              \subfloat[Zero-shot task\label{fig:b}]{\includegraphics[width=0.37\linewidth]{Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png}}
+            %\caption{Evaluation}
+            \label{fig:1}
+            \end{figure}
          \end{column}
-         \begin{column}{0.5\textwidth}
-            \begin{center}
-                \movie[label=false,height=0.5\linewidth,width=0.5\linewidth]
-                {\texttt{OpAx}}{Latex_Praesentation/videos/opax-zero-shot-swingup-4.mov}
-            \end{center}
+         \begin{column}{0.4\textwidth}
+            Zero-shot swing up task:\vspace{-0.2in}
+            \begin{figure}
+              \centering
+              \subfloat[\texttt{H-UCRL}\label{fig:a}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]{(play)}{Latex_Praesentation/videos/hucrl-zero-shot-swingup-4.mov}}
+        
+              \subfloat[\texttt{OpAx}\label{fig:b}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]
+                {(play)}{Latex_Praesentation/videos/opax-zero-shot-swingup-4.mov}}
+            %\caption{Evaluation}
+            \label{fig:1}
+            \end{figure}
          \end{column}
      \end{columns}
-    \vspace{0.2in}
 
-     \begin{center}
-         \alert{Grand statement about \texttt{OpAx}}
-     \end{center}
-     
 \end{frame}
 
 \begin{frame}{Key Findings}

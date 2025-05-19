@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.5.4)  19 MAY 2025 09:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.5.4)  19 MAY 2025 12:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -812,6 +812,44 @@ Package: ocgbase 2024/09/15 v0.24 support package for ocgx2.sty
 \l_mix_pbtn_box=\box88
 \g_mix_mbtncnt_int=\count378
 \mix@btn@dim=\dimen350
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen351
+\captionmargin=\dimen352
+\caption@leftmargin=\dimen353
+\caption@rightmargin=\dimen354
+\caption@width=\dimen355
+\caption@indent=\dimen356
+\caption@parindent=\dimen357
+\caption@hangindent=\dimen358
+Package caption Info: beamer document class detected.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption-beamer.sto
+File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
+))
+\c@caption@flags=\count379
+\c@continuedfloat=\count380
+Package caption Info: hyperref package is loaded.
+Package caption Info: Hyperref support is turned off
+(caption)             because hyperref has stopped early.
+)
+\c@KVtest=\count381
+\sf@farskip=\skip73
+\sf@captopadj=\dimen359
+\sf@capskip=\skip74
+\sf@nearskip=\skip75
+\c@subfigure=\count382
+\c@subfigure@save=\count383
+\c@depth=\count384
+\c@subtable=\count385
+\c@subtable@save=\count386
+\sf@top=\skip76
+\sf@bottom=\skip77
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerfontthemeprofessionalfonts.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/eulervm/eulervm.sty
 Package: eulervm 2005/01/11 v4.0 (WaS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamertheme-tcolorbox/beamerinnerthemetcolorbox.sty
@@ -832,11 +870,11 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box90
 \tcb@lowerbox=\box91
 \tcb@phantombox=\box92
-\c@tcbbreakpart=\count379
-\c@tcblayer=\count380
-\c@tcolorbox@number=\count381
+\c@tcbbreakpart=\count387
+\c@tcblayer=\count388
+\c@tcolorbox@number=\count389
 \l__tcobox_tmpa_box=\box93
-\l__tcobox_tmpa_dim=\dimen351
+\l__tcobox_tmpa_dim=\dimen360
 \tcb@temp=\box94
 \tcb@temp=\box95
 \tcb@temp=\box96
@@ -858,69 +896,69 @@ Library (tcolorbox): 'tcbhooks.code.tex' version '6.4.1'
 Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
  (/usr/local/texlive/2025/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count382
+\lrq@indent=\count390
  (/usr/local/texlive/2025/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
-\c@tabx@nest=\count383
-\c@listtotal=\count384
-\c@listcount=\count385
-\c@liststart=\count386
-\c@liststop=\count387
-\c@citecount=\count388
-\c@citetotal=\count389
-\c@multicitecount=\count390
-\c@multicitetotal=\count391
-\c@instcount=\count392
-\c@maxnames=\count393
-\c@minnames=\count394
-\c@maxitems=\count395
-\c@minitems=\count396
-\c@citecounter=\count397
-\c@maxcitecounter=\count398
-\c@savedcitecounter=\count399
-\c@uniquelist=\count400
-\c@uniquename=\count401
-\c@refsection=\count402
-\c@refsegment=\count403
-\c@maxextratitle=\count404
-\c@maxextratitleyear=\count405
-\c@maxextraname=\count406
-\c@maxextradate=\count407
-\c@maxextraalpha=\count408
-\c@abbrvpenalty=\count409
-\c@highnamepenalty=\count410
-\c@lownamepenalty=\count411
-\c@maxparens=\count412
-\c@parenlevel=\count413
-\blx@tempcnta=\count414
-\blx@tempcntb=\count415
-\blx@tempcntc=\count416
-\c@blx@maxsection=\count417
-\blx@maxsegment@0=\count418
-\blx@notetype=\count419
-\blx@parenlevel@text=\count420
-\blx@parenlevel@foot=\count421
-\blx@sectionciteorder@0=\count422
-\blx@sectionciteorderinternal@0=\count423
-\blx@entrysetcounter=\count424
-\blx@biblioinstance=\count425
-\labelnumberwidth=\skip73
-\labelalphawidth=\skip74
-\biblabelsep=\skip75
-\bibitemsep=\skip76
-\bibnamesep=\skip77
-\bibinitsep=\skip78
-\bibparsep=\skip79
-\bibhang=\skip80
+\c@tabx@nest=\count391
+\c@listtotal=\count392
+\c@listcount=\count393
+\c@liststart=\count394
+\c@liststop=\count395
+\c@citecount=\count396
+\c@citetotal=\count397
+\c@multicitecount=\count398
+\c@multicitetotal=\count399
+\c@instcount=\count400
+\c@maxnames=\count401
+\c@minnames=\count402
+\c@maxitems=\count403
+\c@minitems=\count404
+\c@citecounter=\count405
+\c@maxcitecounter=\count406
+\c@savedcitecounter=\count407
+\c@uniquelist=\count408
+\c@uniquename=\count409
+\c@refsection=\count410
+\c@refsegment=\count411
+\c@maxextratitle=\count412
+\c@maxextratitleyear=\count413
+\c@maxextraname=\count414
+\c@maxextradate=\count415
+\c@maxextraalpha=\count416
+\c@abbrvpenalty=\count417
+\c@highnamepenalty=\count418
+\c@lownamepenalty=\count419
+\c@maxparens=\count420
+\c@parenlevel=\count421
+\blx@tempcnta=\count422
+\blx@tempcntb=\count423
+\blx@tempcntc=\count424
+\c@blx@maxsection=\count425
+\blx@maxsegment@0=\count426
+\blx@notetype=\count427
+\blx@parenlevel@text=\count428
+\blx@parenlevel@foot=\count429
+\blx@sectionciteorder@0=\count430
+\blx@sectionciteorderinternal@0=\count431
+\blx@entrysetcounter=\count432
+\blx@biblioinstance=\count433
+\labelnumberwidth=\skip78
+\labelalphawidth=\skip79
+\biblabelsep=\skip80
+\bibitemsep=\skip81
+\bibnamesep=\skip82
+\bibinitsep=\skip83
+\bibparsep=\skip84
+\bibhang=\skip85
 \blx@bcfin=\read4
 \blx@bcfout=\write5
 \blx@langwohyphens=\language90
-\c@mincomprange=\count426
-\c@maxcomprange=\count427
-\c@mincompwidth=\count428
+\c@mincomprange=\count434
+\c@maxcomprange=\count435
+\c@mincompwidth=\count436
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/blx-dm.def
@@ -930,88 +968,88 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'numeric.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count429
-\c@savedafterword=\count430
-\c@annotator=\count431
-\c@savedannotator=\count432
-\c@author=\count433
-\c@savedauthor=\count434
-\c@bookauthor=\count435
-\c@savedbookauthor=\count436
-\c@commentator=\count437
-\c@savedcommentator=\count438
-\c@editor=\count439
-\c@savededitor=\count440
-\c@editora=\count441
-\c@savededitora=\count442
-\c@editorb=\count443
-\c@savededitorb=\count444
-\c@editorc=\count445
-\c@savededitorc=\count446
-\c@foreword=\count447
-\c@savedforeword=\count448
-\c@holder=\count449
-\c@savedholder=\count450
-\c@introduction=\count451
-\c@savedintroduction=\count452
-\c@namea=\count453
-\c@savednamea=\count454
-\c@nameb=\count455
-\c@savednameb=\count456
-\c@namec=\count457
-\c@savednamec=\count458
-\c@translator=\count459
-\c@savedtranslator=\count460
-\c@shortauthor=\count461
-\c@savedshortauthor=\count462
-\c@shorteditor=\count463
-\c@savedshorteditor=\count464
-\c@labelname=\count465
-\c@savedlabelname=\count466
-\c@institution=\count467
-\c@savedinstitution=\count468
-\c@lista=\count469
-\c@savedlista=\count470
-\c@listb=\count471
-\c@savedlistb=\count472
-\c@listc=\count473
-\c@savedlistc=\count474
-\c@listd=\count475
-\c@savedlistd=\count476
-\c@liste=\count477
-\c@savedliste=\count478
-\c@listf=\count479
-\c@savedlistf=\count480
-\c@location=\count481
-\c@savedlocation=\count482
-\c@organization=\count483
-\c@savedorganization=\count484
-\c@origlocation=\count485
-\c@savedoriglocation=\count486
-\c@origpublisher=\count487
-\c@savedorigpublisher=\count488
-\c@publisher=\count489
-\c@savedpublisher=\count490
-\c@language=\count491
-\c@savedlanguage=\count492
-\c@origlanguage=\count493
-\c@savedoriglanguage=\count494
-\c@pageref=\count495
-\c@savedpageref=\count496
-\shorthandwidth=\skip81
-\shortjournalwidth=\skip82
-\shortserieswidth=\skip83
-\shorttitlewidth=\skip84
-\shortauthorwidth=\skip85
-\shorteditorwidth=\skip86
-\locallabelnumberwidth=\skip87
-\locallabelalphawidth=\skip88
-\localshorthandwidth=\skip89
-\localshortjournalwidth=\skip90
-\localshortserieswidth=\skip91
-\localshorttitlewidth=\skip92
-\localshortauthorwidth=\skip93
-\localshorteditorwidth=\skip94
+\c@afterword=\count437
+\c@savedafterword=\count438
+\c@annotator=\count439
+\c@savedannotator=\count440
+\c@author=\count441
+\c@savedauthor=\count442
+\c@bookauthor=\count443
+\c@savedbookauthor=\count444
+\c@commentator=\count445
+\c@savedcommentator=\count446
+\c@editor=\count447
+\c@savededitor=\count448
+\c@editora=\count449
+\c@savededitora=\count450
+\c@editorb=\count451
+\c@savededitorb=\count452
+\c@editorc=\count453
+\c@savededitorc=\count454
+\c@foreword=\count455
+\c@savedforeword=\count456
+\c@holder=\count457
+\c@savedholder=\count458
+\c@introduction=\count459
+\c@savedintroduction=\count460
+\c@namea=\count461
+\c@savednamea=\count462
+\c@nameb=\count463
+\c@savednameb=\count464
+\c@namec=\count465
+\c@savednamec=\count466
+\c@translator=\count467
+\c@savedtranslator=\count468
+\c@shortauthor=\count469
+\c@savedshortauthor=\count470
+\c@shorteditor=\count471
+\c@savedshorteditor=\count472
+\c@labelname=\count473
+\c@savedlabelname=\count474
+\c@institution=\count475
+\c@savedinstitution=\count476
+\c@lista=\count477
+\c@savedlista=\count478
+\c@listb=\count479
+\c@savedlistb=\count480
+\c@listc=\count481
+\c@savedlistc=\count482
+\c@listd=\count483
+\c@savedlistd=\count484
+\c@liste=\count485
+\c@savedliste=\count486
+\c@listf=\count487
+\c@savedlistf=\count488
+\c@location=\count489
+\c@savedlocation=\count490
+\c@organization=\count491
+\c@savedorganization=\count492
+\c@origlocation=\count493
+\c@savedoriglocation=\count494
+\c@origpublisher=\count495
+\c@savedorigpublisher=\count496
+\c@publisher=\count497
+\c@savedpublisher=\count498
+\c@language=\count499
+\c@savedlanguage=\count500
+\c@origlanguage=\count501
+\c@savedoriglanguage=\count502
+\c@pageref=\count503
+\c@savedpageref=\count504
+\shorthandwidth=\skip86
+\shortjournalwidth=\skip87
+\shortserieswidth=\skip88
+\shorttitlewidth=\skip89
+\shortauthorwidth=\skip90
+\shorteditorwidth=\skip91
+\locallabelnumberwidth=\skip92
+\locallabelalphawidth=\skip93
+\localshorthandwidth=\skip94
+\localshortjournalwidth=\skip95
+\localshortserieswidth=\skip96
+\localshorttitlewidth=\skip97
+\localshortauthorwidth=\skip98
+\localshorteditorwidth=\skip99
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/blx-compat.def
@@ -1021,19 +1059,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count497
-\c@textcitetotal=\count498
-\c@textcitemaxnames=\count499
-\c@biburlbigbreakpenalty=\count500
-\c@biburlbreakpenalty=\count501
-\c@biburlnumpenalty=\count502
-\c@biburlucpenalty=\count503
-\c@biburllcpenalty=\count504
+\c@textcitecount=\count505
+\c@textcitetotal=\count506
+\c@textcitemaxnames=\count507
+\c@biburlbigbreakpenalty=\count508
+\c@biburlbreakpenalty=\count509
+\c@biburlnumpenalty=\count510
+\c@biburlucpenalty=\count511
+\c@biburllcpenalty=\count512
 \biburlbigskip=\muskip22
 \biburlnumskip=\muskip23
 \biburlucskip=\muskip24
 \biburllcskip=\muskip25
-\c@smartand=\count505
+\c@smartand=\count513
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -1043,8 +1081,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count506
-\c@bbx:relatedtotal=\count507
+\c@bbx:relatedcount=\count514
+\c@bbx:relatedtotal=\count515
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -1083,8 +1121,8 @@ Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2024/12/24 v6.0g a miscellany of footnote facilities
 \FN@temptoken=\toks61
-\footnotemargin=\dimen352
-\@outputbox@depth=\dimen353
+\footnotemargin=\dimen361
+\@outputbox@depth=\dimen362
 Package footmisc Info: Declaring symbol style bringhurst on input line 699.
 Package footmisc Info: Declaring symbol style chicago on input line 707.
 Package footmisc Info: Declaring symbol style wiley on input line 716.
@@ -1097,44 +1135,44 @@ Package: footnoterange 2025-01-27 v1.1b References to ranges of footnotes (HMM)
 Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 )
 Package: fnpct 2022/02/27 v1.1a footnotes' interaction with punctuation
-\l__fnpct_collection_int=\count508
-\l__fnpct_before_footnote_dim=\dimen354
-\l__fnpct_before_dot_dim=\dimen355
-\l__fnpct_after_dot_dim=\dimen356
-\l__fnpct_before_comma_dim=\dimen357
-\l__fnpct_after_comma_dim=\dimen358
-\l__fnpct_before_collect_dim=\dimen359
-\l__fnpct_after_collect_dim=\dimen360
+\l__fnpct_collection_int=\count516
+\l__fnpct_before_footnote_dim=\dimen363
+\l__fnpct_before_dot_dim=\dimen364
+\l__fnpct_after_dot_dim=\dimen365
+\l__fnpct_before_comma_dim=\dimen366
+\l__fnpct_after_comma_dim=\dimen367
+\l__fnpct_before_collect_dim=\dimen368
+\l__fnpct_after_collect_dim=\dimen369
  (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (/usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count509
+\c@float@type=\count517
 \float@exts=\toks62
 \float@box=\box99
 \@float@everytoks=\toks63
 \@floatcapt=\box100
 )
 \@float@every@algorithm=\toks64
-\c@algorithm=\count510
+\c@algorithm=\count518
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
  (/usr/local/texlive/2025/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count511
-\c@ALG@rem=\count512
-\c@ALG@nested=\count513
-\ALG@tlm=\skip95
-\ALG@thistlm=\skip96
-\c@ALG@Lnr=\count514
-\c@ALG@blocknr=\count515
-\c@ALG@storecount=\count516
-\c@ALG@tmpcounter=\count517
-\ALG@tmplength=\skip97
+\c@ALG@line=\count519
+\c@ALG@rem=\count520
+\c@ALG@nested=\count521
+\ALG@tlm=\skip100
+\ALG@thistlm=\skip101
+\c@ALG@Lnr=\count522
+\c@ALG@blocknr=\count523
+\c@ALG@storecount=\count524
+\c@ALG@tmpcounter=\count525
+\ALG@tmplength=\skip102
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
@@ -1183,7 +1221,7 @@ File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\arrowsize=\dimen361
+\arrowsize=\dimen370
 )) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
@@ -1194,77 +1232,73 @@ Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 \t@pgfplots@toka=\toks65
 \t@pgfplots@tokb=\toks66
 \t@pgfplots@tokc=\toks67
-\pgfplots@tmpa=\dimen362
-\c@pgfplots@coordindex=\count518
-\c@pgfplots@scanlineindex=\count519
+\pgfplots@tmpa=\dimen371
+\c@pgfplots@coordindex=\count526
+\c@pgfplots@scanlineindex=\count527
  (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
 \t@pgf@toka=\toks68
 \t@pgf@tokb=\toks69
 \t@pgf@tokc=\toks70
 (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count520
+\c@pgfplotsarray@tmp=\count528
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count521
+\c@pgfplotstable@counta=\count529
 \t@pgfplotstable@a=\toks71
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count522
+\c@pgfplotslibrarysurf@no=\count530
  (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen363
-\pgfdecoratedremainingdistance=\dimen364
-\pgfdecoratedinputsegmentcompleteddistance=\dimen365
-\pgfdecoratedinputsegmentremainingdistance=\dimen366
-\pgf@decorate@distancetomove=\dimen367
-\pgf@decorate@repeatstate=\count523
-\pgfdecorationsegmentamplitude=\dimen368
-\pgfdecorationsegmentlength=\dimen369
+\pgfdecoratedcompleteddistance=\dimen372
+\pgfdecoratedremainingdistance=\dimen373
+\pgfdecoratedinputsegmentcompleteddistance=\dimen374
+\pgfdecoratedinputsegmentremainingdistance=\dimen375
+\pgf@decorate@distancetomove=\dimen376
+\pgf@decorate@repeatstate=\count531
+\pgfdecorationsegmentamplitude=\dimen377
+\pgfdecorationsegmentlength=\dimen378
 )
 \tikz@lib@dec@box=\box121
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count524
-\pgfplots@xmin@reg=\dimen370
-\pgfplots@xmax@reg=\dimen371
-\pgfplots@ymin@reg=\dimen372
-\pgfplots@ymax@reg=\dimen373
-\pgfplots@zmin@reg=\dimen374
-\pgfplots@zmax@reg=\dimen375
+\pgfplots@numplots=\count532
+\pgfplots@xmin@reg=\dimen379
+\pgfplots@xmax@reg=\dimen380
+\pgfplots@ymin@reg=\dimen381
+\pgfplots@ymax@reg=\dimen382
+\pgfplots@zmin@reg=\dimen383
+\pgfplots@zmax@reg=\dimen384
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 87.
-
-\@quotelevel=\count525
-\@quotereset=\count526
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 87.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 87.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmss.fd
+\@quotelevel=\count533
+\@quotereset=\count534
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 90.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 90.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1301,16 +1335,16 @@ LaTeX Font Info:    ... okay on input line 87.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count527
-\scratchdimen=\dimen376
+\scratchcounter=\count535
+\scratchdimen=\dimen385
 \scratchbox=\box122
-\nofMPsegments=\count528
-\nofMParguments=\count529
+\nofMPsegments=\count536
+\nofMParguments=\count537
 \everyMPshowfont=\toks72
-\MPscratchCnt=\count530
-\MPscratchDim=\dimen377
-\MPnumerator=\count531
-\makeMPintoPDFobject=\count532
+\MPscratchCnt=\count538
+\MPscratchDim=\dimen386
+\MPnumerator=\count539
+\makeMPintoPDFobject=\count540
 \everyMPtoPDFconversion=\toks73
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1318,7 +1352,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 87.
+Package hyperref Info: Link coloring OFF on input line 90.
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
@@ -1335,20 +1369,20 @@ Dictionary: translator-numbers-dictionary, Language: English
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \microtypecontext on input line 87.
-Package microtype Info: Applying patch `item' on input line 87.
-Package microtype Info: Applying patch `toc' on input line 87.
-Package microtype Info: Applying patch `eqnum' on input line 87.
-Package microtype Info: Applying patch `footnote' on input line 87.
-Package microtype Info: Applying patch `verbatim' on input line 87.
-LaTeX Info: Redefining \microtypesetup on input line 87.
+LaTeX Info: Redefining \microtypecontext on input line 90.
+Package microtype Info: Applying patch `item' on input line 90.
+Package microtype Info: Applying patch `toc' on input line 90.
+Package microtype Info: Applying patch `eqnum' on input line 90.
+Package microtype Info: Applying patch `footnote' on input line 90.
+Package microtype Info: Applying patch `verbatim' on input line 90.
+LaTeX Info: Redefining \microtypesetup on input line 90.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 87.
+LaTeX Info: Redefining \showhyphens on input line 90.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1356,6 +1390,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/lbx/english.lbx
@@ -1367,32 +1405,31 @@ Package biblatex Info: Automatic encoding selection.
 \openout5 = `main.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' not found.
-
-No file main.bbl.
-Package biblatex Info: Reference section=0 on input line 87.
-Package biblatex Info: Reference segment=0 on input line 87.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
+Package biblatex Info: ... file 'main.bbl' found.
+ (./main.bbl)
+Package biblatex Info: Reference section=0 on input line 90.
+Package biblatex Info: Reference segment=0 on input line 90.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 87.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 90.
 
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
 
 (./main.nav)
-LaTeX Font Info:    Trying to load font information for U+zeur on input line 92.
+LaTeX Font Info:    Trying to load font information for U+zeur on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-eur.cfg
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeus on input line 92.
+LaTeX Font Info:    Trying to load font information for U+zeus on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-eus.cfg
 File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 92.
+LaTeX Font Info:    Trying to load font information for U+zeuex on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
@@ -1400,17 +1437,17 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 92.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 92.
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 92.
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/bbold/Ubbold.fd)
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 92.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -1418,47 +1455,47 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `mathkerncmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 92.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 92.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 92.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 92.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 95.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 92.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 95.
 
 
-Overfull \hbox (56.90549pt too wide) in paragraph at lines 92--92
+Overfull \hbox (56.90549pt too wide) in paragraph at lines 95--95
 [][]  
  []
 
 
-Overfull \vbox (5.0pt too high) detected at line 92
+Overfull \vbox (5.0pt too high) detected at line 95
  []
 
 
 
 
-/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:92: LaTeX Error: File `elements/title-page-image' not found.
+/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:95: LaTeX Error: File `elements/title-page-image' not found.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 \titleframe
+l.95 \titleframe
                  % Creates the title slide using the theme's definition
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1466,13 +1503,13 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:92: LaTeX Error: File `elements/eth_logo_kurz_pos' not found.
+/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:95: LaTeX Error: File `elements/eth_logo_kurz_pos' not found.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 \titleframe
+l.95 \titleframe
                  % Creates the title slide using the theme's definition
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1495,9 +1532,9 @@ No file main.toc.
 
 ]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 116.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 119.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 116.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 119.
 
 
 [4
@@ -1505,18 +1542,18 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
 ]
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 137.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 140.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 137.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 140.
 
 
-LaTeX Warning: Citation 'sukhija2023optimistic' on page 5 undefined on input line 137.
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 5 undefined on input line 140.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 137.
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 140.
 
 
 
@@ -1532,7 +1569,7 @@ No file main.toc.
 <Latex_Praesentation/figures/dataset.png, id=65, 796.9775pt x 375.4025pt>
 File: Latex_Praesentation/figures/dataset.png Graphic file (type png)
 <use Latex_Praesentation/figures/dataset.png>
-Package pdftex.def Info: Latex_Praesentation/figures/dataset.png  used on input line 166.
+Package pdftex.def Info: Latex_Praesentation/figures/dataset.png  used on input line 169.
 (pdftex.def)             Requested size: 199.24388pt x 93.85039pt.
 
 
@@ -1542,7 +1579,7 @@ Package pdftex.def Info: Latex_Praesentation/figures/dataset.png  used on input 
 <Latex_Praesentation/figures/confidence_interval.png, id=81, 533.995pt x 309.155pt>
 File: Latex_Praesentation/figures/confidence_interval.png Graphic file (type png)
 <use Latex_Praesentation/figures/confidence_interval.png>
-Package pdftex.def Info: Latex_Praesentation/figures/confidence_interval.png  used on input line 189.
+Package pdftex.def Info: Latex_Praesentation/figures/confidence_interval.png  used on input line 192.
 (pdftex.def)             Requested size: 133.49841pt x 77.28856pt.
 
 
@@ -1577,7 +1614,7 @@ No file main.toc.
 [14
 
 ]
-Overfull \hbox (27.0693pt too wide) in paragraph at lines 334--334
+Overfull \hbox (27.0693pt too wide) in paragraph at lines 337--337
  []$[][] [][] \U/bbold/m/n/10.95 E[]\U/zeus/m/n/10.95 Û\U/zeur/m/n/10.95 J[]\U/zeus/m/n/10.95 ¨\U/zeur/m/n/10.95 ^^Y\U/zeus/m/n/10.95 ©Ý$ 
  []
 
@@ -1590,7 +1627,7 @@ Overfull \hbox (27.0693pt too wide) in paragraph at lines 334--334
 [16
 
 ]
-Overfull \vbox (30.7312pt too high) detected at line 366
+Overfull \vbox (30.7312pt too high) detected at line 369
  []
 
 
@@ -1617,11 +1654,11 @@ No file main.toc.
 
 ]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 493.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 496.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 493.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 496.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 493.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 496.
 
 
 [22
@@ -1640,14 +1677,14 @@ No file main.toc.
 <Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf, id=200, 782.22133pt x 263.73734pt>
 File: Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf Graphic file (type pdf)
 <use Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf>
-Package pdftex.def Info: Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf  used on input line 576.
+Package pdftex.def Info: Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf  used on input line 579.
 (pdftex.def)             Requested size: 358.50229pt x 120.87393pt.
 
 
 [25
 
  <./Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 592.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 588.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1655,22 +1692,41 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 592.
-<Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf, id=234, 914.66272pt x 714.51727pt>
-File: Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf Graphic file (type pdf)
-<use Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf>
-Package pdftex.def Info: Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf  used on input line 592.
-(pdftex.def)             Requested size: 236.61684pt x 184.83247pt.
 
 
 [26
 
- <./Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf>]
+]
+<Latex_Praesentation/figures/pendulum-keep-down.png, id=241, 1136.245pt x 748.7975pt>
+File: Latex_Praesentation/figures/pendulum-keep-down.png Graphic file (type png)
+<use Latex_Praesentation/figures/pendulum-keep-down.png>
+Package pdftex.def Info: Latex_Praesentation/figures/pendulum-keep-down.png  used on input line 622.
+(pdftex.def)             Requested size: 88.4309pt x 58.27113pt.
+<Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png, id=242, 964.60374pt x 692.5875pt>
+File: Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png Graphic file (type png)
+<use Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png>
+Package pdftex.def Info: Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png  used on input line 622.
+(pdftex.def)             Requested size: 88.4309pt x 63.49266pt.
+
 
 [27
 
-]
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:a}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.622 \end{frame}
+                 
+pdfTeX warning (ext4): destination with the same identifier (name{fig:b}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.622 \end{frame}
+                 
+pdfTeX warning (ext4): destination with the same identifier (name{fig:1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.622 \end{frame}
+                  <./Latex_Praesentation/figures/pendulum-keep-down.png> <./Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png>]
 
 [28
 
@@ -1694,7 +1750,7 @@ No file main.toc.
 
 ]
 
-LaTeX Warning: Citation 'sukhija2023optimistic' on page 33 undefined on input line 692.
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 33 undefined on input line 699.
 
 
 
@@ -1702,7 +1758,7 @@ LaTeX Warning: Citation 'sukhija2023optimistic' on page 33 undefined on input li
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 697.
+LaTeX Warning: Empty bibliography on input line 704.
 
 
 
@@ -1711,13 +1767,13 @@ LaTeX Warning: Empty bibliography on input line 697.
 ]
 
 
-/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:722: LaTeX Error: File `elements/eth_logo_kurz_pos' not found.
+/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:729: LaTeX Error: File `elements/eth_logo_kurz_pos' not found.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.722 \end{closingframe}
+l.729 \end{closingframe}
                         
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1736,12 +1792,7 @@ If that doesn't work, type  X <return>  to quit.
 \tf@snm=\write9
 \openout9 = `main.snm'.
 
-
-
-LaTeX Warning: Hook 'shipout/lastpage' executed on wrong page (1 not 35).
-               Rerun to correct this.
-
-(./main.aux)
+ [36] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1749,6 +1800,12 @@ L3 programming layer <2025-01-18>
 
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+LaTeX Warning: Temporary extra page added at the end. Rerun to get it removed.
 
 
 Package rerunfilecheck Warning: File `main.out' has changed.
@@ -1768,18 +1825,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 57596 strings out of 473190
- 1338634 string characters out of 5715801
- 2261522 words of memory out of 5000000
- 79600 multiletter control sequences out of 15000+600000
- 675244 words of font info for 251 fonts, out of 8000000 for 9000
+ 59196 strings out of 473190
+ 1369688 string characters out of 5715801
+ 2287680 words of memory out of 5000000
+ 81180 multiletter control sequences out of 15000+600000
+ 675245 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,13n,123p,1106b,1646s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (35 pages, 684716 bytes).
+ 128i,13n,123p,1106b,1648s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on main.pdf (36 pages, 989202 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
- 343 compressed objects within 4 object streams
- 78 named destinations out of 1000 (max. 500000)
- 59977 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 444 PDF objects out of 1000 (max. 8388607)
+ 329 compressed objects within 4 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 59982 words of extra memory for PDF output out of 61914 (max. 10000000)
 
