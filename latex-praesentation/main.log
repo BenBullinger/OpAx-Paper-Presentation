@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.5.4)  19 MAY 2025 12:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.5.4)  19 MAY 2025 16:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex
-(/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex
+**/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.tex
+(/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamer.cls
@@ -534,7 +534,7 @@ Package: amsthm 2020/05/29 v2.20.6
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasethemes.sty)) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerthemedefault.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerfontthemedefault.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemedefault.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
 \beamer@dima=\dimen293
 \beamer@dimb=\dimen294
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty))) (./beamerthemeeth.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty))) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/beamerthemeeth.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks46
 \inpenc@posthook=\toks47
@@ -620,7 +620,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count356
 \@lastruleclass=\count357
 \@thisrulewidth=\dimen325
-) (./beamercolorthemeeth.sty) (./beamerfontthemeeth.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
+) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/beamercolorthemeeth.sty) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/beamerfontthemeeth.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
@@ -656,6 +656,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/tex-gyre/tgheros.sty
+Package: tgheros 2009/09/27 v1.2 TeX Gyre Heros as default sans serif family
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2025/02/11 v3.2a Micro-typographical refinements (RS)
 \MT@toks=\toks51
@@ -681,13 +683,13 @@ Package microtype Info: Loading configuration file microtype.cfg.
 File: microtype.cfg 2025/02/11 v3.2a microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
-)) (./beamerinnerthemeeth.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome/fontawesome.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerfontthemeserif.sty)) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/beamerinnerthemeeth.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome/fontawesome.sty
 Package: fontawesome 2016/05/15 v4.6.3.1 font awesome icons
  (/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome/fontawesomesymbols-generic.tex) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome/fontawesomesymbols-pdftex.tex))) (./beamerouterthemeeth.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome/fontawesomesymbols-generic.tex) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome/fontawesomesymbols-pdftex.tex))) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/beamerouterthemeeth.sty
 \titleboxwidth=\skip67
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
@@ -737,20 +739,16 @@ LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/mathbbol.sty
 Package: mathbbol 1995/01/01
 \symbbold=\mathgroup8
-)) (/usr/local/texlive/2025/texmf-dist/tex/latex/braket/braket.sty)
-\sympureletters=\mathgroup9
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 15.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
+)) (/usr/local/texlive/2025/texmf-dist/tex/latex/braket/braket.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup10
-\symboldletters=\mathgroup11
-\symboldsymbols=\mathgroup12
+\symboldoperators=\mathgroup9
+\symboldletters=\mathgroup10
+\symboldsymbols=\mathgroup11
 Package bm Info: No bold for \OMX/lmex/m/n, using \pmb.
 Package bm Info: No bold for \U/msa/m/n, using \pmb.
 Package bm Info: No bold for \U/msb/m/n, using \pmb.
 Package bm Info: No bold for \U/rsfs/m/n, using \pmb.
-\symboldwasy=\mathgroup13
+\symboldwasy=\mathgroup12
 Package bm Info: No bold for \U/bbold/m/n, using \pmb.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/soul/soul.sty
@@ -1274,11 +1272,26 @@ File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \@quotelevel=\count533
 \@quotereset=\count534
 Package translations Info: No language package found. I am going to use `english' as default language. on input line 90.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 90.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 90.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
+File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.aux
+
+LaTeX Warning: Label `fig:a' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:a' multiply defined.
+
+
+LaTeX Warning: Label `fig:b' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:b' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
 )
-No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
@@ -1299,6 +1312,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
 LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
 LaTeX Font Info:    ... okay on input line 90.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1353,6 +1367,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 90.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.out) (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
@@ -1387,7 +1402,7 @@ Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmss' (encoding: T1).
+(microtype)             `qhv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package caption Info: Begin \AtBeginDocument code.
@@ -1406,7 +1421,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (./main.bbl)
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.bbl)
 Package biblatex Info: Reference section=0 on input line 90.
 Package biblatex Info: Reference segment=0 on input line 90.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
@@ -1416,7 +1431,12 @@ Package translations Info: loading dictionary `translations-basic-dictionary' fo
 
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
 
-(./main.nav)
+(/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.nav)
+<elements/eth_logo_kurz_pos.pdf, id=42, 142.5325pt x 24.09pt>
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 90.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 LaTeX Font Info:    Trying to load font information for U+zeur on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
@@ -1447,14 +1467,6 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Trying to load font information for U+bbold on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/bbold/Ubbold.fd)
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 95.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
-File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `mathkerncmss' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 95.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1470,11 +1482,15 @@ LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 9
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
 (Font)              Font shape `U/wasy/m/n' tried instead on input line 95.
 
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 95.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
 (Font)              Font shape `U/wasy/m/n' tried instead on input line 95.
 
 
@@ -1488,202 +1504,426 @@ Overfull \vbox (5.0pt too high) detected at line 95
 
 
 
+<elements/title-page-image.jpg, id=43, 831.105pt x 415.5525pt>
+File: elements/title-page-image.jpg Graphic file (type jpg)
+<use elements/title-page-image.jpg>
+Package pdftex.def Info: elements/title-page-image.jpg  used on input line 95.
+(pdftex.def)             Requested size: 401.18385pt x 200.5916pt.
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 95.
+(pdftex.def)             Requested size: 67.33824pt x 11.38109pt.
+[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}
 
-/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:95: LaTeX Error: File `elements/title-page-image' not found.
+ </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/elements/title-page-image.jpg> </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/elements/eth_logo_kurz_pos.pdf>]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 98.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.95 \titleframe
-                 % Creates the title slide using the theme's definition
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:95: LaTeX Error: File `elements/eth_logo_kurz_pos' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.95 \titleframe
-                 % Creates the title slide using the theme's definition
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
-
-]
-No file main.toc.
-
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 98.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [2
 
 ]
-No file main.toc.
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 101.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
 
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 101.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [3
 
 ]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 119.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 119.
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 119.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 119.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [4
 
 ]
 
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <9> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 140.
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 140.
-
-
-LaTeX Warning: Citation 'sukhija2023optimistic' on page 5 undefined on input line 140.
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 140.
-
-
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 119.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [5
 
 ]
-No file main.toc.
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 140.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
 
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 6 undefined on input line 140.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 140.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [6
 
 ]
-<Latex_Praesentation/figures/dataset.png, id=65, 796.9775pt x 375.4025pt>
-File: Latex_Praesentation/figures/dataset.png Graphic file (type png)
-<use Latex_Praesentation/figures/dataset.png>
-Package pdftex.def Info: Latex_Praesentation/figures/dataset.png  used on input line 169.
+
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 7 undefined on input line 140.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 140.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[7
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 143.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 143.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[8
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 169.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+<figures/dataset.png, id=134, 796.9775pt x 375.4025pt>
+File: figures/dataset.png Graphic file (type png)
+<use figures/dataset.png>
+Package pdftex.def Info: figures/dataset.png  used on input line 169.
 (pdftex.def)             Requested size: 199.24388pt x 93.85039pt.
 
 
-[7
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 169.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[9
 
- <./Latex_Praesentation/figures/dataset.png>]
-<Latex_Praesentation/figures/confidence_interval.png, id=81, 533.995pt x 309.155pt>
-File: Latex_Praesentation/figures/confidence_interval.png Graphic file (type png)
-<use Latex_Praesentation/figures/confidence_interval.png>
-Package pdftex.def Info: Latex_Praesentation/figures/confidence_interval.png  used on input line 192.
+ </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/figures/dataset.png>]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 192.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+<figures/confidence_interval.png, id=149, 533.995pt x 309.155pt>
+File: figures/confidence_interval.png Graphic file (type png)
+<use figures/confidence_interval.png>
+Package pdftex.def Info: figures/confidence_interval.png  used on input line 192.
 (pdftex.def)             Requested size: 133.49841pt x 77.28856pt.
 
 
-[8
-
- <./Latex_Praesentation/figures/confidence_interval.png>]
-No file main.toc.
-
-
-[9
-
-]
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 192.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [10
 
-]
+ </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/figures/confidence_interval.png>]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 240.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 240.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [11
 
 ]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 263.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 263.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [12
 
 ]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 281.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 281.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [13
 
 ]
-No file main.toc.
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 301.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 301.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [14
 
 ]
-Overfull \hbox (27.0693pt too wide) in paragraph at lines 337--337
- []$[][] [][] \U/bbold/m/n/10.95 E[]\U/zeus/m/n/10.95 Û\U/zeur/m/n/10.95 J[]\U/zeus/m/n/10.95 ¨\U/zeur/m/n/10.95 ^^Y\U/zeus/m/n/10.95 ©Ý$ 
- []
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 310.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
 
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 310.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [15
 
 ]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 314.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 314.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [16
 
 ]
-Overfull \vbox (30.7312pt too high) detected at line 369
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 337.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+Overfull \hbox (25.46161pt too wide) in paragraph at lines 337--337
+ []$[][] [][] \U/bbold/m/n/9 E[]\U/zeus/m/n/9 Û\U/zeur/m/n/9 J[]\U/zeus/m/n/9 ¨\U/zeur/m/n/9 ^^Y\U/zeus/m/n/9 ©Ý$ 
  []
 
 
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 337.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [17
 
 ]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 353.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 353.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [18
 
 ]
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 353.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [19
 
 ]
-No file main.toc.
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 369.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 369.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [20
 
 ]
 
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 369.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [21
 
 ]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 496.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 496.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 496.
 
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 369.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [22
 
 ]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 385.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 385.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [23
 
 ]
-No file main.toc.
 
-
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 385.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 [24
 
 ]
-<Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf, id=200, 782.22133pt x 263.73734pt>
-File: Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf Graphic file (type pdf)
-<use Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf>
-Package pdftex.def Info: Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf  used on input line 579.
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 385.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[25
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 405.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 405.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[26
+
+]
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 405.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[27
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 408.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 408.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[28
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 468.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 468.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[29
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 496.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 496.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[30
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 520.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 520.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[31
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 568.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 568.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[32
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 579.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+<figures/uncertainty_plotvalidation_eps_std_max.pdf, id=325, 782.22133pt x 263.73734pt>
+File: figures/uncertainty_plotvalidation_eps_std_max.pdf Graphic file (type pdf)
+<use figures/uncertainty_plotvalidation_eps_std_max.pdf>
+Package pdftex.def Info: figures/uncertainty_plotvalidation_eps_std_max.pdf  used on input line 579.
 (pdftex.def)             Requested size: 358.50229pt x 120.87393pt.
 
 
-[25
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 579.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[33
 
- <./Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf>]
+ </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf>]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 588.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 588.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1694,22 +1934,34 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-[26
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 588.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[34
 
-]
-<Latex_Praesentation/figures/pendulum-keep-down.png, id=241, 1136.245pt x 748.7975pt>
-File: Latex_Praesentation/figures/pendulum-keep-down.png Graphic file (type png)
-<use Latex_Praesentation/figures/pendulum-keep-down.png>
-Package pdftex.def Info: Latex_Praesentation/figures/pendulum-keep-down.png  used on input line 622.
+{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 622.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+<figures/pendulum-keep-down.png, id=365, 1136.245pt x 748.7975pt>
+File: figures/pendulum-keep-down.png Graphic file (type png)
+<use figures/pendulum-keep-down.png>
+Package pdftex.def Info: figures/pendulum-keep-down.png  used on input line 622.
 (pdftex.def)             Requested size: 88.4309pt x 58.27113pt.
-<Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png, id=242, 964.60374pt x 692.5875pt>
-File: Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png Graphic file (type png)
-<use Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png>
-Package pdftex.def Info: Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png  used on input line 622.
+<figures/zero-shot-pendulum-swing-up.png, id=366, 964.60374pt x 692.5875pt>
+File: figures/zero-shot-pendulum-swing-up.png Graphic file (type png)
+<use figures/zero-shot-pendulum-swing-up.png>
+Package pdftex.def Info: figures/zero-shot-pendulum-swing-up.png  used on input line 622.
 (pdftex.def)             Requested size: 88.4309pt x 63.49266pt.
 
 
-[27
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 622.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[35
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:a}) has been already used, duplicate ignored
@@ -1726,61 +1978,208 @@ pdfTeX warning (ext4): destination with the same identifier (name{fig:1}) has be
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.622 \end{frame}
-                  <./Latex_Praesentation/figures/pendulum-keep-down.png> <./Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png>]
+                  </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/figures/pendulum-keep-down.png> </Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/figures/zero-shot-pendulum-swing-up.png>]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 641.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
 
-[28
 
-]
-No file main.toc.
-
-
-[29
-
-]
-
-[30
-
-]
-
-[31
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 641.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[36
 
 ]
 
-[32
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 641.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[37
 
 ]
 
-LaTeX Warning: Citation 'sukhija2023optimistic' on page 33 undefined on input line 699.
-
-
-
-[33
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 641.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[38
 
 ]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 644.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.toc)
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 644.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[39
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 656.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 656.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[40
+
+]
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 656.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[41
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 673.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 673.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[42
+
+]
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 673.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[43
+
+]
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 673.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[44
+
+]
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 673.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[45
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 685.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 685.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[46
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 699.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
+
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 47 undefined on input line 699.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 699.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[47
+
+]
+
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 48 undefined on input line 699.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 699.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[48
+
+]
+
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 49 undefined on input line 699.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 699.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[49
+
+]
+
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 50 undefined on input line 699.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 699.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[50
+
+]
+
+LaTeX Warning: Citation 'sukhija2023optimistic' on page 51 undefined on input line 699.
+
+
+
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 699.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[51
+
+]
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 704.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+
 
 LaTeX Warning: Empty bibliography on input line 704.
 
 
 
-[34
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 704.
+(pdftex.def)             Requested size: 36.98857pt x 6.02998pt.
+[52
 
 ]
 
-
-/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex:729: LaTeX Error: File `elements/eth_logo_kurz_pos' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.729 \end{closingframe}
-                        
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[35
+File: elements/eth_logo_kurz_pos.pdf Graphic file (type pdf)
+<use elements/eth_logo_kurz_pos.pdf>
+Package pdftex.def Info: elements/eth_logo_kurz_pos.pdf  used on input line 729.
+(pdftex.def)             Requested size: 65.44133pt x 11.0602pt.
+[53
 
 ]
 \tf@nav=\write7
@@ -1792,7 +2191,7 @@ If that doesn't work, type  X <return>  to quit.
 \tf@snm=\write9
 \openout9 = `main.snm'.
 
- [36] (./main.aux)
+ (/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1802,19 +2201,10 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-
-LaTeX Warning: Temporary extra page added at the end. Rerun to get it removed.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  9D30908435435CF1FCD7275D7D405F92;1180.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 9D30908435435CF1FCD7275D7D405F92;1180.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
@@ -1825,18 +2215,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59196 strings out of 473190
- 1369688 string characters out of 5715801
- 2287680 words of memory out of 5000000
- 81180 multiletter control sequences out of 15000+600000
- 675245 words of font info for 251 fonts, out of 8000000 for 9000
+ 59134 strings out of 473190
+ 1371531 string characters out of 5715801
+ 2289821 words of memory out of 5000000
+ 81117 multiletter control sequences out of 15000+600000
+ 634007 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,13n,123p,1106b,1648s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (36 pages, 989202 bytes).
+ 128i,14n,123p,1113b,1635s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qhvri.pfb>
+Output written on /Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Latex-praesentation/main.pdf (53 pages, 1105557 bytes).
 PDF statistics:
- 444 PDF objects out of 1000 (max. 8388607)
- 329 compressed objects within 4 object streams
- 81 named destinations out of 1000 (max. 500000)
- 59982 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 614 PDF objects out of 1000 (max. 8388607)
+ 491 compressed objects within 5 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 37520 words of extra memory for PDF output out of 42996 (max. 10000000)
 

@@ -1,6 +1,6 @@
 % Please use LuaLaTeX or XeLaTeX for compilation
-%\documentclass[11pt,aspectratio=169]{beamer}
-\documentclass[11pt,aspectratio=169,handout]{beamer} % faster compilation without animation
+\documentclass[11pt,aspectratio=169]{beamer}
+%\documentclass[11pt,aspectratio=169,handout]{beamer} % faster compilation without animation
 
 % Theme and Colors
 \usetheme{eth}
@@ -85,7 +85,7 @@
 \subtitle{Based on Sukhija et al. (NeurIPS 2023)} % Use subtitle for source
 \author{Chung-En Tsai \and Ben Bullinger} % Presenters
 \institute{ETH Zürich \\ Department of Computer Science}
-\date[FoRL Spring 2025]{Foundations of Reinforcement Learning (263-5255-00L), Spring 2025} % Course info and date
+\date[]{Foundations of Reinforcement Learning (263-5255-00L), Spring 2025} % Course info and date
 
 \begin{document}
 
@@ -157,7 +157,7 @@ Goal: Design algorithms for learning $\hat{f}\approx f^\star$ that is good for a
 % \end{block}
 
 \begin{center}
-\includegraphics[scale=0.25]{Latex_Praesentation/figures/dataset.png}
+\includegraphics[scale=0.25]{figures/dataset.png}
 \end{center}
 
 
@@ -185,7 +185,7 @@ Our problem can be divided into two parts:
             \leq {\color{ETHRed}\beta_n \sigma_{n,i}(s,a)} \quad \forall i\in[d],\ \text{w.h.p.},
     \]
     \begin{center}
-    \includegraphics[scale=0.25]{Latex_Praesentation/figures/confidence_interval.png}
+    \includegraphics[scale=0.25]{figures/confidence_interval.png}
     \end{center}
 \end{block}
 
@@ -569,7 +569,7 @@ Our problem can be divided into two parts:
 
 \begin{frame}{Experiments: Reduction in Epistemic Uncertainty (ok)}
 
-    \includegraphics[width=0.9\linewidth]{Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf}
+    \includegraphics[width=0.9\linewidth]{figures/uncertainty_plotvalidation_eps_std_max.pdf}
     \vspace{0.05in}
 
     \begin{center}
@@ -598,9 +598,9 @@ Our problem can be divided into two parts:
             Evaluation (\fcolorbox{black}{black}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{H-UCRL}, \fcolorbox{black}{Fuchsia}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{OpAx}, \fcolorbox{black}{red}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: Random):\vspace{-0.2in}
             \begin{figure}
               \centering
-              \subfloat[Trained task\label{fig:a}]{\includegraphics[width=0.37\linewidth]{Latex_Praesentation/figures/pendulum-keep-down.png}}
+              \subfloat[Trained task\label{fig:a}]{\includegraphics[width=0.37\linewidth]{figures/pendulum-keep-down.png}}
         
-              \subfloat[Zero-shot task\label{fig:b}]{\includegraphics[width=0.37\linewidth]{Latex_Praesentation/figures/zero-shot-pendulum-swing-up.png}}
+              \subfloat[Zero-shot task\label{fig:b}]{\includegraphics[width=0.37\linewidth]{figures/zero-shot-pendulum-swing-up.png}}
             %\caption{Evaluation}
             \label{fig:1}
             \end{figure}
@@ -609,10 +609,10 @@ Our problem can be divided into two parts:
             Zero-shot swing up task:\vspace{-0.2in}
             \begin{figure}
               \centering
-              \subfloat[\texttt{H-UCRL}\label{fig:a}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]{(play)}{Latex_Praesentation/videos/hucrl-zero-shot-swingup-4.mov}}
+              \subfloat[\texttt{H-UCRL}\label{fig:a}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]{(play)}{videos/hucrl-zero-shot-swingup-4.mov}}
         
               \subfloat[\texttt{OpAx}\label{fig:b}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]
-                {(play)}{Latex_Praesentation/videos/opax-zero-shot-swingup-4.mov}}
+                {(play)}{videos/opax-zero-shot-swingup-4.mov}}
             %\caption{Evaluation}
             \label{fig:1}
             \end{figure}
