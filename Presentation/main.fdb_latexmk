@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber main"] 1747576043.03224 "main.bcf" "main.bbl" "main" 1747584919.25036 0
-  "main.bcf" 1747584919.07318 108642 e3aea2dc636685cc8502ffcd54faa8b9 "pdflatex"
+["biber main"] 1747576043.03224 "main.bcf" "main.bbl" "main" 1747639798.04979 0
+  "main.bcf" 1747639797.88103 108642 e3aea2dc636685cc8502ffcd54faa8b9 "pdflatex"
   "references.bib" 1747575384.95649 602 7edb39e88e2cc396d4a9483fb85dd719 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1747584916.45336 "/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex" "main.pdf" "main" 1747584919.25063 2
-  "/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex" 1747584913.35579 35667 c97d795d82fb06456261a3fee7766c8e ""
+["pdflatex"] 1747639795.43566 "/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex" "main.pdf" "main" 1747639798.05009 2
+  "/Users/ben/Library/CloudStorage/OneDrive-ETHZurich/FS25/FRL/Project/OpAx-Paper-Presentation/Presentation/main.tex" 1747639794.72086 35806 52408f417f1c19743fdf9e74fd5bfa4d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm" 1136768653 3584 8ece407347b270c252c46fdfaef5a9ef ""
@@ -445,7 +445,8 @@
   "Latex_Praesentation/figures/dataset.png" 1747575384.95465 110922 0dbe4db8e980d20dff9a05c9fc45ce91 ""
   "Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf" 1747575384.95514 221754 ef6f2461c379d375113cbd7d6489d8c9 ""
   "Latex_Praesentation/figures/uncertainty_plotvalidation_eps_std_max.pdf" 1747575384.95579 166367 dd3c673a76669540f917bfa3472f91bf ""
-  "Latex_Praesentation/videos/opax-0-shot-swingup.mov" 1747584366.07246 52067 c37001892ccaa242917b738a6dfb4fe9 ""
+  "Latex_Praesentation/videos/hucrl-zero-shot-swingup-4.mov" 1747639690.67323 92356 b2dae7813b53d1a0af43b64c0d03601d ""
+  "Latex_Praesentation/videos/opax-zero-shot-swingup-4.mov" 1747639696.07518 49754 ab97d23fc112bb76444ce6a563afd8d5 ""
   "beamercolorthemeeth.sty" 1747575384.948 1518 a80f4d12535a86a5d78fbe4ce2a15574 ""
   "beamerfontthemeeth.sty" 1747575384.94823 1347 c2c13b0ddfbb6b1ec1942a820016ff32 ""
   "beamerinnerthemeeth.sty" 1747575384.94844 695 01eed84305c67c4b46230c825b02ce7d ""
@@ -453,12 +454,12 @@
   "beamerthemeeth.sty" 1747575384.94892 1015 16f172f9923fdef73c9f01414b97502a ""
   "elements/eth_logo_kurz_pos" 0 -1 0 ""
   "elements/title-page-image" 0 -1 0 ""
-  "main.aux" 1747584919.07117 7512 15f57a12f83fb81ef4454cff75894b94 "pdflatex"
+  "main.aux" 1747639797.87911 7512 15f57a12f83fb81ef4454cff75894b94 "pdflatex"
   "main.bbl" 1747576044.42811 466 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.nav" 1747584919.074 4690 cf40076f5a34283151a7711c9847805a "pdflatex"
-  "main.out" 1747584919.07231 1180 9d30908435435cf1fcd7275d7d405f92 "pdflatex"
-  "main.tex" 1747584913.35579 35667 c97d795d82fb06456261a3fee7766c8e ""
-  "main.toc" 1747584919.07405 425 477d3cc1b67943648f0a0228866108fa "pdflatex"
+  "main.nav" 1747639797.88183 4690 cf40076f5a34283151a7711c9847805a "pdflatex"
+  "main.out" 1747639797.88022 1180 9d30908435435cf1fcd7275d7d405f92 "pdflatex"
+  "main.tex" 1747639794.72086 35806 52408f417f1c19743fdf9e74fd5bfa4d ""
+  "main.toc" 1747639797.88187 425 477d3cc1b67943648f0a0228866108fa "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"

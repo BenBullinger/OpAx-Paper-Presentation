@@ -826,10 +826,10 @@ INPUT ./Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf
 INPUT ./Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf
 INPUT ./Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf
 INPUT ./Latex_Praesentation/figures/results_plot_with_hucrlreward_task_1.pdf
-INPUT ./Latex_Praesentation/videos/opax-0-shot-swingup.mov
-INPUT ./Latex_Praesentation/videos/opax-0-shot-swingup.mov
-INPUT ./Latex_Praesentation/videos/opax-0-shot-swingup.mov
-INPUT ./Latex_Praesentation/videos/opax-0-shot-swingup.mov
+INPUT ./Latex_Praesentation/videos/hucrl-zero-shot-swingup-4.mov
+INPUT ./Latex_Praesentation/videos/hucrl-zero-shot-swingup-4.mov
+INPUT ./Latex_Praesentation/videos/opax-zero-shot-swingup-4.mov
+INPUT ./Latex_Praesentation/videos/opax-zero-shot-swingup-4.mov
 OUTPUT main.nav
 OUTPUT main.toc
 OUTPUT main.snm
