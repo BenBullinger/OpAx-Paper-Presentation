@@ -1,6 +1,6 @@
 % Please use LuaLaTeX or XeLaTeX for compilation
-%\documentclass[11pt,aspectratio=169]{beamer}
-\documentclass[11pt,aspectratio=169,handout]{beamer} % faster compilation without animation
+\documentclass[11pt,aspectratio=169]{beamer}
+%\documentclass[11pt,aspectratio=169,handout]{beamer} % faster compilation without animation
 
 % Theme and Colors
 \usetheme{eth}
@@ -109,15 +109,17 @@
                 \item \textcolor{red}{Cannot generalize to new tasks}
             \end{itemize}
             \vspace{0.5em}
+            \pause
             \begin{block}{Problem}
                 \centering
-                \small \textbf{Task-specific exploration} \\
+                Task-specific exploration \\
                 $\Downarrow$ \\
-                \textbf{Biased dynamics models} \\
+                Biased dynamics models \\
                 $\Downarrow$ \\
-                \textbf{Poor generalization}
+                Poor generalization
             \end{block}
         \end{column}
+        \pause
         \begin{column}{0.48\textwidth}
             \textbf{What We Want:}
             \begin{itemize}
@@ -125,17 +127,21 @@
                 \item Accurate \alert{everywhere} in reachable space
                 \item \textcolor{ETHGreen}{Zero-shot transfer to any reward}
             \end{itemize}
-            \vspace{0.5em}
-            \textbf{Key Insight:} Explore to reduce \alert{epistemic uncertainty} about dynamics, not to maximize reward
+            \vspace{0.5em}\pause
+            \begin{block}{Insight}
+                Explore to reduce \alert{epistemic uncertainty} about dynamics, not to maximize reward
+            \end{block}
         \end{column}
     \end{columns}
-    
-    \vspace{0.5em}
-    \begin{alertblock}{Research Question}
-        How can we efficiently explore to learn accurate dynamics models that generalize to \textit{any} downstream task?
-    \end{alertblock}
+    \vspace{0.5em}\pause
+    \begin{center}
+        \alert{
+        Can we efficiently learn accurate dynamics models that generalize to \textit{any} downstream task?
+        }
+    \end{center}
 \end{frame}
 
+\iffalse
 \begin{frame}{Introducing OPAX}
     \begin{itemize}
         \item \textbf{OPAX:} Optimistic Active Exploration of Dynamical Systems \footcite{sukhija2023optimistic}.
@@ -156,6 +162,7 @@
         Learn general-purpose world models efficiently, enabling robust planning and control across diverse tasks without task-specific retraining.
     \end{block}
 \end{frame}
+\fi
 
 % --- Section 2: Problem Statement ---
 \section{Problem Formulation}
@@ -166,8 +173,8 @@
 Given an \textcolor{ETHRed}{unknown} discrete-time dynamical system $f^\star:\mathcal{S}\times\mathcal{A}\to\mathcal{S}\subseteq\mathbb{R}^d$:
 \[
     s_{t+1} = f^\star(s_t,a_t) + w_t, \quad w_t\sim\mathcal{N}(0, I).
-\] 
-Goal: Design algorithms for learning $\hat{f}\approx f^\star$ that is good for any reward functions in episodic setting:
+\]
+Goal: Design algorithms for learning $\hat{f}\approx f^\star$ in episodic setting that is good for any reward functions:
 % \begin{itemize}
 %     \item We \textcolor{ETHRed}{cannot} query $f^\star$ at arbitrary state-action pair.
 %     \item We \textcolor{ETHRed}{can} roll out  policies and observe trajectories.
@@ -194,7 +201,7 @@ Our problem can be divided into two parts:
 \begin{itemize}
     \item \textcolor{ETHRed}{Exploration (our focus!):} Collecting data by executing policies.
     \item Estimation: Building model from data.
-\end{itemize}
+\end{itemize}\pause
 
 \begin{block}{Well-Calibration Assumption}
     Given $n$ data, we can construct confidence intervals:
@@ -504,7 +511,7 @@ Our problem can be divided into two parts:
 
     Recall
     \[
-        \gamma_n(k) = \max_{\mathcal{D}_1,\ldots,\mathcal{D}_n} \log\det(I + K_n)
+        \gamma_n(k) = \max_{\mathcal{D}_1,\ldots,\mathcal{D}_n} \log\det(I + K_n),
     \]
     and
     \[
@@ -533,7 +540,7 @@ Our problem can be divided into two parts:
         If we use $\mathcal{GP}(0,k)$ to build well-calibrated confidence intervals, then w.h.p.
         \[
             \E_{\pi} \bigg[ \underbrace{
-            \max_{t} \lVert \sigma_n(s_t,a_t)\rVert^2_2
+            \max_{t} \lVert {\color{ETHRed}\sigma_n(s_t,a_t)}\rVert^2_2
             }_{
             \substack{\color{ETHRed}\text{maximum uncertainty}\\\color{ETHRed}\text{along the trajectory}}
             } \bigg]
@@ -542,16 +549,15 @@ Our problem can be divided into two parts:
             \cdot \frac{\gamma_n(k)}{\sqrt{n}},
             \quad\forall\pi,\ \forall n\in\mathbb{N}.
         \]
-    \end{theorem}
+        For linear and RBF kernels, $\displaystyle\lim_{n\to\infty}{\color{ETHRed}\sigma_n(s, a)}\to 0$.
+    \end{theorem}\pause
     % \begin{itemize}
     %     \item $\gamma_n(\text{linear})\asymp d\log (nT)$.
     %     \item $\asymp \log^{d+1}(nT)$.
     % \end{itemize}
-    
-    For linear and RBF kernels,
-    \[
-        \lim_{n\to\infty}\sigma_n(s, a)\to 0.
-    \]
+    \begin{center}
+    \includegraphics[scale=0.25]{figures/confidence_interval.png}
+    \end{center}
     
 \end{frame}
 
@@ -566,16 +572,21 @@ Our problem can be divided into two parts:
     \]
     If
     $n \gtrsim \mathrm{poly}(d,T,\varepsilon^{-1},\gamma_n(k))$,
-    then
-    \[
-        \max_{\pi} R(\pi) - R(\hat{\pi}) \leq \varepsilon,
-    \]
+    then $\hat{\pi}$ is $\varepsilon$-optimal,
+    % \[
+    %     \max_{\pi} R(\pi) - R(\hat{\pi}) \leq \varepsilon,
+    % \]
     where
     \[
-    \hat{\pi} \in \argmax_{\pi} {\color{ETHRed}\min_{\eta}{}} R(\pi,\eta),\quad
-        s_{t+1} = \mu_n(s_t,a_t) + \eta(s_n)\beta_n\sigma_n(s_t,a_t) +w_t.
+    \hat{\pi} \in \argmax_{\pi} {\color{Green}\min_{\eta}{}} R(\pi,\eta),\quad
+        s_{t+1} = {\color{Green}\mu_n(s_t,a_t) + \eta(s_n)\beta_n\sigma_n(s_t,a_t) +w_t}.
     \]
 \end{corollary}
+
+\begin{center}
+\includegraphics[scale=0.2]{Latex_Praesentation/figures/zero-shot.png}
+\end{center}
+
 % NB: Can we find/approximate $\hat{\pi}$ efficiently?
 \end{frame}
 
@@ -627,7 +638,7 @@ Our problem can be divided into two parts:
 % --- Section 5: Empirical Evaluation ---
 \section{Empirical Evaluation}
 
-\begin{frame}{Experiments: Reduction in Epistemic Uncertainty (ok) \hl{ben}}
+\begin{frame}{Experiments: Reduction in Epistemic Uncertainty \hl{ben}}
     \centering
     \textbf{Does OPAX achieve its goal of reducing uncertainty everywhere?}
     
@@ -635,65 +646,17 @@ Our problem can be divided into two parts:
     \includegraphics[width=0.75\linewidth]{figures/uncertainty_plotvalidation_eps_std_max.pdf}
     
     \vspace{0.1em}
-    \begin{columns}[T]
-        \begin{column}{0.48\textwidth}
-            \textbf{Key Findings:}
-            \begin{itemize}
-                \item OPAX reduces uncertainty much than random
-                \item All active methods outperform random baseline
-                \item Validates theoretical convergence guarantees
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.48\textwidth}
-            \textbf{Implications:}
-            \begin{itemize}
-                \item Information-driven exploration works in practice
-                \item Both GP and PE models benefit from active exploration
-                \item Optimism provides slight edge over mean planning
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Experimental Setup and Baselines \hl{ben}}
-    \begin{columns}[T]
-        \begin{column}{0.5\textwidth}
-            \textbf{Test Environments:}
-            \begin{itemize}
-                \item Pendulum, MountainCar
-                \item Reacher, Swimmer, Cheetah  
-                \item Fetch Manipulation (58D)
-            \end{itemize}
-            
-            \vspace{0.5em}
-            \textbf{Key Comparisons:}
-            \begin{itemize}
-                \item \textbf{OPAX} vs \textbf{H-UCRL} (task-specific SOTA)
-                \item \textbf{OPAX} vs other active exploration methods
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Evaluation Protocol:}
-            \begin{enumerate}
-                \item Train models with different exploration strategies
-                \item Test on both \alert{seen} and \alert{unseen} tasks
-                \item Measure zero-shot performance
-            \end{enumerate}
-            
-            \vspace{0.5em}
-            \textbf{Models:} GP (theory) \& PE (scale)\\
-            \textbf{Planning:} MPC or SAC
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Experiments: Learning and Zero-Shot Generalization \hl{ben}}
-
     \begin{itemize}
-         \item \texttt{OpAx} performs \alert{on par} with \texttt{H-UCRL} on trained tasks
-         \item \texttt{OpAx} \alert{outperforms} \texttt{H-UCRL} on some unseen tasks
-     \end{itemize}
-
+        \item OPAX reduces uncertainty faster than random
+        \item Active methods outperform random baseline for both GP and PE
+        \item Validates theoretical convergence guarantees
+        \item Optimism provides slight edge over mean planning
+    \end{itemize}
+    \begin{center}
+        \alert{
+        Information-driven exploration works in practice
+        }
+    \end{center}
 \end{frame}
 
 \begin{frame}{Experiments: Learning and Zero-Shot Generalization \hl{ben}}
@@ -701,47 +664,41 @@ Our problem can be divided into two parts:
     \begin{itemize}
          \item \texttt{OpAx} performs \alert{on par} with \texttt{H-UCRL} on trained tasks
          \item \texttt{OpAx} \alert{outperforms} \texttt{H-UCRL} on some unseen tasks
-     \end{itemize}
+     \end{itemize}\pause
     \begin{columns}[T] % Align tops
-         \begin{column}{0.6\textwidth}
-            Evaluation (\fcolorbox{black}{black}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{H-UCRL}, \fcolorbox{black}{Fuchsia}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{OpAx}, \fcolorbox{black}{red}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: Random):\vspace{-0.2in}
+         \begin{column}{0.5\textwidth}
+            \textbf{Evaluation} (\fcolorbox{black}{black}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{H-UCRL}, \fcolorbox{black}{Fuchsia}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: \texttt{OpAx}, \fcolorbox{black}{red}{\rule{0pt}{1pt}\rule{1pt}{0pt}}\:: Random)\textbf{:}\vspace{-0.2in}
             \begin{figure}
               \centering
-              \subfloat[Trained task\label{fig:a}]{\includegraphics[width=0.37\linewidth]{figures/pendulum-keep-down.png}}
+              \subfloat[Trained task\label{fig:a}]{\includegraphics[width=0.45\linewidth]{figures/pendulum-keep-down.png}}
         
-              \subfloat[Zero-shot task\label{fig:b}]{\includegraphics[width=0.37\linewidth]{figures/zero-shot-pendulum-swing-up.png}}
+              \subfloat[Zero-shot task\label{fig:b}]{\includegraphics[width=0.45\linewidth]{figures/zero-shot-pendulum-swing-up.png}}
             %\caption{Evaluation}
             \label{fig:1}
             \end{figure}
          \end{column}
-         \begin{column}{0.4\textwidth}
-            Zero-shot swing up task:\vspace{-0.2in}
+         \pause
+         \begin{column}{0.3\textwidth}
+            \textbf{Zero-shot swing up task:}\vspace{-0.2in}
             \begin{figure}
               \centering
-              \subfloat[\texttt{H-UCRL}\label{fig:a}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]{(play)}{videos/hucrl-zero-shot-swingup-4.mov}}
+              \subfloat[\texttt{H-UCRL}\label{fig:a}]{\movie[label=false,height=0.505\linewidth,width=0.505\linewidth]{(play)}{videos/hucrl-zero-shot-swingup-4.mov}}
         
-              \subfloat[\texttt{OpAx}\label{fig:b}]{\movie[label=false,height=0.37\linewidth,width=0.37\linewidth]
+              \subfloat[\texttt{OpAx}\label{fig:b}]{\movie[label=false,height=0.505\linewidth,width=0.505\linewidth]
                 {(play)}{videos/opax-zero-shot-swingup-4.mov}}
             %\caption{Evaluation}
             \label{fig:1}
             \end{figure}
          \end{column}
+         \pause
+         \begin{column}{0.2\textwidth}
+            \vspace{1in}
+            More experiments in the paper.
+         \end{column}
      \end{columns}
-
 \end{frame}
 
-\begin{frame}{Experiments: Comprehensive Downstream Task Performance \hl{ben}}
-    \centering
-    \includegraphics[width=0.5\linewidth]{figures/results_plot_with_hucrlreward_task_1.pdf}
-    
-    \begin{itemize}
-        \item \textbf{OPAX} consistently performs well across all environments
-        \item On par with \textbf{H-UCRL} on trained tasks (1-6)
-        \item \textbf{Outperforms H-UCRL} on unseen/new tasks (7-9) by a large margin
-        \item \textbf{Random} baseline struggles, especially on MountainCar
-    \end{itemize}
-\end{frame}
-
+\iffalse
 \begin{frame}{Experiments: High-Dimensional Object Manipulation \hl{ben}}
     \begin{columns}[T]
         \begin{column}{0.3\textwidth}
@@ -790,6 +747,7 @@ Our problem can be divided into two parts:
         \item Demonstrates scalability to high-dimensional (58D) continuous control
     \end{itemize}
 \end{frame}
+\fi
 
 \begin{frame}{Key Findings \hl{ben}}
     \begin{itemize}
