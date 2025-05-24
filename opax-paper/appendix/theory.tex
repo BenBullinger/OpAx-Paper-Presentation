@@ -1,0 +1,1010 @@
+\section{Proofs for \cref{sec:theoretical_results}} \label{sec:proofs}
+We first prove some key properties of our active exploration objective in \Cref{eq:exploration_op}. Then, we prove \Cref{thm:main_theorem} which holds for general Bayesian models, and finally we prove \Cref{thm:gp_theorem}, which guarantees convergence for the frequentist setting where the dynamics are modeled using a GP. 
+\begin{lemma}[Properties of \opacex's objective]
+\label{cor:bounded_objective}
+Let \Cref{assumption: Well Calibration Assumption} and \ref{ass:lipschitz_continuity} hold, then the following is true for all $n\geq 0$,
+\begin{align*}
+     \log \left(1 + \frac{\sigma_{n-1, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right) &\ge 0 \tag{1} \\
+     \frac{1}{2}\sup_{\vpi \in \Pi, \veta \in \Xi} \hspace{0.2em} \E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right)\right)^2\right] &\leq \frac{1}{2} T^2 d^2_x \log^2 \left(1 + \frac{\sigma^2_{\max}}{\sigma^2}\right) \tag{2}, \\
+      \left\vert \frac{1}{2}\sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n, j}^2(\vz)}{\sigma^{2}}\right) - \log \left(1 + \frac{\sigma_{n, j}^2(\vz')}{\sigma^{2}}\right) \right\vert &\leq \frac{d_x\sigma_{\max} L_{\vsigma}}{\sigma^2} \norm{\vz - \vz'} \tag{3}.
+\end{align*}
+where $\sigma_{\max} = \sup_{\vz \in \setZ; i \geq 0; 1\leq j\leq d_x} \sigma_{i, j}(\vz)$.
+\end{lemma}
+\begin{proof}
+    The positivity of the reward follows from the positive definiteness of the epistemic uncertainty $\sigma_{n-1, j}$. For (2), the following holds
+    \begin{align*}
+        &\E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right)\right)^2\right] \\
+        &\leq  \E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} T d_x \log^2 \left(1 + \frac{\sigma_{n-1, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right)\right] \\
+        &\leq \E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} T d_x \log^2 \left(1 + \frac{\sigma^2_{\max}}{\sigma^2}\right)\right)\right] \\
+        &\leq T^2 d^2_x \log^2 \left(1 + \frac{\sigma^2_{\max}}{\sigma^2}\right)
+    \end{align*}
+    From hereon, let $J_{\max} = \sfrac{1}{2} T^2 d^2_x \log^2 \left(1 + \sigma^{-2}\sigma^2_{\max}\right)$.
+    
+      Finally, we show that this reward is Lipschitz continuous. 
+    \begin{align*}
+        \lvert\sigma^2_{n, j}(\vz)  -  \sigma^2_{n, j}(\vz')\rvert &= 
+         \vert\sigma_{n, j}(\vz)  \sigma_{n, j}(\vz) -  \sigma_{n, j}(\vz)\sigma_{n, j}(\vz') + \sigma_{n, j}(\vz)\sigma_{n, j}(\vz') - \sigma_{n, j}(\vz')  \sigma_{n, j}(\vz')\rvert \\
+         &\leq L_{\sigma}\norm{\vz - \vz'} \sigma_{n, j}(\vz) +  L_{\sigma}\norm{\vz - \vz'} \sigma_{n, j}(\vz') \\
+         &\leq 2\sigma_{\max}L_{\sigma}\norm{\vz - \vz'}.
+    \end{align*}
+    \begin{align*}
+            \left\vert \frac{1}{2}\sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n, j}^2(\vz)}{\sigma^{2}}\right) - \log \left(1 + \frac{\sigma_{n, j}^2(\vz')}{\sigma^{2}}\right) \right\vert
+            &= \frac{1}{2}\left\vert \sum^{d_x}_{j=1} \log\left(1+\frac{
+            \frac{\sigma^2_{n, j}(\vz) - \sigma^2_{n, j}(\vz') }{\sigma^2}
+            }{1 + \frac{\sigma^2_{n, j}(\vz')}{\sigma^2}}\right)\right\vert \\
+            &\leq \frac{1}{2} \left\vert \sum^{d_x}_{j=1} \log\left(1+
+            \frac{\mid\sigma^2_{n, j}(\vz) - \sigma^2_{n, j}(\vz') \mid}{\sigma^2}\right)\right\vert \\
+            &\leq \frac{1}{2 \sigma^2} \sum^{d_x}_{j=1} \left\vert\sigma^2_{n, j}(\vz) - 
+            \sigma^2_{n, j}(\vz')\right\vert \tag{*}\\
+            &\leq \frac{d_x\sigma_{\max} L_{\vsigma}}{\sigma^2} \norm{\vz - \vz'}.
+\end{align*}
+Where (*) is true because for all $x\geq 0$, $\log(1 + x) \leq x$.
+\end{proof}
+ %and $J_{n, t}(\vx_{t}, \vpi, \veta)$ the $T-t$ step cost-to-go from $\vx_{t}$ onwards under the policy $\vpi$ and dynamics induced by $\veta$ at iteration $n$.
+
+\begin{corollary}[\opacex gives an optimistic estimate on \Cref{eq:exploration_op}]
+Let \Cref{assumption: Well Calibration Assumption} hold 
+ and $\vpi_n^{*}$ denote the solution to \Cref{eq:exploration_op} and $J_n(\vpi_n^*)$ the resulting objective. Similarly, let $\vpi_n$ and $\veta_n$ be the solution to \Cref{eq:exploration_op_optimistic} and $J_n(\vpi_n, \veta_n)$ the corresponding value of the objective. Then with probability at least $1-\delta$ we have for every episode $n \in \set{1, \ldots, N}$:
+\begin{equation*}
+    J_n(\vpi_n^*) \le J_n(\vpi_n, \veta_n).
+\end{equation*}
+\label{cor:optimistic_estimate}
+\end{corollary}
+\begin{proof}
+    Follows directly from \Cref{assumption: Well Calibration Assumption}.
+\end{proof}
+
+\subsection{Proof of \Cref{lem:optimistic_planning_regret}}
+\begin{lemma}[Difference in Policy performance]
+Let $J_{r, k}(\vpi, \vx_k) =  \E_{\vtau^{\vpi}}\left[\sum_{t=k}^{T-1} r(\vx_t, \vpi(\vx_{t}))\right]$ and $A_{r, k}(\vpi, \vx, \va) =  \E_{\vtau^{\vpi}}\left[r(\vx, \va) + J_{r, k + 1}(\vpi, \vx') - J_{r, k}(\vpi, \vx) \right]$ with $\vx' = \vf^*(\vx, \va) + \vw$. For simplicity we refer to  $J_{r, 0}(\vpi, \vx_0) = J_r (\vpi, \vx_0)$. 
+The following holds for all $\vx_0 \in \setX$:
+\begin{equation*}
+    J_r (\vpi', \vx_0) -  J_r (\vpi, \vx_0) = \E_{\vtau^{\vpi'}} \left[\sum^{T-1}_{t=0} A_{r, t}(\vpi, \vx'_t, \vpi'(\vx'_t))\right]
+\end{equation*}
+\label{lemma:Difference in policy}
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+         J_r (\vpi', \vx_0) &= \E_{\vtau^{\vpi'}} \left[\sum^{T-1}_{t=0} r(\vx'_t, \vpi'(\vx'_t))\right] = \E_{\vtau^{\vpi'}} \left[r(\vx_0, \vpi'(\vx_0)) + J_{r, 1}(\vpi', \vx'_1)\right] \\
+         &= \E_{\vtau^{\vpi'}}  \left[r(\vx_0, \vpi'(\vx_0)) + J_{r, 1}(\vpi, \vx'_1) + J_{r, 1}(\vpi', \vx'_1) - J_{r, 1}(\vpi, \vx'_1)\right] \\
+         &= \E_{\vtau^{\vpi'}}  \left[r(\vx_0, \vpi'(\vx_0)) + J_{r, 1}(\vpi, \vx'_1) - J_r(\vpi, \vx_0)\right] \\
+         &+ J_r(\vpi, \vx_0) + \E_{\vtau^{\vpi'}}  \left[J_{r, 1}(\vpi', \vx'_1) - J_{r, 1}(\vpi, \vx'_1)\right] \\
+        &= \E_{\vtau^{\vpi'}}  \left[A_{r, 0}(\vpi, \vx_0, \vpi'(\vx_0))\right] + J_r(\vpi, \vx_0) + \E_{\vtau^{\vpi'}}  \left[J_{r, 1}(\vpi', \vx_1) - J_{r, 1}(\vpi, \vx_1)\right]
+    \end{align*}
+    Therefore we obtain
+    \begin{equation*}
+        J_r (\vpi', \vx_0) - J_r(\vpi, \vx_0) = \E_{\vtau^{\vpi'}}  \left[A_0(\vpi, \vx_0, \vpi'(\vx_0))\right] +  \E_{\vtau^{\vpi'}}  \left[J_{r, 1}(\vpi', \vx'_1) - J_{r, 1}(\vpi, \vx'_1)\right].
+    \end{equation*}
+    Using the same argument for $J_{r, 1}$, $J_{r, 2}$, \dots, $J_{r, T-1}$ and that $J_{r, T}(\vpi, \vx) = 0$ for all $\vpi \in \Pi$ and $\vx \in \setX$ completes the proof.
+\end{proof}
+Assume a policy $\vpi$ is fixed and dynamics are of the form:
+\begin{equation}
+    \vx' = \vmu_n(\vx, \vpi(\vx)) + \beta_n(\delta) \vsigma(\vx, \vpi(\vx))\vu + \vw.
+\end{equation}
+Here $\vu \in [-1, 1]^{d_x}$. Furthermore, assume that the associated running rewards do not depend on $\vu$, that is, $r(\vx_t)$, and let $\veta \in \Xi$ denote the policy, i.e., $\veta: \setX \to [-1, 1]^{d_x}$.
+\begin{corollary}
+The following holds for all $\vx_0 \in \setX$ and policy $\vpi$:
+\begin{equation*}
+    J_r (\vpi, \veta', \vx_0) -  J_r (\vpi, \veta, \vx_0) = \E_{\vtau^{\veta'}}  \left[\sum^{T-1}_{t=0} J_{r, t+1}(\vpi, \veta, \vx'_{t+1}) -  J_{r, t+1}(\vpi, \veta, \vx_{t+1})\right],
+\end{equation*}
+with $\vx_{t+1} = \vmu_n(\vx'_t, \vpi(\vx'_t)) + \beta_n(\delta) \vsigma(\vx'_t, \vpi(\vx'_t))\veta(\vx'_t) + \vw_t$, and $\vx'_{t+1} = \vmu_n(\vx'_t, \vpi(\vx'_t)) + \beta_n(\delta) \vsigma(\vx'_t, \vpi(\vx'_t))\veta'(\vx'_t) + \vw_t$.
+\label{cor:Difference in hallucinated policy}
+\end{corollary}
+\begin{proof}
+    From \Cref{lemma:Difference in policy} we have
+    \begin{equation*}
+    J_r (\vpi, \veta', \vx_0) -  J_r (\vpi, \veta, \vx_0) = \E_{\vtau^{\veta'}}  \left[\sum^{T-1}_{t=0} A_{r, t}(\veta, \vx'_{t}, \veta'(\vx'_t))\right].
+\end{equation*}
+Furthermore, 
+\begin{align*}
+    \E_{\vtau^{\veta'}}\left[A_{r, t}(\veta, \vx'_{t}, \veta'(\vx'_t))\right] &= \E_{\vtau^{\veta'}} \left[r(\vx'_t) + J_{r, t+1}(\vpi, \veta, \vx'_{t+1}) - J_{r, t}(\vpi, \veta, \vx'_{t})\right] \\
+    &= \E_{\vtau^{\veta'}} \left[r(\vx'_t) + J_{r, t+1}(\vpi, \veta, \vx'_{t+1}) - r(\vx'_t) - J_{r, t+1}(\vpi, \veta, \vx_{t+1})\right] \\
+    &= \E_{\vtau^{\veta'}}\left[J_{r, t+1}(\vpi, \veta, \vx'_{t+1}) - J_{r, t+1}(\vpi, \veta, \vx_{t+1})\right].
+\end{align*}
+\end{proof}
+\begin{proof}[Proof of \Cref{lem:optimistic_planning_regret}]
+From \Cref{assumption: Well Calibration Assumption} we know that with probability at least $1-\delta$ there exists a $\Bar{\veta}$ such that $\vf^*(\vz) = \vmu_n(\vz) + \beta_n(\delta) \vsigma(\vz)\Bar{\veta}(\vx)$ for all $\vz \in \setZ$.
+\begin{align*}
+     J_n(\vpi_n^*) - J_n(\vpi_n) &\leq J_n(\vpi_n, \veta_n) - J_n(\vpi_n) \tag{\Cref{cor:optimistic_estimate}}\\
+     &= J_n(\vpi_n, \veta_n) - J_n(\vpi_n, \Bar{\veta})\\
+     &= \E_{\vtau^{\Bar{\veta}}} \left[\sum^{T-1}_{t=0} J_{n, t+1}(\vpi_n, \veta_n, \vx'_{t+1}) -  J_{n, t+1}(\vpi_n, \veta_n, \vx_{t+1})\right] \tag{\Cref{cor:Difference in hallucinated policy}}\\
+    &= \E_{\vtau^{\vpi_n}}\left[\sum^{T-1}_{t=0} J_{n, t+1}(\vpi_n, \veta_n, \vx'_{t+1}) -  J_{n, t+1}(\vpi_n, \veta_n, \vx_{t+1})\right], \tag{Expectation wrt $\vpi_n$ under true dynamics $\vf^*$}\\
+    &\text{with } \vx_{t+1} = \vf^*(\vx_{t}, \vpi_n(\vx_t)) + \vw_t, \\
+    &\text{and } \vx'_{t+1} = \vmu_{n-1}(\vx_t, \vpi_n(\vx_t)) + \beta_{n-1}(\delta)\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t)) \veta_n(\vx_t) + \vw_t.
+\end{align*}
+    
+\end{proof}
+
+\subsection{Analyzing regret of optimistic planning}
+In the following, we analyze the regret of optimistic planning for both $\sigma$-Gaussian noise and $\sigma$-sub Gaussian noise case. We start with the Gaussian case.
+\begin{lemma}[Absolute expectation Difference Under Two Gaussians (Lemma C.2.~\cite{kakade2020information})]
+\label{lem:absolute_diff_gaussians}
+For Gaussian distribution $\setN(\mu_1, \sigma^2 \mathbb{I})$ and $\setN(\mu_2, \sigma^2 \mathbb{I})$, and for any (appropriately measurable) positive function $g$, it holds that:
+\begin{equation*}
+    \left\lvert \E_{z \sim \setN_1}[g(z)] - \E_{z \sim \setN_2}[g(z)] \right\rvert \leq \min\left\{ \frac{\norm{\mu_1 - \mu_2}}{\sigma^2}, 1 \right\} \sqrt{\E_{z \sim \setN_1}[g^2(z)]}
+\end{equation*}
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \left\lvert \E_{z \sim \setN_1}[g(z)] - \E_{z \sim \setN_2}[g(z)] \right\rvert &= \left\lvert \E_{z \sim \setN_1} \left[ g(z) \left(1-\frac{\setN_{2}}{\setN_1}\right)\right]\right\rvert \\
+        &\leq \left\lvert \sqrt{\E_{z \sim \setN_1} \left[ g^2(z)\right]} \sqrt{\E_{z \sim \setN_1}\left[\left(1-\frac{\setN_{2}}{\setN_1}\right)^2\right]}\right\rvert \\
+        &= \sqrt{\E_{z \sim \setN_1} \left[ g^2(z)\right]} \sqrt{\E_{z \sim \setN_1}\left[\left(1-\frac{\setN_{2}}{\setN_1}\right)^2\right]} \\
+        &\leq \sqrt{\E_{z \sim \setN_1}[g^2(z)]} \min\left\{ \frac{\norm{\mu_1 - \mu_2}}{\sigma^2}, 1 \right\} \tag{Lemma C.2.~\cite{kakade2020information}}
+    \end{align*}
+\end{proof}
+
+\begin{corollary}[Regret of optimistic planning for Gaussian noise]
+     Let $\vpi^*_n$, $\vpi_n$ denote the solution to \Cref{eq:exploration_op} and \Cref{eq:exploration_op_optimistic} 
+ respectively, and $\vz^*_{n, t}$, $\vz_{n, t}$ the corresponding state-action pairs visited during their respective trajectories. Furthermore, let \Cref{assumption: Well Calibration Assumption} - \ref{ass:noise_properties} hold. Then, the following is true for all $n\geq 0$, $t \in  [0, T-1]$, with probability at least $1-\delta$
+ \begin{align*}
+     J_n(\vpi_n^*) - J_n(\vpi_n) &\leq \setO\left(T \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vz_{n, t})}}{\sigma^2}\right]\right)
+     %\E \left[J_{n, t+1}(\vpi_n, \veta_n, \vx'_{t+1}) -  J_{n, t+1}(\vpi_n, \veta_n, \vx_{t+1})\right] \leq \sqrt{J_{\max}} \min\left\{ \frac{2\beta_n(\delta)\norm{\vsigma_{n-1}(\vz_t)}}{\sigma^2}, 1 \right\}.
+ \end{align*}
+\label{cor:bounding_diff_in_performance}
+\end{corollary}
+\begin{proof}
+For simplicity, define $g_n(\vx) = J_{n, t+1}(\vpi_n, \veta_n, \vx)$.
+Note since $\vw_t \sim \setN(0, \sigma^2 \mathbb{I})$ (\Cref{ass:noise_properties}), we have that $\vx'_{t+1}$ and $\vx_{t+1}$ are also Gaussians. Therefore, we can leverage \Cref{lem:absolute_diff_gaussians}.
+\begin{align*}
+    \E_{\vtau^{\vpi_n}} &\left[J_{n, t+1}(\vpi_n, \veta_n, \vx'_{t+1}) -  J_{n, t+1}(\vpi_n, \veta_n, \vx_{t+1})\right] = \E \left[g_n(\vx'_{t+1}) -  g_n(\vx_{t+1})\right] \\
+    &\le  \sqrt{\E[g_n^2(\vx_{t+1})]} \min\left\{ \frac{\norm{\vx'_{t+1} - \vx_{t+1}}}{\sigma^2}, 1 \right\} \tag{\Cref{lem:absolute_diff_gaussians}} \\
+   &\le \sqrt{J_{\max}} \min\left\{ \frac{\norm{\vx'_{t+1} - \vx_{t+1}}}{\sigma^2}, 1 \right\} \tag{\Cref{cor:bounded_objective}}.
+\end{align*}
+Furthermore, 
+\begin{align*}
+    \norm{\vx'_{t+1} - \vx_{t+1}} &= \norm{\vmu_{n-1}(\vx_t, \vpi_n(\vx_t)) + \beta_{n-1}(\delta)\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t)) \veta_n(\vx_t) - \vf^*(\vx_t, \vpi_n(\vx_t))} \\
+    &\le \norm{\vmu_{n-1}(\vx_t, \vpi_n(\vx_t)) - \vf^*(\vx_t, \vpi_n(\vx_t))} \\
+    &+ \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t))}\norm{\veta_n(\vx_t)} \\
+    &\le (1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t))} \tag{\Cref{assumption: Well Calibration Assumption}}.
+\end{align*}
+Next, we use \Cref{lem:optimistic_planning_regret} 
+\begin{align*}
+   J_n(\vpi_n^*) - J_n(\vpi_n)  &\leq  \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} J_{n, t+1}(\vpi_n, \veta_n, \vx'_{t+1}) -  J_{n, t+1}(\vpi_n, \veta_n, \vx_{t+1})\right], \\
+   &\leq \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \sqrt{J_{\max}} \min\left\{ \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t))}}{\sigma^2}, 1 \right\}\right], \\
+   &\leq \sqrt{J_{\max}}  \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t))}}{\sigma^2}\right], \\
+   &= \setO\left(T \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t))}}{\sigma^2}\right]\right).
+\end{align*}
+
+\end{proof}
+
+
+\begin{lemma}[Regret of planning optimistically for sub-Gaussian noise]
+\label{lem:simple_regret_planning}
+    Let $\vpi^*_n$, $\vpi_n$ denote the solution to \Cref{eq:exploration_op} and \Cref{eq:exploration_op_optimistic} 
+ respectively, and $\vz^*_{n, t}$, $\vz_{n, t}$ the corresponding state-action pairs visited during their respective trajectories. Furthermore, let \Cref{assumption: Well Calibration Assumption} and \ref{ass:lipschitz_continuity} hold, and relax \Cref{ass:noise_properties} to $\sigma$-sub Gaussian noise. Then, the following is true for all $n\geq 0$ with probability at least $1-\delta$
+    \begin{equation*}
+        J_n(\vpi_n^*) - J_n(\vpi_n) \leq \setO\left(L^{T-1}_{\vsigma} \beta^T_{n-1}(\delta) T \E_{\vtau^{\vpi_n}}\left[\sum^{T-1}_{t=0} \norm{ \vsigma_{n-1, j}(\vz_{n, t})} \right]\right)
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    \citet[Lemma~5]{curi2020efficient} bound the regret with the sum of epistemic uncertainties for Lipschitz continuous reward functions, under \Cref{assumption: Well Calibration Assumption} and~\ref{ass:lipschitz_continuity} for sub-Gaussian noise (c.f., \citet[Theorem 3.5]{rothfuss2023hallucinated} for a more rigorous derivation). For the active exploration setting, the reward in episode $n+1$ is 
+    \begin{equation*}
+        r(\vz) = \frac{1}{2}\sum^{d_x}_{j=1} \log \left(1 + \frac{\vsigma_{n-1, j}^2(\vz)}{\sigma^{2}}\right).
+    \end{equation*}
+    We show in \Cref{cor:bounded_objective} that our choice of exploration reward is Lipschitz continuous. Thus, can use the regret bound from \citet{curi2020efficient}.
+\end{proof}
+
+Compared to the Gaussian case, $\sigma$-sub Gaussian noise has the additional exponential dependence on the horizon $T$, i.e., the 
+$\beta^T_n$ term. This follows from the analysis through Lipschitz continuity. Moreover, as we show in \Cref{lem:optimistic_planning_regret}, the regret of planning optimistically is proportional to the change in value under the same optimistic dynamics and policy, but different initial states. The Lipschitz continuity property of our objective allows us to relate the difference in values to the discrepancy in the trajectories. Even for linear systems, trajectories under the same dynamics and policy but different initial states can deviate exponentially in the horizon. 
+
+\subsection{Proof for general Bayesian models}
+In this section, we analyze the information gain for general Bayesian models and prove \Cref{thm:main_theorem}.
+% \begin{lemma}\label{lem:monotone_submodular}
+%   $F$ from \cref{def:MI} is a monotone submodular function.
+% \end{lemma}
+% \begin{proof}
+% Consider any $\setD \subset \setD'$, and trajectory $\vtau$. Let $\Delta_F(\vtau \mid \setD')  = F(\vtau \cup \setD') - F(\setD')$ denote the difference in mutual information. 
+%     \begin{align*}
+%         \Delta_F(\vtau \mid \setD') -  \Delta_F(\vtau \mid \setD) &= 
+%         H\left(\vy_{\setD' \cup \vtau}\right) - H\left(\vy_{\setD'}\right) - H\left(\vy_{\setD \cup \vtau}\right) + H\left(\vy_{\setD'}\right) \\
+%         &= H\left(\vy_{\vtau} \mid \vy_{\setD'}\right) - H\left(\vy_{\vtau} \mid \vy_{\setD}\right) \\
+%         &= - I\left(\vy_{\vtau}; \vy_{\setD' \setminus \setD} \mid \vy_{\setD}\right) \\
+%         &\leq 0.
+%     \end{align*}
+% \end{proof}
+% \begin{theorem}[Greedy submodular function maximization, \citet{nemhauser1978analysis}]%\cite{krause2014submodular}]
+%   Greedily maximizing a monotone submodular function $F$ provides a $(1-\sfrac{1}{e})$-approximation.
+%   \label{thm:greedy_approx}
+% \end{theorem}
+% \begin{lemma}[Greedy maximization is equivalent to maximizing mutual information of trajectory.]\label{lem:uniform_exploration_greedy}
+%   Greedily maximizing the objective $F$ from \cref{def:MI} is equivalent to maximizing $ I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \vy_{\setD_{1:n}}\right)$.
+% \end{lemma}
+% \begin{proof}
+% \begin{align*}
+%     \Delta_F(\vtau \mid \setD_{1:n}) &= F(\setD_{1:n} \cup \vtau) - F(\setD_{1:n}) \\
+%     &= I\left(\vf^*_{\setD_{1:n} \cup \vtau}; \vy_{\setD_{1:n} \cup \vtau}\right) - I\left(\vf^*_{\setD_{1:n}}; \vy_{\setD_{1:n}}\right) \\
+%    &= H\left(\vf^*_{\setD_{1:n} \cup \vtau}\mid \vy_{\setD_{1:n}}\right) - H\left(\vf^*_{\setD_{1:n} \cup \vtau}\mid \vy_{\setD_{1:n} \cup \vtau}\right) \\
+%    &= I\left(\vf^*_{\setD_{1:n} \cup \vtau}; \vy_{\vtau} \mid \vy_{\setD_{1:n}} \right) \\
+%    &= \underbrace{I\left(\vf^*_{\setD_{1:n}}; \vy_{\vtau} \mid \vy_{\setD_{1:n}} \right)}_{0} + I\left(\vf^*_{\vtau}; \vy_{\vtau} \mid \vy_{\setD_{1:n}} \right)
+%   % &= \I{\gls{f_true}_{\gls{D} \cup \vtau}}{\vy_\vtau \mid \vy_{\gls{D}}} \\
+%    % &= \underbrace{\I{\gls{f_true}_{\gls{D}}}{\vy_\vtau \mid \gls{f_true}_\vtau, \vy_{\gls{D}}}}_{0}\ +\ \I{\gls{f_true}_\vtau}{\vy_\vtau \mid \vy_{\gls{D}}}. \qedhere
+%   \end{align*}
+%   Therefore, 
+%   \begin{equation*}
+%       \max_{\vpi \in \Pi} \Delta_F(\vtau_{\vpi} \mid \setD_{1:n}) =  \max_{\vpi \in \Pi}  I\left(\vf^*_{\vtau_{\vpi}}; \vy_{\vtau_{\vpi}} \mid \vy_{\setD_{1:n}} \right)
+%   \end{equation*}
+% \end{proof}
+\begin{theorem}[Entropy of a RV with finite second moment is upper bounded by Gaussian entropy (Theorem 8.6.5~\cite{elementsofIT})]
+    Let the random vector $\vx \in \R^n$ have covariance $\mK = \E\left[\vx\vx^{\top}\right]$ (i.e., $\mK_{ij} = E\left[\vx_i \vx_j\right] , 1 \leq i, j \leq n$). Then 
+    \begin{equation*}
+        H(X) \leq \frac{1}{2} \log((2\pi e)^n|\mK|)
+    \end{equation*}
+with equality if and only if $\vx \sim \setN(\vmu, \mK)$ for $\vmu = E\left[\vx\right]$.
+\label{thm:entropy_bound}
+\end{theorem}
+% \begin{corollary}
+% Let $\vy(\vz) = \vf^*(\vz) + \vw$, with $\vw \sim \setN(0, \sigma^2)$, then
+%     \begin{equation*}
+%         I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) \leq \frac{1}{2}\log\left( \left\vert \mathbb{I} + \sigma^{-2} \Sigma_{n}(\vtau^{\vpi})
+%        \right\vert \right)
+%     \end{equation*}
+%     where $\Sigma_{n}(\vtau^{\vpi})$ denotes the posterior epistemic covariance of $\vf^*_{\vtau^{\vpi}}$ conditioned on $\setD_{1:n}$.
+%     \label{cor:bound_on_mi_with_variance}
+% \end{corollary}
+% \begin{proof}
+%     Let $T$ denote the length of the trajectory, i.e., $T=|\vtau^{\vpi}|$. We have 
+%     \begin{align*}
+%         \text{Var}\left[\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right] &= \text{Var}\left[\vf^*_{\vtau^{\vpi}} \mid \setD_{1:n}\right] + \sigma^2 \mathbb{I} \\
+%         &= \Sigma_{n}(\vtau^{\vpi}) + \sigma^2 \mathbb{I} 
+%     \end{align*}
+%     Now, we plug in the definition of mutual information
+%     \begin{align*}
+%         I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) &= H\left(\vy_{\vtau^{\vpi}} \mid \vy_{\setD_{1:n}}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \vy_{\setD_{1:n}}, \vf^*_{\vtau^{\vpi}}\right) \\
+%         &= H\left(\vy_{\vtau^{\vpi}} \mid \vy_{\setD_{1:n}}\right)  - \frac{1}{2} \log((2\pi e)^T\sigma^{2T}) \\
+%         &\leq \frac{1}{2} \log(|\sigma^2\mathbb{I} + \Sigma_{n}(\vtau^{\vpi})|) - \frac{1}{2} \log(\sigma^{2T}) \tag{\Cref{thm:entropy_bound}}\\
+%         &= \frac{1}{2} \log(|\sigma^{-2} \Sigma_{n}(\vtau^{\vpi}) + \mathbb{I}|).
+%     \end{align*}
+%     Note, for the GP case this inequality is exact.
+% \end{proof}
+\begin{lemma}[Monotonocity of information gain]
+\label{lemma:info_never_hurts} Let $\vtau^{\vpi}$ denote the trajectory induced by the policy $\vpi$. Then, the following is true for all $n \geq 0$, policies $\vpi$
+\begin{equation*}
+   \E_{\setD_{1:n}}\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right)\right] \leq   \E_{\setD_{1:n-1}}\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right)\right]. 
+\end{equation*}
+\end{lemma}
+\begin{proof}
+\begin{align*}
+    \E_{\setD_{1:n}}&\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right)  - I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right)\right] \\
+    &= 
+    \E_{\setD_{1:n}}\left[H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}}, \setD_{1:n-1}\right)\right. \\
+    &- \left. \left(
+     H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right)
+     - H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}},  \setD_{1:n}\right) \right) \right] \\
+    &= \E_{\setD_{1:n}}\left[H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right)\right] \\
+    &+ \E_{\setD_{1:n}}\left[H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}}\right)\right] \\
+    %&= \E_{\setD_{1:n}}\left[I\left(\vy_{\vtau^{\vpi}}; \setD_{n}\mid \setD_{1:n-1}\right)\right] \\
+    &\geq 0 \tag{information never hurts}
+\end{align*}
+
+
+% \begin{align*}
+%    I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right)  - I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) &= 
+%    H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}}, \setD_{1:n-1}\right) \\
+%     &-  \left(
+%      H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right)
+%      - H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}},  \setD_{1:n}\right) \right) \\
+%     &= H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) \\
+%     &+ H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \vf^*_{\vtau^{\vpi}}\right) \\
+%     %&= \E_{\setD_{1:n}}\left[I\left(\vy_{\vtau^{\vpi}}; \setD_{n}\mid \setD_{1:n-1}\right)\right] \\
+%     &=H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) \\
+%     &\geq H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) - H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) \tag{1}\\
+%     &= 0 
+% \end{align*}
+% where (1) follows from the information never hurts principle; i.e., $H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) \leq H\left(\vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right)$.
+\end{proof}
+A direct consequence of \Cref{lemma:info_never_hurts} is the following corollary.
+\begin{corollary}[Information gain at $N$ is less than the average gain till $N$]
+\label{cor:mutual_information_and_average_mi}
+Let $\vtau^{\vpi}$ denote the trajectory induced by the policy $\vpi$. Then, the following is true for all $N \geq 1$, policies $\vpi$,
+\begin{equation*}
+     \E_{\setD_{1:N-1}}\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:N-1}\right)\right]  \leq \frac{1}{N}\sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right)\right].
+\end{equation*}
+\end{corollary}
+Next, we prove \Cref{lem:uniform_exploration_upper}, which is central to our proposed active exploration objective in \Cref{eq:exploration_op}.
+\begin{proof}[Proof of \Cref{lem:uniform_exploration_upper}]
+Let $\vy_{\vtau^{\vpi}} = \{\vy_t\}^{T-1}_{t=0} = \{\vf^*_t + \vw_{t}\}^{T-1}_{t=0}$, where $\vf^*_t = \vf^*(\vz_{t})$. Furthermore, denote with $\Sigma_{n}(\vf^*_{0:T-1})$ the covariance of $\vf^*_{0:T-1}$.
+% \begin{align*}
+% I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right) &= I\left(\vf^*_{0:T-1}; \vy_{0:T-1} \mid \setD_{1:n}\right) \\
+% &=H\left(\vy_{0:T-1} \mid \setD_{1:n}\right) - H\left(\vy_{0:T-1}\mid  \vf^*_{0:T-1}, \setD_{1:n}\right) \\
+% &= H\left(\vy_{T-1} \mid \setD_{1:n}, \vy_{0:T-2}\right) + H\left(\vy_{0:T-2} \mid \setD_{1:n}\right) \\
+% &- H\left(\vy_{T-1} \mid \vf^*_{0:T-1}, \vy_{0:T-2}, \setD_{1:n}\right) - H\left(\vy_{0:T-2} \mid \vf^*_{0:T-2}, \setD_{1:n}\right) \\
+% &= H\left(\vy_{T-1} \mid \setD_{1:n}, \vy_{0:T-2}\right) - H\left(\vy_{T-1} \mid \vf^*_{T-1}, \vy_{0:T-2}, \setD_{1:n}\right) \\
+% &+ H\left(\vy_{0:T-2} \mid \setD_{1:n}\right) - H\left(\vy_{0:T-2} \mid \vf^*_{0:T-2}, \setD_{1:n}\right) \\
+% &= I\left(\vf^*_{T-1}; \vy_{T-1} \mid \setD_{1:n}, \vy_{0:T-2}\right) + I\left(\vf^*_{0:T-2}; \vy_{0:T-2} \mid \setD_{1:n}\right) \\
+% &= \sum^{T-1}_{t=0} I\left(\vf^*_{t}; \vy_{t} \mid \setD_{1:n}, \vy_{0:t-1}\right) \tag{1}\\
+% &\leq \sum^{T-1}_{t=0} I\left(\vf^*_{t}; \vy_{t} \mid \setD_{1:n}\right) \tag{\Cref{lemma:info_never_hurts}} \\
+% &= \sum^{T-1}_{t=0} H\left(\vy_{t-1} \mid \setD_{1:n}\right) - H\left(\vy_{t-1} \mid \setD_{1:n}, \vf^*_{t-1}\right) \\
+% &\leq \frac{1}{2} \sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\log \left(1 + \frac{\sigma_{n, j}^2(\vz_t)}{\sigma^2}\right) \tag{\Cref{thm:entropy_bound}}.
+% \end{align*}
+%Here (1) follows from recursively applying the third equality.
+    \begin{align*}
+         I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n}\right)
+         &= I\left(\vf^*_{0:T-1}; \vy_{0:T-1} \mid \setD_{1:n}\right) \\
+    &=H\left(\vy_{0:T-1} \mid \setD_{1:n}\right) - H\left(\vy_{0:T-1}\mid  \vf^*_{0:T-1}, \setD_{1:n}\right) \\
+         &\leq \frac{1}{2}\log\left( \left\vert \sigma^2 \mathbb{I} + \Sigma_{n}(\vf^*_{0:T-1})
+        \right\vert \right) - \frac{1}{2}\log\left( \left\vert \sigma^2 \mathbb{I}
+        \right\vert \right) \tag{\Cref{thm:entropy_bound}}\\
+         &\leq \frac{1}{2}\log\left( \left\vert \diag\left(\mathbb{I} + \sigma^{-2} \Sigma_{n}(\vf^*_{0:T-1})\right) \tag{Hadamard's inequality}
+        \right\vert \right) \\
+        &=  \frac{1}{2} \sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\log \left(1 + \frac{\vsigma_{n, j}^2(\vz_t)}{\sigma^2}\right).
+     \end{align*}
+\end{proof}
+
+We can leverage the result from \Cref{lem:uniform_exploration_upper}  to bound the average mutual information with the sum of epistemic uncertainties.
+\begin{lemma}[Average information gain is less than sum of average epistemic uncertainties]\label{lem:average_mi_epistemic_uncertainties}
+    Let \Cref{ass:noise_properties} hold and denote with $\bar{\vpi}_N$ be the solution of \Cref{eq:greedy_info_gain}.
+    Then, for all $N \geq 1$ and dataset $\setD_{1:N}$ the following is true
+\begin{align*}
+     \frac{1}{N}&\sum^{N}_{n=1} \E_{\setD_{1:n-1}, \vtau^{\Bar{\vpi}_n}}\left[I\left(\vf^*_{\vtau^{\Bar{\vpi}_N}}; \vy_{\vtau^{\Bar{\vpi}_N}} \mid \setD_{1:n-1}\right)\right] \\
+     &\leq \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}, \vtau^{\vpi_n^*}}\left[\sum_{t=0}^{T-1} \sum_{j=1}^{d_x}\left(\frac{1}{2} \log \left(1 + \frac{\vsigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right)\right],
+\end{align*}
+where $z^*_{n, t}$ are the state-action tuples visited by the solution of \Cref{eq:exploration_op}, i.e., $\vpi^*_n$.
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \frac{1}{N}\sum^{N}_{n=1} &\E_{\setD_{1:n-1}, \vtau^{\Bar{\vpi}_N}}\left[I\left(\vf^*_{\vtau^{\Bar{\vpi}_N}}; \vy_{\vtau^{\Bar{\vpi}_N}} \mid \setD_{1:n-1}\right)\right] \\&\leq \frac{1}{N} \sum^{N}_{n=1} \E_{\setD_{1:n-1}, \vtau^{\Bar{\vpi}_N}}\left[  \left(\sum_{\vz_t \in \vtau^{\Bar{\vpi}_N}} \frac{1}{2} \sum_{j=1}^{d_x}  \log \left(1 + \frac{\vsigma_{n, j}^2(\vz_{t})}{\sigma^2}\right) \right)\right] \tag{\Cref{lem:uniform_exploration_upper} }\\
+        &\leq \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[ \max_{\vpi \in \Pi} \E_{ \vtau^{\vpi}}\left[ \sum_{\vz_t \in \vtau_{\vpi}} \sum_{j=1}^{d_x}  \left(\frac{1}{2} \log \left(1 + \frac{\vsigma_{n, j}^2(\vz_{t})}{\sigma^2}\right)\right)\right]\right] \tag{1}\\
+        &= \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}, \vtau^{\vpi_n}}\left[\sum_{t=0}^{T-1} \sum_{j=1}^{d_x} \left( \frac{1}{2}\log \left(1 + \frac{\vsigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right) \right)\right].
+    \end{align*}
+    Here (1) follows from the tower property. Note that the second expectation in (1) is wrt $\vtau^{\vpi}$ conditioned on a realization of $\setD_{1:n-1}$, where the conditioning is captured in the epistemic uncertainty $\vsigma_n(\cdot)$.
+\end{proof}
+We use the results from above, to prove \Cref{thm:main_theorem}.
+\begin{proof}[Proof of  \cref{thm:main_theorem}]
+Let $\bar{\vpi}_n$ denote the solution to \Cref{eq:greedy_info_gain} at iteration $n\geq 1$. We first relate the information gain from \opacex to the information gain of $\bar{\vpi}_n$.
+    \begin{align*}
+        \E_{\setD_{1:N-1}, \vtau^{\bar{\vpi}_N}}&\left[I\left(\vf^*_{\vtau^{\bar{\vpi}_N}}; \vy_{\vtau^{\bar{\vpi}_N}} \mid \setD_{1:N-1}\right)\right] \\
+        %&\leq \E_{\setD_{1:N-1}, \vtau^*_N}\left[I\left(\vf^*_{\vtau_N^{*}}; \vy_{\vtau_N^{*}} \mid \setD_{1:N-1}\right)\right] \\
+        &\leq \frac{1}{N}\sum^{N}_{n=1} \E_{\setD_{1:n-1}, \vtau^{\bar{\vpi}_n}}\left[I\left(\vf^*_{\vtau^{\bar{\vpi}_n}}; \vy_{\vtau^{\bar{\vpi}_n}} \mid \setD_{1:n-1}\right)\right] \tag{\Cref{cor:mutual_information_and_average_mi}}\\
+        &\leq \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}, \vtau^{\vpi_n}}\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\vsigma_{n-1, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right)\right] \tag{\Cref{lem:average_mi_epistemic_uncertainties}} \\
+        &= \frac{1}{N}  \sum^{N}_{n=1} \left(\E_{\setD_{1:n-1}, \vpi_n}\left[\sum_{t=0}^{T-1} \frac{1}{2} \sum^{d_x}_{j=1}\log \left(1 + \frac{\vsigma_{n-1, j}^2(\vz_{n, t})}{\sigma^2}\right)\right] + J_n(\vpi_n^*) - J_n(\vpi_n) \right) \\
+        &\leq \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[\E_{\vtau_{\vpi_n}}\left[\sum_{t=0}^{T-1} \frac{1}{2} \sum^{d_x}_{j=1}\log \left(1 + \frac{\vsigma_{n-1, j}^2(\vz_{n, t})}{\sigma^2}\right)\right] \right. \\
+        &\left. \hspace{0.5cm} + \setO\left(\beta_{n-1}(\delta) T \E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right)\right] \tag{\Cref{cor:bounding_diff_in_performance}}
+        \end{align*}
+                    In summary, the maximum expected mutual information at episode $N$ is less than the mutual information of \opacex and the sum of model epistemic uncertainties. Crucial to the proof is the regret bound for optimistic planning from \Cref{cor:bounding_diff_in_performance}. 
+        \begin{align*}
+        &\frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[\E_{\vtau_{\vpi_n}}\left[\sum_{t=0}^{T-1} \frac{1}{2} \sum^{d_x}_{j=1}\log \left(1 + \frac{\vsigma_{n-1, j}^2(\vz_{n, t})}{\sigma^2}\right)\right] \right.\\
+        &\left. \hspace{0.5cm} + \setO\left(T\beta_{n-1}(\delta) \E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right)\right] \\
+        &= \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[\E_{\vtau_{\vpi_n}}\left[\sum_{t=0}^{T-1}  \sum^{d_x}_{j=1}\log \left(\sqrt{1 + \frac{\vsigma_{n-1, j}^2(\vz_{n, t})}{\sigma^2}}\right)\right] \right. \\
+        &\left. \hspace{0.5cm} + \setO\left(T\beta_{n-1}(\delta) \E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right)\right] \\
+        &\leq \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[\E_{\vtau_{\vpi_n}}\left[\sum_{t=0}^{T-1}  \sum^{d_x}_{j=1}\log \left(1 + \frac{\vsigma_{n-1, j}(\vz_{n, t})}{\sigma}\right)\right] \right. \\
+        &\left. \hspace{0.5cm} + \setO\left(T\beta_{n-1}(\delta) \E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right)\right] \\
+        &\leq \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[\E_{\vtau_{\vpi_n}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\vsigma_{n-1, j}(\vz_{n, t})}{\sigma}\right] \right. \\
+        &\left. \hspace{0.5cm} + \setO\left(T\beta_{n-1}(\delta) \E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right)\right] \tag{$\log(1 + x) \leq x$ for $x \geq 0$.}\\
+        &\leq \setO\left( \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[T \beta_{n-1}(\delta)\E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right]\right)
+        \end{align*}
+        Above, we show that the maximum expected mutual information can be upper bounded with the sum of epistemic uncertainties for the states \opacex visits during learning. Finally, we further upper bound this with the model complexity measure. 
+        \begin{align*}
+        &\setO\left( \frac{1}{N}  \sum^{N}_{n=1} \E_{\setD_{1:n-1}}\left[\beta_{n-1}(\delta) T \E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0}  \norm{\vsigma_{n-1}(\vz_{n, t})}_2 \right]\right]\right) \\
+        &= \setO\left( \frac{1}{N}\sqrt{\left(\E_{\setD_{1:N}}\left[\sum^{N}_{n=1} (T \beta_{n-1} (\delta))\E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0} \norm{\vsigma_{n-1}(\vz_{n, t})}_2\right]\right]\right)^2}\right) \\
+        &\leq \setO\left(\frac{1}{N} T \beta_{N}(\delta))
+ \sqrt{T N \E_{\setD_{1:N}}\left[\sum^{N}_{n=1}\E_{\vtau_{\vpi_n}}\left[\sum^{T-1}_{t=0} ||\vsigma_{n}(\vz_{n, t})||^2_2\right]\right]}\right) \\
+        &\leq \setO\left(\beta_{N}(\delta) T^{\sfrac{3}{2}}
+ \sqrt{\frac{{\setM\setC}_N(\vf^*)}{N}}\right)
+    \end{align*}
+\end{proof}
+\Cref{thm:main_theorem} gives a bound on the maximum expected mutual information w.r.t.~the model complexity. We can use concentration inequalities such as Markov, to give a high probability bound on the information gain. In particular, we have for all $\epsilon > 0$
+\begin{align*}
+     \Pr \left(I\left(\vf^*_{\vtau^{\bar{\vpi}_N}}; \vy_{\vtau^{\bar{\vpi}_N}} \mid \setD_{1:N-1}\right)  \geq \epsilon \right) &\leq  \frac{ \E_{\setD_{1:N-1}, \vtau^{\bar{\vpi}_N}}\left[I\left(\vf^*_{\vtau^{\bar{\vpi}_N}}; \vy_{\vtau^{\bar{\vpi}_N}} \mid \setD_{1:N-1}\right)\right]}{\epsilon} \\
+    \\ &\leq  \setO \left(T^{\sfrac{3}{2}}\beta_{N}(\delta) \sqrt{\frac{{\setM\setC}_N(\vf^*)}{N\epsilon^2}}\right).
+\end{align*}
+%A natural consequence of this is that $I\left(\vf^*_{\vtau_N^{*}}; \vy_{\vtau_N^{*}} \mid \setD_{1:N-1}\right) \to 0$ for $N \to \infty$.
+
+\subsection{Proof of GP results}
+This section presents our results for the frequentist setting where the dynamics are modeled using GPs. Since the information gain has no meaning in the frequentist setting, we study the epistemic uncertainty of the GP models.
+\begin{corollary}[Monotonicity of the variance]
+For all $n \geq 0$, and policies $\vpi$ the following is true.
+\begin{equation*}
+    \sum_{t=0}^{T-1} \sum_{j=1}^{d_x}  \frac{1}{2} \log \left(1 + \frac{\sigma_{N-1, j}^2(\vz_{t})}{\sigma^2}\right)  \leq \frac{1}{N}\sum^{N}_{n=1} \sum_{t=0}^{T-1} \sum_{j=1}^{d_x}  \frac{1}{2} \log \left(1 + \frac{\vsigma_{n-1, j}^2(\vz_{t})}{\sigma^2}\right)
+\end{equation*}
+\label{cor:monotonocity_of_variance}
+\end{corollary}
+\begin{proof}
+    Follows directly due to the monotonicity of GP posterior variance.
+\end{proof}
+Next, we prove that the trajectory of \Cref{eq:exploration_op} at iteration $n$ is upper-bounded with the maximum information gain.
+\begin{lemma}
+    Let \Cref{ass:lipschitz_continuity} - \ref{ass:rkhs_func} hold Then, for all $N \geq 1$, with probability at least $1-\delta$, we have
+    \begin{equation*}
+    \max_{\vpi \in \Pi} \E_{\vtau_{\vpi}}\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{N, j}^2(\vz_{t})}{\sigma^2}\right)\right)\right] \leq \setO \left(\beta_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_N}{N}}\right).
+\end{equation*}
+Moreover, relax noise \Cref{ass:noise_properties} to $\sigma$-sub Gaussian. 
+Then, for all $N \geq 1$, with probability at least $1-\delta$, we have
+\begin{equation*}
+    \max_{\vpi \in \Pi} \E_{\vtau_{\vpi}}\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{N, j}^2(\vz_{t})}{\sigma^2}\right)\right)\right] \leq \setO \left(L^{T}_{\vsigma} \beta^{T}_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_N}{N}}\right)
+\end{equation*}
+\label{lem:Gp_bound_general}
+\end{lemma}
+\begin{proof}%[Proof of \Cref{thm:gp_theorem}]
+\textbf{Gaussian noise case}:
+Let $\vz^*_{n, t}$ denote the state-action pair at time $t$ for the trajectory of \Cref{eq:exploration_op} at iteration $n\geq 1$ and $\vpi^*_n$ the corresponding policy.
+   \begin{align*}
+    &\E_{\vtau_{\vpi^*_n}}\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{N, j}^2(\vz^*_{N, t})}{\sigma^2}\right)\right)\right] \\
+          &\leq \frac{1}{N} \sum^N_{n=1} \E_{\vtau_{\vpi^*_n}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{N, t})}{\sigma^2}\right)\right] \tag{\Cref{cor:monotonocity_of_variance}}\\
+          &\leq \frac{1}{N} \sum^N_{n=1} \E_{\vtau_{\vpi^*_n}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right] \tag{By definition of $\vpi^*_n$}\\
+          &\leq  \setO \left(\beta_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{{\setM\setC}_N(\vf^*)}{N}}\right) \tag{See proof of \Cref{thm:main_theorem}}\\
+          &\leq \setO \left(\beta_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_N}{N}}\right) \tag*{\cite[Lemma 17]{curi2020efficient}}
+   \end{align*}
+   \textbf{Sub-Gaussian noise case}: The only difference between the Gaussian and sub-Gaussian case is the regret term (c.f., \Cref{cor:bounding_diff_in_performance} and \Cref{lem:simple_regret_planning}). In particular, the regret for the sub-Gaussian case leverages the Lipschitz continuity properties of the system (\Cref{ass:lipschitz_continuity}). This results in an exponential dependence on the horizon for our bound. We refer the reader to \citet{curi2020efficient, rothfuss2023hallucinated} for a more detailed derivation.
+   \end{proof}
+   \Cref{lem:Gp_bound_general} gives a sample complexity bound that holds for a richer class of kernels. Moreover, for GP models, $\beta_N \propto \sqrt{\gamma_N}$~\citep{chowdhury2017kernelized}. Therefore, for kernels, where $\lim_{N \to \infty} \sfrac{\gamma^{2}_N}{N} \to 0$, we can show convergence (for the Gaussian case). 
+We summarize bounds on $\gamma_N$ from \cite{vakili2021information} in \Cref{table: gamma magnitude bounds for different kernels}.
+   \begin{table}[ht!]
+\begin{center}
+\caption{Maximum information gain bounds for common choice of kernels.}
+\label{table: gamma magnitude bounds for different kernels}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Kernel&$k(\vx, \vx')$ & $\gamma_n$ \\ \midrule
+    Linear &$\vx^\top \vx'$   & $\mathcal{O}\left(d \log(n)\right)$                    \\
+    RBF &$e^{-\frac{\norm{\vx - \vx'}^2}{2l^2}}$& $\mathcal{O}\left( \log^{d+1}(n)\right)$                    \\
+    Matèrn &$\frac{1}{\Gamma(\nu)2^{\nu - 1}}\left(\frac{\sqrt{2\nu}\norm{\vx-\vx'}}{l}\right)^{\nu}B_{\nu}\left(\frac{\sqrt{2\nu}\norm{\vx-\vx'}}{l}\right)$  & $\mathcal{O}\left(n^{\frac{d}{2\nu + d}}\log^{\frac{2\nu}{2\nu+d}}(n)\right)$                     \\ \bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+   From hereon, we focus on deriving the results for the case of Gaussian noise case. All our results can be easily extended for the sub-Gaussian setting by considering its corresponding bound.
+   \begin{lemma}
+       The following is true for all $N \geq 0$ and policies $\vpi \in \Pi$,
+       \begin{equation*}
+           \E_{\vtau_{\vpi}}\left[ \max_{\vz \in \vtau^{\vpi}}\sum^{d_x}_{j=1} \frac{1}{2}\vsigma_{N, j}^2(\vz) \right] \leq C_{\vsigma} \E_{\vtau_{\vpi}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\vsigma_{N, j}^2(\vz_{ t})}{\sigma^2}\right)\right],
+       \end{equation*}
+       with $C_{\vsigma} = \frac{\vsigma_{\max}}{\log(1 + \sigma^{-2}\vsigma_{\max})}$.
+   \end{lemma}
+\begin{proof}
+\begin{align*}
+&C_{\vsigma} \E_{\vtau_{\vpi}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\vsigma_{N, j}^2(\vz_{ t})}{\sigma^2}\right)\right] \\
+&\geq  \E_{\vtau_{\vpi}}\left[ \sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \frac{1}{2}\vsigma_{N, j}^2(\vz_{t}) \right] \tag*{\cite[Lemma.~15]{curi2020efficient}}, \\ 
+&\geq \E_{\vtau_{\vpi}}\left[ \max_{\vz \in \vtau^{\vpi}}\sum^{d_x}_{j=1} \frac{1}{2}\vsigma_{N, j}^2(\vz) \right].
+\end{align*}
+\end{proof}
+\begin{corollary}
+    Let \Cref{ass:lipschitz_continuity} and \ref{ass:rkhs_func} hold, and relax noise \Cref{ass:noise_properties} to $\sigma$-sub Gaussian. 
+Then, for all $N \geq 1$, with probability at least $1-\delta$, we have
+\begin{equation*}
+    \max_{\vpi \in \Pi} \E_{\vtau_{\vpi}}\left[ \max_{\vz \in \vtau^{\vpi}}\sum^{d_x}_{j=1} \frac{1}{2}\vsigma_{N, j}^2(\vz) \right] \leq \setO \left(\beta_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_N}{N}}\right).
+\end{equation*}
+\label{cor:max_uncertainty_bound}
+\end{corollary}
+\begin{lemma}
+     Let \Cref{ass:lipschitz_continuity} and \ref{ass:rkhs_func} hold, and relax noise \Cref{ass:noise_properties} to $\sigma$-sub Gaussian. Furthermore, assume $\lim_{N\to \infty} \sfrac{\beta_N^2(\delta)\gamma_N(k)}{N} \to 0$. Then for all $N \geq 1$, $\vz \in \setR$, and $1 \leq j \leq d_x$, with probability at least $1-\delta$, we have
+     \begin{equation*}
+         \vsigma_{n, j}(\vz) \xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } n \to \infty.
+     \end{equation*}
+     \label{lem:as_convergence_lemma}
+\end{lemma}
+\begin{proof}
+We first show that the expected epistemic uncertainty along a trajectory converges to zero almost surely. Then we leverage this result to show almost sure convergence of all trajectories induced by $\vpi \in \Pi$. To this end, let $S_n = \E_{\vtau_{\vpi^*_n}}\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right)\right]$ for all $n\geq 0$. So far we have,
+   \begin{equation*}
+       \Pr \left( S_n \leq \setO \left(\beta_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_n}{n}}\right) \right) \geq 1 - \delta
+   \end{equation*}
+Consider a sequence $\{\delta_n\}_{n\geq 0}$ such that $\lim_{n \to \infty} \delta_n = 0$, and $\lim_{n \to \infty} \beta_{n}(\delta_n) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_n}{n}} \to 0$. Note, for GP models with $\lim_{N\to \infty} \sfrac{\beta_N^2(\delta)\gamma_N(k)}{N} \to 0$, such a sequence of $\delta_n$ exists~\citep{chowdhury2017kernelized}.
+Consider any $\epsilon > 0$ and
+let $N^*(\epsilon)$ be the smallest integer such that 
+\begin{equation*}
+    \setO \left(\beta_{N^*(\epsilon)}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{\gamma_{N^*(\epsilon)}}{N^*(\epsilon)}}\right) < \epsilon.
+\end{equation*}
+Then, we have
+\begin{align*}
+    \sum^{\infty}_{n=0}\Pr(S_n > \epsilon) &=
+    \sum^{N^*(\epsilon)-1}_{n=0} \Pr(S_n > \epsilon) + \sum^{\infty}_{n=N^*(\epsilon)} \Pr(S_n > \epsilon) \\
+    &= \sum^{N^*(\epsilon)-1}_{n=0} \Pr(S_n > \epsilon) + \sum^{\infty}_{n=N^*(\epsilon)} \delta_n \\
+    &\leq N^*(\epsilon) + \sum^{\infty}_{n=N^*(\epsilon)} \delta_n.
+\end{align*}
+Note, since $\lim_{n \to \infty} \delta_n = 0$, we have 
+\begin{equation*}
+    \sum^{\infty}_{n=N^*(\epsilon)} \delta_n < \infty.
+\end{equation*}
+In particular, $\sum^{\infty}_{n=0}\Pr(S_n > \epsilon) < \infty$ for all $\epsilon > 0$.
+ Therefore, we obtain 
+\begin{equation*}
+  S_n \xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } n \to \infty. 
+\end{equation*}
+% In summary, 
+% \begin{align*}
+%     \lim_{n\to \infty} S_n &= \lim_{n\to \infty} \E_{\vtau_{\vpi_n}}\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right)\right] \\
+%     &= \E_{\vtau_{\vpi_n}}\left[\lim_{n\to \infty} \left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right)\right] \\
+%     &= 0.
+% \end{align*}
+Define the random variable $V = \lim_{n\to \infty} \left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right)$, with $\vz^*_{n, t} \in \vtau$ and $ \vtau \sim \vtau^{\vpi^*_n}$. $V$ represents the sum of epistemic uncertainties of a random trajectory induced by the sequence of policies $\{\vpi_{n}\}_{n \geq 0}$. Note $V \geq 0$, therefore we apply Markov's inequality. Moreover, for all $\epsilon > 0$, we have
+   \begin{equation*}
+          \Pr \left(V > \epsilon \right) 
+          \leq \frac{\E[V]}{\epsilon} = 0.
+   \end{equation*}
+   Hence, we have 
+   \begin{equation*}
+             \Pr \left(V = 0 \right) = 1 \implies V\xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } n \to \infty
+ %\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } n \to \infty. 
+\end{equation*}
+   Accordingly, we get for all $\pi \in \Pi$. 
+   \begin{equation}
+       \Pr\left(\lim_{n \to \infty} \sum_{\vz_{t} \in \vtau_{\vpi}} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz_{t})}{\sigma^2}\right) \to 0 \right) = 1.
+       \label{eq:traj_convergence}
+   \end{equation}
+   \looseness=-1
+   Assume there exists a $\vz \in  \setR$, such that for some $\epsilon$, $\sigma_{n, j}^2(\vz) > \epsilon$ for all $n \geq 0$. Since, $\vz \in \setR$, there exists a $t$ and $\pi \in \Pi$ such that $p(\vz_t = \vz|\pi, \vf^*) > 0$. This implies that $\Pr(\vz \in \vtau_{\vpi}) > 0$. However, from \Cref{eq:traj_convergence}, we have that $\sigma_{n, j}^2(\vz) \to 0$ for $N \to \infty$ almost surely, which is a contradiction.
+\end{proof}
+Finally, we leverage the results from above to prove \Cref{thm:gp_theorem}.
+\begin{proof}[Proof of \Cref{thm:gp_theorem}]
+    The proof follows directly from \Cref{cor:max_uncertainty_bound} and \Cref{lem:as_convergence_lemma}.
+\end{proof}
+
+\subsection{Zero-shot guarantees} \label{sec:zero_shot_performance_theory}
+In this section, we give guarantees on the zero-shot performance of \opacex for a bounded cost function. We focus this section on the case of Gaussian noise. However, a similar analysis can be performed for the sub-Gaussian case and Lipschitz continuous costs. Since the analysis for both cases is similar, we only present the Gaussian case with bounded costs here.
+\begin{corollary}\label{cor:pessimistic policy difference}
+    Consider the following optimal control problem
+\begin{align}
+        \label{eq:oc_cost}
+    \underset{\vpi \in \Pi}{\arg\min} \hspace{0.2em} &J_c(\vpi, \vf^*) = \underset{\vpi \in \Pi} {\arg\min} \hspace{0.2em}\E_{\vtau^{\vpi}}\left[\sum^{T-1}_{t=0} c(\vx_t, \vpi(\vx_t)) \right], \\
+        \vx_{t+1} &= \vf^*(\vx_t, \vpi(\vx_t)) + \vw_t \quad \forall 0\leq t\leq T, \notag 
+\end{align}
+with bounded and positive costs.
+Then we have for all policies $\vpi$ with probability at least $1-\delta$
+\begin{equation*}
+    J_c(\vpi, \veta^{P}) - J_c(\vpi) \leq  \setO\left(T \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vz_{ t})}}{\sigma^2}\right]\right),
+\end{equation*}
+where $J_c(\vpi, \veta^{P})  = \max_{\veta \in \Xi} J_c(\vpi, \veta)$. 
+\end{corollary}
+
+\begin{proof}
+From \Cref{cor:Difference in hallucinated policy} we get
+\begin{equation*}
+    J_c (\vpi, \veta^P) - J_c (\vpi) = \E_{\vtau^{\vpi}}  \left[\sum^{T-1}_{t=0} J_{r, t+1}(\vpi, \veta^P, \vx^P_{t+1}) -  J_{r, t+1}(\vpi, \veta^P, \vx_{t+1})\right],
+\end{equation*}
+with $\vx_{t+1} =  \vf^*(\vx_t, \vpi(\vx_t)) + \vw_t$, and $\vx^P_{t+1} = \vmu_n(\vx_t, \vpi(\vx_t)) + \beta_n(\delta) \vsigma(\vx_t, \vpi(\vx_t))\veta^P(\vx_t) + \vw_t$.
+Furthermore, the cost is positive and bounded. Therefore,
+\begin{equation*}
+    J^2_c(\vpi, \veta, \vx) \leq T^2 c_{\max}^2,
+\end{equation*}
+for all $\vx, \veta, \vpi$.
+Accordingly, we can now use the same analysis as in \Cref{lem:optimistic_planning_regret} and get  
+\begin{equation*}
+    J_c(\vpi, \veta^{P}) - J_c(\vpi)  \leq  \setO\left(T \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vz_{ t})}}{\sigma^2}\right]\right),
+\end{equation*}
+\end{proof}
+
+\begin{lemma}
+    Consider the control problem in \Cref{eq:oc_cost} and
+% with bounded and positive costs.
+let \Cref{ass:noise_properties} and \ref{ass:rkhs_func} hold. 
+Furthermore, assume for every $\epsilon > 0$, there exists a finite integer $n^*$ such that
+\begin{equation}
+     \forall n \geq n^*;  
+    \beta^{\sfrac{3}{2}}_n(\delta) T^{\sfrac{11}{4}}\left(\frac{{\gamma}_{n}(k)}{n}\right)^{\frac{1}{4}} \le \epsilon, \label{eq:decreanse_condition}
+ \end{equation}
+ and denote with $\hat{\vpi}_n$ the minimax optimal policy, i.e., the solution to $\min_{\vpi \in \Pi}\max_{\veta \in \Xi} J_c(\vpi, \veta)$. Then for all $n \geq n^*$, we have probability at least $1-\delta$, $J_c(\hat{\vpi}_N) - J_c(\vpi^*) \le \setO(\epsilon)$.
+ \label{lem:zero_shot_performance}
+\end{lemma}
+\begin{proof}[Proof of Zero-shot performance]
+In \Cref{thm:gp_theorem} we give a rate at which the maximum uncertainty along a trajectory decreases:
+\begin{equation*}
+     \max_{\vpi \in \Pi} \E_{\vtau^{\vpi}}\left[ \max_{ \vz \in \vtau^{\vpi}} \frac{1}{2}\norm{\sigma_{N, j}(\vz)}^2 \right] \le \setO \left(\beta_N T^{\sfrac{3}{2}}\sqrt{\frac{{\gamma}_{N}(k)}{N}}\right).
+\end{equation*}
+Combining this with \Cref{cor:pessimistic policy difference} we get
+\begin{align*}
+    J_c(\vpi, \veta^{P}) - J_c(\vpi)  &\leq  \setO\left(T \E_{\vtau^{\vpi_n}} \left[\sum^{T-1}_{t=0} \frac{(1 + \sqrt{d_x}) \beta_{n-1}(\delta) \norm{\vsigma_{n-1}(\vz_{ t})}}{\sigma^2}\right]\right) \\
+    &\le \setO\left( T^2 \beta_{n-1}(\delta)\E_{\vtau^{\vpi_n}} \left[ \max_{ \vz \in \vtau^{\vpi_n}}  \norm{\vsigma_{n-1}(\vz)}\right]\right) \\
+    &\le \setO\left(\sqrt{\E_{\vtau^{\vpi_n}} \left[ \max_{ \vz \in \vtau^{\vpi_n}}  T^4 \beta^2_{n-1}(\delta)\norm{\vsigma_{n-1}(\vz)}^2\right]}\right) \\
+    &\le \setO\left(\sqrt{
+    \beta^3_n T^{\sfrac{11}{2}}\sqrt{\frac{{\gamma}_{n}(k)}{n}}}\right) \\
+    &= \setO\left(
+    \beta^{\sfrac{3}{2}}_n(\delta) T^{\sfrac{11}{4}}\left(\frac{{\gamma}_{n}(k)}{n}\right)^{\frac{1}{4}}\right) \\
+    &= \setO(\epsilon) \tag{$\forall n \geq n^*$}.
+\end{align*}
+Hence, we have that for each policy $\vpi$, our upper bound $\max_{\veta} J_c(\vpi, \veta^{P})$ is $\epsilon$ precise, i.e.,
+\begin{equation}
+\label{eq:precision result}
+    \max_{\veta \in \Xi} J_c(\vpi, \veta) - J_c(\vpi)  \leq \setO(\epsilon), \forall \vpi \in \Pi.
+\end{equation}
+We leverage this to prove optimality for the minimax solution. For the sake of contradiction, assume that 
+\begin{equation}
+\label{eq:contradictory_ass}
+   J_c(\Hat{\vpi}_n) > J_c(\vpi^*) + \setO(\epsilon). 
+\end{equation}
+Then we have,
+\begin{align*}
+    \max_{\veta \in \Xi} J_c(\vpi^*, \veta) &\ge \min_{\vpi \in \Pi }\max_{\veta \in \Xi} J_c(\vpi, \veta) \\
+    &= J_c(\Hat{\vpi}_n, \Hat{\veta}^P) \\
+    &= \max_{\veta \in \Xi} J_c(\Hat{\vpi}_n, \veta) \\
+    &\ge J_c(\Hat{\vpi}_n) \\
+    &> J_c(\vpi^*) + \setO(\epsilon) \tag{\Cref{eq:contradictory_ass}}\\
+    &\geq J_c(\vpi^*, \veta^{*, P}) \tag{\Cref{eq:precision result}}\\
+    &= \max_{\veta \in \Xi} J_c(\vpi^*, \veta).
+\end{align*}
+This is a contradiction, which completes the proof.
+\end{proof}
+\Cref{lem:zero_shot_performance} shows that \opacex also results in nearly-optimal zero-shot performance. The convergence criteria in \Cref{eq:decreanse_condition} is satisfied for kernels $k$ that induce a very rich class of RKHS (c.f., \Cref{table: gamma magnitude bounds for different kernels}).
+% \section{Alleviating exponential dependence on $T$} \label{sec:allleviating_expdependece_on_t}
+% \opacex's regret bound from \Cref{lem:simple_regret_planning} depends exponentially on $T$. This is because we plan optimistically for $T$-time steps, which causes an exponential divergence between the true and the optimistic trajectory. A similar `optimism in the face of uncertainty' approach is also proposed by \cite{kakade2020information}. Under slightly different assumptions, they give a regret bound that depends polynomially on $T$ instead of exponentially. In the following, we restate some of the results from \cite{kakade2020information} and discuss the analysis for \opacex. % show that \opacex's objective is bounded.
+% \begin{lemma}[Difference Lemma, Lemma B.1.~\cite{kakade2020information}]\label{lemm:difference_lem}
+% Fix a policy $\vpi$, and model $\veta$. Consider any trajectory $\{\vz_t\}^{T-1}_{t=0}$ of the policy $\vpi$. For $t \in \{0, \dots, T-1\}$, let $\hat{J}_{n, t}$ refer to the realized cost-to-go on this trajectory, i.e., 
+% \begin{equation*}
+%     \hat{J}_{n, t} = \sum^{T-1}_{\stopt=t} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\vz_{\stopt})}{\sigma^2}\right).
+% \end{equation*}
+% For all $\stopt \in \{1, \dots, T-1\}$, we have that 
+% \begin{equation*}
+%     \hat{J}_{n, 0} - J_n(\vpi, \veta) =    \hat{J}_{n, \stopt} - \E_{\vx'_{\stopt}|\vz_{\stopt-1}, \veta}\left[ J_{n, \stopt}(\vx'_{\stopt}, \vpi, \veta)  \right] + \sum^{\stopt-1}_{t=1}  J_{n, t}(\vx_{t}, \vpi, \veta)  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[ J_{n, t}(\vx'_{t}, \vpi, \veta)  \right].
+% \end{equation*}
+% \end{lemma}
+% \begin{proof}
+%     Starting from $t=0$, we have
+%     \begin{align*}
+%         \hat{J}_{n, 0} - J_n(\vpi, \veta) &= \hat{J}_{n, 1} - \E_{\vx'_{1}|\vz_{0}, \veta} J_{n, 1}(\vx'_1, \vpi, \veta) \\
+%         &= \hat{J}_{n, 1} - J_{n, 1}(\vx_1, \vpi, \veta) + J_{n, 1}(\vx_1, \vpi, \veta) - \E_{\vx'_{1}|\vz_{0}, \veta} J_{n, 1}(\vx'_1, \vpi, \veta) \\
+%         &= \hat{J}_{n, 2} - \E_{\vx'_{2}|\vz_{1}, \veta} J_{n, 2}(\vx'_2, \vpi, \veta) +  J_{n, 1}(\vx_1, \vpi, \veta) - \E_{\vx'_{1}|\vz_{0}, \veta} J_{n, 1}(\vx'_1, \vpi, \veta)
+%     \end{align*}
+% Continuously applying the recursion, completes the proof.
+% \end{proof}
+
+% \begin{lemma}[``Optimal Stopping'' Simulation Lemma, Lemma B.2.~\cite{kakade2020information}]
+% \label{lem:objective_diff}
+%     Fix a policy $\vpi$ and model $\veta$. Consider the stochastic process over trajectories, where $\{\vz_t\}^{T-1}_{t=0} \sim \vpi$ is sampled w.r.t.~$\vf^*$. With respect to this stochastic process, define a stopping time $\stopt$ as:
+%     \begin{equation*}
+%         \stopt = \min\left\{t\geq 0: J_{n, t}(\vx_t, \vpi, \veta) \geq J_{n, t}(\vx_t, \vpi, \vf^*)\right\}.
+%     \end{equation*}
+%     Define the random variable $\Tilde{J}_{n, t}(\vx_t, \vpi)$ as 
+%       \begin{equation*}
+%         \Tilde{J}_{n, t}(\vx_t, \vpi)= \min\left\{J_{n, t}(\vx_t, \vpi, \veta), J_{n, t}(\vx_t, \vpi, \vf^*)\right\}.
+%     \end{equation*}
+%     We have that:
+%     \begin{align*}
+%         J_{n, 0}(\vpi, \vf^*) - J_n(\vpi, \veta) &\leq \E\left[\sum^{T-1}_{t=0} 1\{t < \stopt\} \right. \\
+%        &\hspace{1.5cm}\left. \left(\E_{\vx'_{t+1}|\vz_{t-1}, \vf^*}  \Tilde{J}_{n, t+1}(\vx'_{t+1} , \vpi) - \E_{\vx'_{t+1}|\vz_{t-1}, \veta}  \Tilde{J}_{n, t+1}(\vx'_{t+1} , \vpi)\right)\right] 
+%     \end{align*}
+% \end{lemma}
+% \begin{proof}
+%     Consider the filteration $\setF_{t} \coloneqq \{\vw_0, \dots, \vw_{t-1}\}$.
+%     Define: 
+%     \begin{equation*}
+%         M_t = \E\left[\Hat{J}_{n, 0} - J_n(\vpi, \veta)\mid \setF_t\right].
+%     \end{equation*}
+%     $M_t$ is a Doob's martingale w.r.t.~$\setF_t$. Therefore by Doob's optional stopping theorem
+%     \begin{equation*}
+%        \E\left[\Hat{J}_{n, 0} - J_n(\vpi, \veta) \right] = \E[M_{\stopt}].  
+%     \end{equation*}
+%     In the following, we bound $M_{\stopt}$.
+%     \begin{align*}
+%         M_{\stopt} &= \E\left[\Hat{J}_{n, 0} - J_n(\vpi, \veta)\mid \setF_{\stopt}\right] \\
+%         &= \E\left[ \left. \hat{J}_{n, \stopt} - \E_{\vx'_{\stopt}|\vz_{\stopt-1}, \veta}\left[ J_{n, \stopt}(\vx'_{\stopt}, \vpi, \veta)  \right] \right. \right.\\
+%         &\hspace{1cm} \left. \left. + \sum^{\stopt-1}_{t=1}  J_{n, t}(\vx_{t}, \vpi, \veta)  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[ J_{n, t}(\vx'_{t}, \vpi, \veta)  \right] \right\rvert \setF_{\stopt}\right] \tag{\Cref{lemm:difference_lem}} \\
+%         &= \E\left[ \left. \sum^{\stopt}_{t=1}  \Tilde{J}_{n, t}(\vx_{t}) -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[J_{n, t}(\vx'_{t}, \vpi, \veta) \right] \right\rvert \setF_{\stopt}\right] \tag{1} \\
+%         &\leq \E\left[ \left. \sum^{\stopt}_{t=1}  \Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[\Tilde{J}_{n, t}(\vx'_{t}) \right] \right\rvert \setF_{\stopt}\right] \\
+%         &= \E\left[ \left. \sum^{T}_{t=1} 1\{t \leq \stopt\} \left(\Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[\Tilde{J}_{n, t}(\vx'_{t}) \right]\right) \right\rvert \setF_{\stopt}\right].
+%     \end{align*}
+%     Here (1) is true by definition of the stopping time $\stopt$. Moreover, $\Tilde{J}_{n, t}(\vx_{t}) = J_{n, t}(\vx_{t}, \vpi, \veta)$ for all $t < \stopt$, and $\hat{J}_{\stopt} = J_{n, \stopt}(\vx_{\stopt}, \vpi, \vf^*) \leq J_{n, \stopt}(\vx_{\stopt}, \vpi, \veta)$, therefore, $\hat{J}_{\stopt} = \Tilde{J}_{n, \stopt}(\vx_{\stopt})$. 
+%     For a specific $t > 0$, we have:
+%     \begin{align*}
+%       &\E\left[1\{t \leq \stopt\} \left(\Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[\Tilde{J}_{n, t}(\vx'_{t}) \right]\right)\right] \\
+%       &= \E\left[ \E\left[\left. 1\{t \leq \stopt\} \left(\Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[\Tilde{J}_{t}(\vx'_{t}) \right]\right) \right\rvert \setF_{t-1}\right]\right] \\
+%       &= \E\left[ \E\left[\left. 1\{t  - 1< \stopt\} \left(\Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[\Tilde{J}_{n, t}(\vx'_{t}) \right]\right) \right\rvert \setF_{t-1}\right]\right] \\
+%       &= \E\left[ 1\{t -1 < \stopt\}  \E\left[\left. \Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\left[\Tilde{J}_{n, t}(\vx'_{t}) \right] \right\rvert \setF_{t-1}\right]\right] \\
+%       &=  \E\left[ 1\{t -1 < \stopt\}  \left(\E_{\vx_t|\vz_{t-1}, \vf^*} \Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\Tilde{J}_{n, t}(\vx'_{t})\right) \right].
+%     \end{align*}
+%     Summing over all $t \in \{0, \dots, T-1\}$ completes the proof.
+% \end{proof}
+
+
+% \begin{lemma}[Difference in expected return at $t$ is proportional to epistemic uncertainty]
+% \label{lem:kakade_traj_diff}
+%     Let \Cref{assumption: Well Calibration Assumption} and \Cref{ass:noise_properties} hold, and define $\delta_t$ as 
+%     \begin{equation*}
+%          \Delta_{n, t} \coloneqq \E_{\vx_t|\vz_{t-1}, \vf^*} \Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\Tilde{J}_{n, t}(\vx'_{t}).
+%     \end{equation*}
+%     Then we have with probability at least $1-\delta$
+%     \begin{equation*}
+%         |\Delta_{n, t}| \leq \sqrt{E_{\vx_t|\vz_{t-1}, \vf^*} [\Tilde{J}^2_{n, t}(\vx_{t})]} \min\left\{\frac{2}{\sigma} d_x \beta_n \norm{\sigma_{n} (\vz_t)}, 1\right\}.
+%     \end{equation*}
+% \end{lemma}
+% \begin{proof}
+%     \begin{align*}
+%         |\Delta_{n, t}| &= \E_{\vx_t|\vz_{t-1}, \vf^*} \Tilde{J}_{n, t}(\vx_{t})  -\E_{\vx'_{t}|\vz_{t-1}, \veta}\Tilde{J}_{n, t}(\vx'_{t}) \\
+%         &\leq \sqrt{E_{\vx_t|\vz_{t-1}, \vf^*} [\Tilde{J}^2_{n, t}(\vx_{t})]} \min\left\{ \frac{\norm{\vf^*(\vz_{t-1}) - \vmu_n(\vz_{t-1}) - \beta_n\vsigma_n(\vz_{t-1})  \veta(\vz_{t-1})}}{\sigma^2}, 1 \right\} \tag{\Cref{lem:absolute_diff_gaussians}}\\
+%         &\leq \sqrt{E_{\vx_t|\vz_{t-1}, \vf^*} [\Tilde{J}^2_{n, t}(\vx_{t})]} \min\left\{\frac{2}{\sigma} d_x  \beta_n \norm{\vsigma_{n} (\vz_{t-1})}, 1\right\} \tag{1}.
+%     \end{align*}
+%     Here (1) follows from \Cref{assumption: Well Calibration Assumption} and because $\veta(\vz) \to [-1, 1]^{d_x}$.
+% \end{proof}
+% \begin{lemma}[Regret of optimistic planning]
+% \label{lem:regret_kakade}
+% Let \Cref{assumption: Well Calibration Assumption} and \ref{ass:noise_properties} hold. Furthermore, let $\vpi^*_n$, $\vpi_n$ denote the solution to \Cref{eq:exploration_op} and \Cref{eq:exploration_op_optimistic} 
+%  respectively, and $\vz^*_{n, t}$, $\vz_{n, t}$ the corresponding state-action pairs visited during their respective trajectories. Then, the following is true for all $n\geq 0$ with probability at least $1-\delta$
+%     \begin{align*}
+%         r_n &= \E\left[\sum_{t=0}^{T-1} \sum_{j=1}^{d_x} \frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{n, t})}{\sigma^2}\right)\right] - \E\left[\sum_{t=0}^{T-1} \sum_{j=1}^{d_x}  \frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz_{n, t})}{\sigma^2}\right)\right]\\
+%         &\leq \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]}\right)
+%     \end{align*}
+% \end{lemma}
+% \begin{proof}
+%     \begin{align*}
+%         r_n &= |J_{n}(\vpi^*_n) - J_{n}(\vpi_n)| \\
+%         &\leq |J_{n}(\vpi_n, \veta_n) - J_{n}(\vpi_n)| \tag{\Cref{cor:optimistic_estimate}}\\
+%         &\leq \left\lvert \E\left[\sum^{T-1}_{t=0} 1\{t < \stopt\} 
+%         \Delta_{n, t+1}\right] \right\rvert \tag{\Cref{lem:objective_diff}}\\
+%         &\leq \E\left[\sum^{T-1}_{t=0} |\Delta_{n, t+1}|\right] \\
+%         &\leq \E\left[\sum^{T-1}_{t=0} \sqrt{E_{\vx_t|\Tilde{\vz}_{t-1}, \vf^*} [\Tilde{J}^2_{n, t}(\vx_{t})]} \min\left\{\frac{2}{\sigma} d_x  \beta_n \norm{\sigma_{n} (\vz_{t})}, 1\right\}\right] \tag{\Cref{lem:kakade_traj_diff}}\\
+%         &\leq \sqrt{\E\left[\sum^{T-1}_{t=0} \Tilde{J}^2_{n, t}(\vx_{t})\right]} \sqrt{\E\left[\sum^{T-1}_{t=0} \min\left\{\frac{4}{\sigma^2} d^2_x  \beta^2_n \norm{\sigma_{n} (\vz_{t})}^2, 1\right\}\right]} \\
+%         &\leq \sqrt{\E\left[T \Tilde{J}^2_{n}\right]} \sqrt{\E\left[\sum^{T-1}_{t=0} \frac{4}{\sigma^2} d^2_x  \beta^2_n \norm{\sigma_{n} (\vz_{t})}^2 \right]} \tag{1} \\
+%         &\leq \frac{2}{\sigma} d_x  \beta_n \sqrt{T \Tilde{J}_{\max}} \sqrt{\E\left[\sum^{T-1}_{t=0} \norm{\sigma_{n} (\vz_{t})}^2 \right]}.
+%     \end{align*}
+%     Here (1) follows because the rewards are positive (c.f., \Cref{cor:bounded_objective}). Therefore, $\E\left[\Tilde{J}^2_{n}\right] \geq \E\left[\Tilde{J}^2_{n, t}(\vx_t)\right]$ for all $t$, $0 \leq t \leq T$.
+% \end{proof}
+% \Cref{lem:regret_kakade} gives a regret bound that does not have an exponential dependence on $T$. We do not assume Lipschitz continuity of our functions, instead, we leverage the fact that the second moment of the objective is bounded from above for all policies (\Cref{cor:bounded_objective}). In the following, we use \Cref{lem:regret_kakade} to give a sample complexity bound for GP models (similarly a bound can be derived for general Bayesian models). 
+% \begin{theorem}
+% \label{thm:gp_theorem_relaxed}
+% Let \Cref{ass:noise_properties} and \ref{ass:rkhs_func} hold. 
+% Then, for all $N \geq 1$, with probability at least $1-\delta$, we have for all $\vpi \in \Pi$
+% \begin{equation}
+%     \frac{1}{2}\E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{N, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right)\right]  \le \setO \left(\beta^2_N T\frac{{\gamma}_N}{N}\right) \label{eq:bound_gp_relaxed}.
+% \end{equation}
+% \end{theorem}
+% \begin{proof}
+%      \begin{align*}
+%     &\E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{N, j}^2(\vz^*_{N, t})}{\sigma^2}\right)\right)\right]^2 \\
+%     &\leq \E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{N, j}^2(\vz^*_{N, t})}{\sigma^2}\right)\right)^2\right] \\
+%           &\leq \frac{1}{N} \sum^N_{n=1} \E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{1}{2} \log \left(1 + \frac{\sigma_{n, j}^2(\vz^*_{N, t})}{\sigma^2}\right)\right)^2\right] \\
+%           &\leq \frac{1}{N}  \sum^{N}_{n=1} \left(\E\left[\sum_{t=0}^{T-1} \frac{1}{2} \sum^{d_x}_{j=1}\log \left(1 + \frac{\sigma_{n, j}^2(\vz_{n, t})}{\sigma^2}\right)\right] + r_n \right)^2 \tag{\Cref{cor:optimistic_estimate}}\\
+%         &\leq \frac{1}{N}  \sum^{N}_{n=1} \left(\E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\sigma_{n, j}(\vz_{n, t})}{\sigma}\right]  + \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]}\right)\right)^2 \tag{\Cref{lem:regret_kakade}} \\
+%        % &\leq \frac{1}{N}  \sum^{N}_{n=1} \left(\sqrt{\E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\sigma_{n, j}(\Tilde{\vz}_{n, t})}{\sigma}\right)^2\right]} \right. \\
+%        % &\left. \hspace{0.5cm} + \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz^*_{n, t}) \right]}\right)\right)^2 
+% &\leq \frac{1}{N}  \sum^{N}_{n=1} \left(\sqrt{T d_x}\sqrt{\E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\sigma^2_{n, j}(\vz_{n, t})}{\sigma^2}\right]}  + \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]}\right)\right)^2  \tag{1}\\
+%           &\leq  \frac{1}{N}  \sum^{N}_{n=1} \setO\left(\beta^2_n T\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]\right) \\
+%           &\leq \setO \left(\beta^2_N T\frac{{\setM\setC}_N}{N}\right) \\
+%           &\leq \setO \left(\beta^2_N T\frac{{\gamma}_N}{N}\right). 
+%           \tag{\cite[Lemma 17]{curi2020efficient}}
+%    \end{align*}
+%    For (1) we use the following inequality
+%    \begin{align*}
+%        &\frac{1}{N}  \sum^{N}_{n=1} \left(\E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\sigma_{n, j}(\vz_{n, t})}{\sigma}\right] + \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]}\right)\right)^2 \\
+%        &\leq \frac{1}{N}  \sum^{N}_{n=1} \left(\sqrt{\E\left[\left(\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\sigma_{n, j}(\vz_{n, t})}{\sigma}\right)^2\right]}  + \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]}\right)\right)^2 \\
+%        &\leq \frac{1}{N}  \sum^{N}_{n=1} \left(\sqrt{T d_x}\sqrt{\E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\frac{\sigma^2_{n, j}(\vz_{n, t})}{\sigma^2}\right]} + \setO\left(\beta_n \sqrt{T} \sqrt{\E\left[\sum^{T-1}_{t=0} \sum_{j=1}^{d_x}  \sigma^2_{n, j}(\vz_{n, t}) \right]}\right)\right)^2
+%    \end{align*}
+% \end{proof}
+
+
+\section{Experiment Details} 
+\label{sec:experiment_details}
+The environment details and hyperparameters used for our experiments are presented in this section. In \Cref{subsec:fetch_pick} we discuss the experimental setup of the Fetch Pick \& Construction environment~\citep{li2020towards} in more detail. 
+\subsection{Environment Details}
+\Cref{tab:environment_rewards} lists the rewards used for the different environments. 
+\begin{table}[htb]
+    \centering
+    \caption{Downstream task rewards for the environments presented in \Cref{sec:experiments}.}
+    \label{tab:environment_rewards}
+\begin{tabular}{cc}
+\midrule
+\textbf{Environment}                   & \textbf{Reward} $r_t$                                                                                                      \\
+\midrule
+Pendulum-v1 - swing up        & $\theta_t^2 + 0.1 \Dot{\theta}_t + 0.001 u_t^2$                      \\
+Pendulum-v1 - keep down       & $(\theta_t-\pi)^2 + 0.1 \Dot{\theta}_t + 0.001 u_t^2$  \\
+MountainCar                   & $-0.1 u_t^2  + 100 (1\{\vx_t \in \vx_{\text{goal}}\})$                            \\
+Reacher - go to target        & 
+$100 (1\{||\vx_t - \vx_{\text{target}}||_2\leq 0.05\}$ \\
+Swimmer - go to target        & $-||\vx_t - \vx_{\text{target}}||_2$                                                                                     \\
+Swimmer - go away from target & $||\vx_t - \vx_{\text{target}}||_2$                                                                                      \\
+Cheetah - run forward         & $v_{\text{forward}, t}$                                                                                                 \\
+Cheetah - run backward        & $-v_{\text{forward}, t}$              \\
+\hline \\
+\end{tabular}
+\end{table}
+We train the dynamics model after each episode of data collection. For training, we fix the number of epochs to determine the number of gradient steps. Furthermore, for computational reasons, we upper bound the number of gradient steps by ``maximum number of gradient steps''. The hyperparameters for the model-based agent are presented in \Cref{tab:environment_hyperparams}. Furthermore, we present the iCEM hyperparameters in \Cref{tab:icem_params}. For more detail on the iCEM hyperparameters see~\cite{iCem}.
+\begin{table}[ht]
+\centering
+    \caption{Hyperparameters for results in~\Cref{sec:experiments}.}
+    \label{tab:environment_hyperparams}
+\begin{adjustbox}{max width=\linewidth}\begin{threeparttable}
+\begin{tabular}{ccccccc}
+\midrule
+\textbf{Hyperparameters}         & \textbf{Pendulum-v1 - GP} & \textbf{Pendulum-v1} & \textbf{MountainCar} & \textbf{Reacher} & \textbf{Swimmer} & \textbf{Cheetah} \\
+\midrule
+Action repeat           & N/A              & N/A         & N/A         & N/A     & 4       & 4       \\
+Exploration horizon     & $100$              & $200$         & $200$         & $50$      & $1000$    & $1000$    \\
+Downstream task horizon & $200$              & $200$         & $200$         & $50$      & $1000$    & $1000$    \\
+Hidden layers           & N/A              & $2$           & $2$           & $2$       & $4$       & $4$       \\
+Neurons per layers      & N/A              & $256$         & $128$         & $256$     & $256$     & $256$     \\
+Number of ensembles     & N/A              & $7$           & $5$           & $5$       & $5$       & $5$       \\
+Batch size              & N/A              & $64$          & $64$          & $64$      & $64$      & $64$      \\
+Learning rate           & $0.1$              & $5 \times 10^{-4}$        & $5 \times 10^{-4}$        & $10^{-3}$     & $5 \times 10^{-4}$     & $5 \times 10^{-5}$     \\
+Number of epochs        & $50$               & $50$          & $50$          & $50$      & $50$      & $50$      \\
+Maximum number of gradient steps     & N/A              & $5000$        & $5000$        & $6000$    & $7500$    & $7500$    \\
+$\beta_n$                    & $2.0$              & $2.0$        & $1.0$         & $1.0$     & $2.0$     & $2.0$ \\
+\bottomrule
+\end{tabular}
+\end{threeparttable}\end{adjustbox}
+\end{table}
+\begin{table}[htb]
+    \caption{Parameters of iCEM optimizer for experiments in~\Cref{sec:experiments}.}
+    \label{tab:icem_params}
+\begin{tabular}{lllll}
+\midrule
+\multicolumn{1}{c}{\textbf{Hyperparameters}} & \multicolumn{1}{c}{\textbf{Pendulum-v1 - GP}} & \multicolumn{1}{c}{\textbf{Pendulum-v1}} & \multicolumn{1}{c}{\textbf{Swimmer}} & \multicolumn{1}{c}{\textbf{Cheetah}} \\
+\midrule
+ Number of samples $P$             & 500                                  & 500                             & 250                         & 200                         \\
+         Horizon $H$                             & 20                                   & 20                              & 15                          & 10                          \\
+Size of elite-set $K$                & 50                                   & 50                              & 25                          & 20                          \\
+Colored-noise exponent $\beta$            & 0.25                                 & 0.25                            & 0.25                         & 0.25                        \\
+Number of particles                 & 10                                   & 10                              & 10                          & 10                          \\
+\textit{CEM-iterations}                   & 10                                   & 10                              & 5                           & 5                           \\
+
+
+Fraction of elites reused $\xi$              & 0.3                                  & 0.3                             & 0.3                         & 0.3      \\                  
+\bottomrule
+\end{tabular}
+\end{table}
+\paragraph{Model-based SAC optimizer}
+For the reacher and MountainCar environment we use scarce rewards (c.f.,~\Cref{tab:environment_rewards}), which require long-term planning. Therefore, a receding horizon MPC approach is less suitable for these tasks. Accordingly, we use a policy network which we train using SAC~\citep{sac}. Moreover, our model-based SAC uses transitions simulated through the learned model to train a policy. Accordingly, given a dataset of transitions from the true environment, we sample $P$ initial states from the dataset. For each of the states, we simulate a trajectory of $H$ steps using our learned model and the SAC policy. We collect the simulated transitions into a simulation data buffer $\setD_{\text{SIM}}$, which we then use to perform $G$ gradient steps as suggested by \cite{sac} to train the policy. The algorithm is summarized below, and we provide the SAC hyperparameters in~\Cref{tab:sac_params}.
+\begin{algorithm}[H]
+    \caption*{\textbf{Model-based SAC}}
+    % \caption{\opacex}
+    % \label{algorithm:episodicOpAcEx}
+    \begin{algorithmic}[]
+        \STATE {\textbf{Init: }}{Stastistical Model $M = \left(\vmu_n, \vsigma_n, \beta_n(\delta)\right)$, Dataset of transitions $\setD_n$, initial policy $\pi_0$, Model Rollout steps $H$}
+        \STATE{$\setD_{\text{SIM}} \leftarrow \emptyset$ \hspace{5cm} \ding{228} Initialize simulated transitions buffer}
+        \FOR{Training steps $k=1, \ldots, K$}{
+            \vspace{-0.5cm}
+            \STATE {
+            \begin{align*}
+            &\vx_{0, 1:P} \sim \setD_n &&\text{\ding{228} Sample $P$ initial states from buffer}
+             \end{align*}}}
+               \FOR{Initial state $\vx_{0} \in \vx_{0, 1:P}$}{
+             \STATE{
+               \begin{align*}
+                &\mathcal{D}_{\text{SIM}} \leftarrow \mathcal{D}_{\text{SIM}} \cup \textsc{ModelRollout}(\vpi_k, \vx_{0}, H, M) \quad &&\text{\ding{228} Collect simulated transitions}
+            \end{align*}
+            }}
+              \ENDFOR
+                  \STATE{Perform $G$ gradient updates on $\vpi_k$ as proposed in \cite{sac} using $\setD_{\text{SIM}}$.}
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+\begin{table}[htb]
+    \centering
+    \caption{Parameters of model-based SAC optimizer for experiments in~\Cref{sec:experiments}.}
+    \label{tab:sac_params}
+\begin{tabular}{lll}
+\midrule
+\multicolumn{1}{c}{\textbf{Parameters}} & \multicolumn{1}{c}{\textbf{MountainCar}} & \multicolumn{1}{c}{\textbf{Reacher}} \\
+\midrule
+Discount factor                              & $0.99$                                     & $0.99$                                 \\
+Learning rate actor                          & $5 \times 10^{-4}$                                     & $5 \times 10^{-4}$                               \\
+Learning rate critic                         & $5 \times 10^{-4}$                                     & $5 \times 10^{-4}$                               \\
+Learning rate entropy coefficient            & $5 \times 10^{-4}$                                     & $5 \times 10^{-4}$                                  \\
+Actor architecture                           & $[64, 64]$                             & $[250, 250]$                       \\
+Critic architecture                          & $[256, 256]$                           & $[250, 250]$                      \\
+Batch size                                   & 32                                       & 64                                   \\
+Gradient steps $G$                              & 350                                      & 500                                  \\
+Simulation horizon   $H$                        & 4                                        & 10                                   \\
+Initial state sample size   $P$                 & 500                                      & 2000                                 \\
+Total SAC training steps      $K$               & 35                                       & 350         \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{\opacex in the High-dimensional Fetch Pick \& Place Environment} \label{subsec:fetch_pick}
+\subsubsection{Environment and Model Details}
+In our experiments, we use an extension of the Fetch Pick \& Place environment to multiple objects as proposed in \cite{li2020towards} and further modified in \cite{Sancaktaretal22} with the addition of a large table. This is a compositional object manipulation environment with an end-effector-controlled robot arm.
+The robot actions $\vu \in \mathbb{R}^4$ correspond to the gripper movement in Cartesian coordinates and the gripper opening/closing. The robot state $\vx_{\text{robot}} \in \mathbb{R}^{10}$ contains positions and velocities of the end-effector as well as the gripper-state (open/close) and gripper-velocity.
+Each object's state $\vx_{\text{obj}} \in \mathbb{R}^{12}$ is given by its position, orientation (in Euler angles), and linear and angular velocities.
+
+We follow the free-play paradigm as used in CEE-US \citep{Sancaktaretal22}. At the beginning of free play, an ensemble of world models is randomly initialized with an empty replay buffer. At each iteration of free play, a certain number of rollouts (here: 20 rollouts with 100 timesteps each) are collected and then added to the replay buffer. Afterwards, the models in the ensemble are trained for a certain number of epochs on the collected data so far. Note that unlike in the original proposal by \citet{Sancaktaretal22}, we use Multilayer Perceptrons (MLP) as world models instead of Graph Neural Networks (GNN), for the sake of reducing run-time. This corresponds to the ablation \mbox{MLP\,+\,iCEM} presented in \cite{Sancaktaretal22}, which was shown to outperform all the baselines other than CEE-US with GNNs. As we are interested in exploring the difference in performance via injection of optimism into active exploration, we use the computationally less heavy MLPs in our work. This is reflected in the downstream task performance we report compared to the original CEE-US with GNNs. Details for the environment and models are summarized in \Cref{tab:environment_parameters}.
+
+After the free-play phase, we use the trained models to solve downstream tasks zero-shot via model-based planning with iCEM. We test for the tasks pick \& place, throwing and flipping with 4 objects. The rewards used for these tasks are the same as presented in \cite{Sancaktaretal22}.
+
+\begin{table*}[htb]
+    \centering
+    \caption{Environment and model settings used for the experiment results shown in \Cref{fig:construction:success_rates}.}
+    \label{tab:environment_parameters}
+    \begin{subtable}[t]{.45\textwidth}
+        \centering
+        \caption{Fetch Pick \& Place settings.}
+        \begin{tabular}{@{}ll@{}}
+        \toprule
+        % \multicolumn{2}{c}{Fetch Pick \& Place} \\
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        Episode Length & $100$ \\
+        Train Model Every & $20$ Ep. \\
+        Action Dim. & $4$ \\
+        Robot/Agent State Dim. & $10$ \\
+        Object Dynamic State Dim. & $12$ \\
+        Number of Objects & $4$\\
+        \bottomrule
+        \end{tabular}
+    \end{subtable}
+    \begin{subtable}[t]{.45\textwidth}
+        \centering
+        \caption{MLP model settings.}
+        \begin{tabular}{@{}ll@{}}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        % Episode Length & $100$ \\
+        % Train Model Every & $20$ Episodes \\
+        Network Size & $3 \times 256$ \\
+        Activation function & SiLU \\
+        Ensemble Size & 5\\
+        Optimizer & ADAM \\
+        Batch Size & $256$ \\
+        Epochs & $50$ \\
+        Learning Rate & $0.0001$ \\
+        Weight decay & $5 \cdot 10^{-5}$ \\
+        Weight Initialization & Truncated Normal\\
+        Normalize Input & Yes \\
+        Normalize Output & Yes \\
+        Predict Delta & Yes \\
+        \bottomrule
+        \end{tabular}
+    \end{subtable}%
+\end{table*}
+
+\subsubsection{\opacex Heuristic Variant}
+In the case of Fetch Pick \& Place with an high-dimensional observation space, we implement a heuristic of \opacex. Note that as Fetch Pick \& Place is a deterministic environment without noise, we only model epistemic uncertainty. 
+
+\begin{algorithm}[H]
+    \caption*{\textbf{\opacex (Heuristic Variant)}}
+    % \caption{\opacex}
+    \label{algorithm:heuristicOpAcEx}
+    \begin{algorithmic}[]
+        \STATE {\textbf{Input: }}{Ensemble $\{\vf_{i}\}_{k=1}^{K}$, $\epsilon \ll 1$}
+        \FOR{$n \in 1,\ldots,N_{\text{max}}$}{
+            \STATE{Solve optimal control problem till convergence for the system: $\vx_{t+1} = \vf_{j_t}(\vx_{t}, \vu_{t})$.}
+            \STATE{
+            \begin{align*}
+            \vu^{\star}_{0:T-1}, j^{\star}_{0:T-1} = \argmax_{\vu_{0:T-1},j_{0:T-1}} \sum_{t=0}^{T-1} \sum_{i=1}^{d_{x}} \log\left( \epsilon^2 + \sigma_{n,i}^{2}(\vx_{t}, \vu_{t}) \right) &&\text{\ding{228} Estimate }\\
+            &&\text{\hspace{-8em}} \sigma_{n,i}(\vx_{t}, \vu_{t}) \text{ with ensemble disagreement.}
+            \end{align*}
+            }
+            \STATE{Rollout $\vu^{\star}_{0:T_1}$ on the system and collect data $\setD_{n}.$}
+            \STATE{Update models $\{\vf_{i}\}_{k=1}^{K}.$}
+        }
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Controller Parameters}
+The set of default hyperparameters used for the iCEM controller are presented in \Cref{tab:controller_settings}, as they are used during the intrinsic phase for \opacex, CEE-US, and other baselines.
+The controller settings used for the extrinsic phase are given in \Cref{tab:extrinsic_controller}. For more information on the hyperparameters and the iCEM algorithm, we refer the reader to \cite{iCem}.
+
+\begin{table*}[htb]
+    \centering
+    \caption{Base settings for iCEM as they are used in the intrinsic phase. Same settings are used for all methods.}
+    \label{tab:controller_settings}
+    \begin{subtable}[t]{.48\textwidth}
+        \centering
+        % \caption{General settings.}
+        \begin{tabular}{@{}ll@{}}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        Number of samples $P$ & $128$ \\
+        Horizon $H$ & $30$ \\
+        Size of elite-set $K$ & $10$ \\
+        Colored-noise exponent $\beta$ & $3.5$ \\
+        \textit{CEM-iterations} & $3$ \\
+        Noise strength $\sigma_{\text{init}}$ & $0.5$ \\
+        Momentum $\alpha$ & $0.1$ \\
+        \texttt{use\_mean\_actions} & Yes \\
+        \texttt{shift\_elites} & Yes \\
+        \texttt{keep\_elites} & Yes \\
+        Fraction of elites reused $\xi$ & $0.3$ \\
+        Cost along trajectory & \texttt{sum} \\
+        \bottomrule
+        \end{tabular}
+    \end{subtable}%
+\end{table*}
+\begin{table}[htb]
+    \centering
+  \caption{iCEM hyperparameters used for zero-shot generalization in the extrinsic phase. Any settings not specified here are the same as the general settings given in \Cref{tab:controller_settings}.}
+    \label{tab:extrinsic_controller}
+    \renewcommand{\arraystretch}{1.03}
+    \resizebox{1.\linewidth}{!}{ % in case it does not fit
+    \begin{tabular}{@{}l|ccccc@{}}
+    \toprule
+    \textbf{Task}     & \multicolumn{5}{c}{\textbf{Controller Parameters}} \\
+                      & Horizon & Colored-noise exponent  & \texttt{use\_mean\_actions} & Noise strength & Cost Along\\
+                      & $h$ & $\beta$ &  & $\sigma_\text{init}$ & Trajectory \\
+    \midrule
+    Pick \& Place &    30  &  3.5  &  Yes  &  0.5 &    \texttt{best}     \\
+    Throwing      &    35  &  2.0  &  Yes  &  0.5 &    \texttt{sum}     \\
+    Flipping      &    30  &  3.5  &   No  &  0.5 &    \texttt{sum}     \\
+  \bottomrule
+    \end{tabular}
+   }
+
+\end{table}

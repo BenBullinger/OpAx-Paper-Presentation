@@ -1,0 +1,10 @@
+%\vspace{-0.4cm}
+\section{Conclusion}
+%\vspace{-0.3cm}
+\looseness=-1
+We present \opacex, a novel model-based RL algorithm for the active exploration of unknown dynamical systems. Taking inspiration from Bayesian experiment design, we provide a comprehensive explanation for using model epistemic uncertainty as an intrinsic reward for exploration. 
+By leveraging the \emph{optimistic in the face of uncertainty} paradigm, we put forth first-of-their-kind theoretical results on the convergence of active exploration agents in reinforcement learning. Specifically, we study convergence properties of general Bayesian models, such as BNNs. For the frequentist case of RKHS dynamics, we established sample complexity bounds and convergence guarantees for \opacex for a rich class of functions.
+ We evaluate the efficacy of \opacex across various RL environments with state space dimensions from two to 58. The empirical results corroborate our theoretical findings, as \opacex displays systematic and effective exploration across all tested environments and exhibits strong performance in zero-shot planning for new downstream tasks.
+%We propose \opacex a state-of-the-art model-based RL algorithm for active exploration of dynamical systems. Inspired by Bayesian experiment design, we thoroughly motivate using the model epistemic uncertainty as an intrinsic reward for active exploration. Furthermore, we use an \emph{optimistic paradigm} to induce further exploration in \opacex. We provide first-of-its-kind theoretical results for the convergence of active exploration agents in RL.
+%Moreover, we study the convergence properties for general Bayesian models such as BNNs, and for the frequentist setting with GP models, we provide sample complexity bound and convergence guarantees for \opacex for a rich class of functions.
+%We evaluate \opacex on several RL environments with state space dimensions ranging from two to 58. Our experiments validate the theoretical results and show that \opacex systematically explores well for all the environments and performs well for zero-shot planning on novel downstream tasks.

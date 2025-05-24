@@ -1,0 +1,181 @@
+% Packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{cleveref}
+\usepackage{algorithm, caption}
+\usepackage[noend]{algorithmic}
+\usepackage{parskip}
+\usepackage{xspace}
+\usepackage{pifont}
+\usepackage{stackrel}
+\usepackage{mathtools}
+\usepackage[para,online,flushleft]{threeparttable}
+\usepackage{adjustbox}
+\usepackage{bm}
+\usepackage{cleveref}
+
+% Comments
+\newcommand{\lt}[1]{{\textcolor{blue}{[\textbf{Lenart: }#1]}}}
+\newcommand{\bs}[1]{{\textcolor{orange}{[\textbf{Bhavy: }#1]}}}
+\newcommand{\ak}[1]{{\textcolor{blue}{[\textbf{Andreas: }#1]}}}
+\newcommand{\fd}[1]{{\textcolor{blue}{[\textbf{Florian: }#1]}}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+
+
+\usepackage{xifthen}
+
+\newcommand{\likelihood}[2][]{%
+    \ifthenelse{\isempty{#1}}
+        {p\left(#2\right)}
+        {p_{#1}\left(#2\right)}%
+}
+
+\newcommand{\normal}[3][]{%
+    \ifthenelse{\isempty{#1}}
+        {\mathcal{N}\left(#2, #3\right)}
+        {\mathcal{N}\left(#1|#2, #3\right)}%
+}
+
+
+%--------Basic Math--------
+\newcommand{\data}{\mathcal{D}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\inner}[2]{\left\langle#1, #2\right\rangle}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\stopt}{\Bar{t}}
+
+
+\DeclareMathOperator*{\argmin}{arg\!\min}
+\DeclareMathOperator*{\argmax}{arg\!\max}
+
+\DeclareMathOperator{\diag}{diag}
+\def\complexity{{\mathcal{I}}}
+
+%--------Sets--------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rzero}{\mathbb{R}_{\geq 0}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Nzero}{\mathbb{N}_0}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\opacex}{\textsc{OpAx}\xspace}
+\newcommand{\ceeus}{CEE-US\xspace}
+
+
+\newcommand{\capt}[1]{\mdseries{#1}}
+
+%--------Matrices--------
+\def\mA{{\bm{A}}}
+\def\mB{{\bm{B}}}
+\def\mC{{\bm{C}}}
+\def\mD{{\bm{D}}}
+\def\mE{{\bm{E}}}
+\def\mF{{\bm{F}}}
+\def\mG{{\bm{G}}}
+\def\mH{{\bm{H}}}
+\def\mI{{\bm{I}}}
+\def\mJ{{\bm{J}}}
+\def\mK{{\bm{K}}}
+\def\mL{{\bm{L}}}
+\def\mM{{\bm{M}}}
+\def\mN{{\bm{N}}}
+\def\mO{{\bm{O}}}
+\def\mP{{\bm{P}}}
+\def\mQ{{\bm{Q}}}
+\def\mR{{\bm{R}}}
+\def\mS{{\bm{S}}}
+\def\mT{{\bm{T}}}
+\def\mU{{\bm{U}}}
+\def\mV{{\bm{V}}}
+\def\mW{{\bm{W}}}
+\def\mX{{\bm{X}}}
+\def\mY{{\bm{Y}}}
+\def\mZ{{\bm{Z}}}
+\def\mBeta{{\bm{\beta}}}
+\def\mPhi{{\bm{\Phi}}}
+\def\mLambda{{\bm{\Lambda}}}
+\def\mSigma{{\bm{\Sigma}}}
+
+%--------Vectors--------
+\def\veps{{\bm{\varepsilon}}}
+\def\vzero{{\bm{0}}}
+\def\vone{{\bm{1}}}
+\def\vmu{{\bm{\mu}}}
+\def\vtheta{{\bm{\theta}}}
+\def\vtau{{\bm{\tau}}}
+\def\veta{{\bm{\eta}}}
+\def\va{{\bm{a}}}
+\def\vb{{\bm{b}}}
+\def\vc{{\bm{c}}}
+\def\vC{{\bm{C}}}
+\def\vd{{\bm{d}}}
+\def\ve{{\bm{e}}}
+\def\vf{{\bm{f}}}
+\def\vg{{\bm{g}}}
+\def\vh{{\bm{h}}}
+\def\vi{{\bm{i}}}
+\def\vj{{\bm{j}}}
+\def\vk{{\bm{k}}}
+\def\vl{{\bm{l}}}
+\def\vm{{\bm{m}}}
+\def\vn{{\bm{n}}}
+\def\vo{{\bm{o}}}
+\def\vp{{\bm{p}}}
+\def\vq{{\bm{q}}}
+\def\vr{{\bm{r}}}
+\def\vs{{\bm{s}}}
+\def\vt{{\bm{t}}}
+\def\vu{{\bm{u}}}
+\def\vv{{\bm{v}}}
+\def\vw{{\bm{w}}}
+\def\vx{{\bm{x}}}
+\def\vy{{\bm{y}}}
+\def\vz{{\bm{z}}}
+\def\vpi{{\bm{\pi}}}
+\def\vmu{{\bm{\mu}}}
+\def\vsigma{{\bm{\sigma}}}
+\def\hvx{{\hat{\bm{x}}}}
+
+
+
+%--------Sets--------
+\def\setA{{\mathcal{A}}}
+\def\setB{{\mathcal{B}}}
+\def\setC{{\mathcal{C}}}
+\def\setD{{\mathcal{D}}}
+\def\setE{{\mathcal{E}}}
+\def\setF{{\mathcal{F}}}
+\def\setG{{\mathcal{G}}}
+\def\setH{{\mathcal{H}}}
+\def\setI{{\mathcal{I}}}
+\def\setJ{{\mathcal{J}}}
+\def\setK{{\mathcal{K}}}
+\def\setL{{\mathcal{L}}}
+\def\setM{{\mathcal{M}}}
+\def\setN{{\mathcal{N}}}
+\def\setO{{\mathcal{O}}}
+\def\setP{{\mathcal{P}}}
+\def\setQ{{\mathcal{Q}}}
+\def\setR{{\mathcal{R}}}
+\def\setS{{\mathcal{S}}}
+\def\setT{{\mathcal{T}}}
+\def\setU{{\mathcal{U}}}
+\def\setV{{\mathcal{V}}}
+\def\setW{{\mathcal{W}}}
+\def\setX{{\mathcal{X}}}
+\def\setY{{\mathcal{Y}}}
+\def\setZ{{\mathcal{Z}}}

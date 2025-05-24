@@ -1,0 +1,216 @@
+%\vspace{-0.1cm}
+\section{Optimistic Active Exploration}\label{sec:opacex}
+%\vspace{-0.1cm}
+In this section, we propose our \emph{optimistic active exploration} (\opacex) algorithm. The algorithm consists of two main contributions: \emph{(i)} First we reformulate the objective in \Cref{eq:greedy_info_gain} to a simple optimal control problem, which suggests policies that visit states with high epistemic uncertainty.
+\emph{(ii)} We leverage the optimistic planner introduced by \citet{curi2020efficient} to efficiently plan a policy under  \emph{unknown} dynamics. Moreover, we show that the optimistic planner is crucial in giving theoretical guarantees for the algorithm.
+%\vspace{-0.1cm}
+\subsection{Optimal Exploration Objective}
+%\vspace{-0.1cm}
+The objective in \Cref{eq:greedy_info_gain} is still difficult and expensive to solve in general. However, since in this work, we consider Gaussian noise, c.f., \Cref{ass:noise_properties}, we can simplify this further.
+\begin{lemma}[Information gain is upper bounded by sum of epistemic uncertainties]\label{lem:uniform_exploration_upper}
+  Let $\vy = \vf^*(\vz) + \vw$, with $\vw \sim \setN(0, \sigma^2\mI)$ and let $\vsigma_{n-1}$ be the epistemic uncertainty after episode $n-1$. Then the following holds for all $n\geq 1$ and dataset $\setD_{1:n-1}$, 
+  \begin{align}
+      \label{eq:tractable_obj}
+    I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:n-1}\right) \leq \frac{1}{2} \sum_{t=0}^{T-1} \sum^{d_x}_{j=1}\log \left(1 + \frac{\sigma_{n-1, j}^2(\vz_t)}{\sigma^2}\right).
+  \end{align}
+  % \begin{equation*}
+      % \frac{1}{2} \sum_{t=0}^{T-1} \log \left(1 + \frac{\sigma_{n}^2(\vz_t)}{\sigma^2}\right) \to 0 \quad \text{for } n \to \infty \implies I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{0:n-1}\right) \to 0 \quad \text{for } n \to \infty
+  % \end{equation*}
+  \end{lemma}
+  \looseness=-1
+  We prove \Cref{lem:uniform_exploration_upper} in \Cref{sec:proofs}.  
+  The information gain is non-negative \citep{elementsofIT}. Therefore, if the right-hand side of \Cref{eq:tractable_obj} goes to zero, the left-hand side goes to zero as well. \Cref{lem:uniform_exploration_upper}  relates the information gain to the model epistemic uncertainty. Therefore, it gives a tractable objective that also has a frequentist interpretation - collect points with the highest epistemic uncertainty. We can use it to plan a trajectory at each episode $n$, by solving the following optimal control problem:
+  \begin{align}
+      \vpi^*_n = \argmax_{\vpi \in \Pi}& \hspace{0.2em} J_n(\vpi) = \argmax_{\vpi \in \Pi} \hspace{0.2em} \E_{\vtau^{\vpi}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right)\right],       \label{eq:exploration_op} \\
+      \vx_{t+1} &= \vf^{*}(\vx_t, \vpi(\vx_t)) + \vw_t. \notag
+  \end{align}
+  The problem in \Cref{eq:exploration_op} is closely related to previous literature in active exploration for RL. For instance, some works consider different geometries such as the sum of epistemic uncertainties (\cite{pathak2019self, sekar2020planning}, c.f., \cref{sec:study_intrinsic_reward} for more detail).
+ %Our resulting objective in \Cref{eq:tractable_obj} can also be formulated for the heteroscedastic case. 
+%\vspace{-0.2cm}
+\subsection{Optimistic Planner}
+%\vspace{-0.1cm}
+The optimal control problem in \Cref{eq:exploration_op} requires knowledge of the dynamics $\vf^*$ for planning, however, $\vf^*$ is unknown.
+A common choice is to use the mean estimator $\vmu_{n-1}$ in \Cref{eq:exploration_op} instead of $\vf^*$ for planning~\citep {active_learning_gp}. However, in general, using the mean estimator is susceptible to model biases~\citep{chua2018pets} and is provably optimal only in the case of linear systems~\citep{linearExploration}. 
+To this end, we propose using an optimistic planner, as suggested in \cite{curi2020efficient}, instead. Accordingly, given the mean estimator $\vmu_{n-1}$ and the epistemic uncertainty $\vsigma_{n-1}$, we solve the following optimal control problem
+\begin{align}
+   \vpi_n,  \veta_n &= \argmax_{\vpi \in \Pi, \veta \in \Xi} J_n(\vpi, \veta) = \argmax_{\vpi \in \Pi, \veta \in \Xi} \E_{\vtau^{\vpi, \veta}}\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\hvx_t, \vpi(\hvx_t))}{\sigma^2}\right)\right],       \label{eq:exploration_op_optimistic} \\
+      \hvx_{t+1} &= \vmu_{n-1}(\hvx_t, \vpi(\hvx_t)) + \beta_{n-1}(\delta)\vsigma_{n-1}(\hvx_t, \vpi(\hvx_t)) \veta(\hvx_t) + \vw_t, \notag
+\end{align}
+where $\Xi$ is the space of policies $\veta: \setX \to [-1, 1]^{d_x}$.
+Therefore, we use the policy $\veta$ to ``hallucinate'' (pick) transitions that give us the most information. Overall, the resulting formulation corresponds to a simple optimal control problem with a larger action space, i.e., we increase the action space by another $d_x$ dimension. A natural consequence of \Cref{assumption: Well Calibration Assumption} is that $J_n(\vpi_n^*) \leq J_n(\vpi_n,  \veta_n)$ with high probability (c.f.,~\Cref{cor:optimistic_estimate} in \Cref{sec:proofs}). That is by solving \Cref{eq:exploration_op_optimistic}, we get an optimistic estimate on \Cref{eq:exploration_op}.
+Intuitively, the policy $\vpi_{n}$ that \opacex suggests, behaves optimistically with respect to the information gain at each episode. 
+% We summarize the proposed algorithm in \Cref{algorithm:episodicOpAcEx}.
+%\vspace{-0.1cm}
+%paragraph{Incorporating constraints}\Cref{eq:exploration_op_optimistic} can impose input constraints by considering a restrictive class of policies $\Pi$. In this work, we do not consider any state constraints. They could be incorporated into the problem formulation as proposed by~\cite{yardenCPO}. 
+\begin{algorithm}[t]
+    \caption*{\textbf{\opacex: } \textsc{Optimistic Active Exploration}}
+    % \caption{\opacex}
+    % \label{algorithm:episodicOpAcEx}
+    \begin{algorithmic}[]
+        \STATE {\textbf{Init:}}{ Aleatoric uncertainty $\sigma$, Probability $\delta$, Statistical model $(\vmu_0, \vsigma_0, \beta_0(\delta))$}
+        \FOR{episode $n=1, \ldots, N$}{
+            \vspace{-0.5cm}
+            \STATE {
+            \begin{align*}
+                &\vpi_n = \argmax_{\vpi \in \Pi}\max_{\veta \in \Xi} \E\left[\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right)\right] &&\text{\ding{228} Prepare policy} \\
+                &\mathcal{D}_n \leftarrow \textsc{Rollout}(\vpi_n) \quad &&\text{\ding{228} Collect measurements } \\
+                 &\text{Update } (\vmu_n, \vsigma_n, \beta_n(\delta)) \leftarrow \setD_{1:n} \quad &&\text{\ding{228} Update model}
+            \end{align*}
+            }}
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+
+%\vspace{-0.1cm}
+\section{Theoretical Results} \label{sec:theoretical_results}
+%\vspace{-0.1cm}
+We theoretically analyze the convergence properties of \opacex. We first study the regret of planning under unknown dynamics. Specifically, since we cannot evaluate the optimal exploration policy from \cref{eq:exploration_op} and use the optimistic one, i.e., \cref{eq:exploration_op_optimistic} instead, we incur a regret. We show that due to the optimism in the face of uncertainty paradigm, we can give sample complexity bounds for the Bayesian and frequentist settings. All the proofs are presented in \Cref{sec:proofs}.
+\begin{lemma}[Regret of optimistic planning under unknown dynamics]\label{lem:optimistic_planning_regret}
+Let \Cref{assumption: Well Calibration Assumption} hold. 
+Furthermore, define  $J_{n, k}(\vpi_n, \veta_n, \vx)$ as 
+\begin{align*}
+    J_{n, k}(\vpi_n, \veta_n, \vx) &= \E_{\vtau^{\vpi_n, \veta_n}}\left[\sum_{t=k}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{n-1, j}^2(\hvx_t, \vpi_n(\hvx_t))}{\sigma^2}\right)\right],   \\ &\text{ s.t. }  \hvx_{t+1} = \vmu_{n-1}(\hvx_t, \vpi_n(\hvx_t)) + \beta_{n-1}(\delta)\vsigma_{n-1}(\hvx_t, \vpi_n(\hvx_t)) \veta_n(\hvx_t) + \vw_t \\
+      &\text{ and } \hvx_0 = \vx.
+\end{align*}
+Then, for all $n \geq 1$, with probability at least $1-\delta$,
+\begin{align*}
+    J_n(\vpi_n^*) - J_n(\vpi_n) &\leq \sum^{T-1}_{t=0} \E_{\vtau^{\vpi_n}}\left[J_{n, t+1}(\vpi_n, \veta_n, \vx'_{t+1}) - J_{n, t+1}(\vpi_n, \veta_n, \vx_{t+1}) \right], \\
+    &\text{with } \vx_{t+1} = \vf^*(\vx_{t}, \vpi_n(\vx_t)) + \vw_t, \\
+    &\text{and } \vx'_{t+1} = \vmu_{n-1}(\vx_t, \vpi_n(\vx_t)) + \beta_{n-1}(\delta)\vsigma_{n-1}(\vx_t, \vpi_n(\vx_t)) \veta_n(\vx_t) + \vw_t.
+\end{align*}
+\end{lemma}
+\Cref{lem:optimistic_planning_regret} gives a bound on the regret of planning optimistically under unknown dynamics. The regret is proportional to the difference in the expected returns for $\vx_t$ and $\vx'_t$. Note, $\norm{\vx_t - \vx'_t} \propto \beta_n(\delta)\vsigma_{n-1}(\vx_{t-1}, \vpi_n(\vx_{t-1}))$. Hence, when we have low uncertainty in our predictions, planning optimistically suffers smaller regret. Next, we leverage \Cref{lem:optimistic_planning_regret} to give a sample complexity bound for the Bayesian and frequentist setting.
+ %first discuss the Bayesian setting, which applies to general Bayesian models such as BNNs. Then, we focus on the frequentist setting where we consider kernelized dynamics and give strong convergence guarantees for a rich class of kernels. 
+\paragraph{Bayesian Setting}
+We start by introducing a measure of model complexity as defined by \citet{curi2020efficient}.
+% \begin{definition}[Model Complexity]
+\begin{equation}
+    {\setM\setC}_N(\vf^*) := \underset{\setD_1, \dots, \setD_N \subset \setZ \times \setX}{\max}\sum^{N}_{n=1} \sum_{\vz \in \setD_n} \norm{\vsigma_{n-1}(\vz)}^2_2.
+\end{equation}
+% \end{definition}
+This complexity measure captures the difficulty of learning $\vf^*$ given $N$ trajectories. Mainly, the more complicated $\vf^*$, the larger the epistemic uncertainties $\vsigma_n$, and in turn, the larger corresponding ${\setM\setC}_N(\vf^*)$. Moreover, if the model complexity measure is sublinear in $N$, i.e. ${\setM\setC}_N(\vf^*)/N \rightarrow 0$ for $N\rightarrow \infty$, then the epistemic uncertainties also converge to zero in the limit, 
+% Ideally, as we increase $N$, i.e., collect more data to train our model, ${\setM\setC}_N(\vf^*)$ increases sublinearly with $N$. Thus, as we use more data, our model epistemic uncertainty $\vsigma_N(\vz)$ goes to zero and
+which implies convergence to the true function $\vf^*$.
+We present our main theoretical result, in terms of the model complexity measure.
+\begin{theorem}\label{thm:main_theorem}
+Let \Cref{assumption: Well Calibration Assumption} and \ref{ass:noise_properties} hold. Then, for all $N \geq 1$, with probability at least $1-\delta$,
+\begin{equation}
+    \E_{\setD_{1:N-1}}\left[\max_{\vpi \in \Pi}\E_{\vtau^{\vpi}}\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:N-1}\right)\right]\right] \le \setO \left(\beta_N T^{\sfrac{3}{2}}\sqrt{\frac{{\setM\setC}_N(\vf^*)}{N}}\right)
+    %\setO \left(L^{T}_{\vsigma} \beta^{T}_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{{\setM\setC}_N(\vf^*)}{N}}\right).
+    \label{eq:bound_general}
+\end{equation}
+%Moreover, via the Chebyshev inequality, we get with probability at least $1-\delta$ for all $\vpi \in \Pi$:
+%\begin{align*}
+ %   \Pr &\left( \left\lvert I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:N-1}\right) - \E\left[I\left(\vf^*_{\vtau^{\vpi}}; \vy_{\vtau^{\vpi}} \mid \setD_{1:N-1}\right)\right] \right\rvert \geq \epsilon \right) 
+  %  \\ &\hspace{3cm} \leq  \setO \left(L^{2T}_{\vsigma} \max_{i\leq N}\beta^{2T}_{i}(\delta) T^{\sfrac{3}{2}}\frac{{\setM\setC}_N(\vf^*)}{N\epsilon^2}\right)
+%\end{align*}
+\end{theorem}
+\looseness=-1
+\Cref{thm:main_theorem} relates the maximum expected information gain at iteration $N$ to the model complexity of our problem. For deterministic systems, the expectation w.r.t.~$\vtau^{\vpi}$ is redundant.
+%If the numerator in \Cref{eq:bound_general} grows sub-linearly in $N$, we can give convergence guarantees.
+The bound in \Cref{eq:bound_general} depends on the Lipschitz constants, planning horizon, and dimensionality of the state space (captured in $\beta_{N}$ and ${\setM\setC}_N(\vf^*)$). %The exponential dependence of \Cref{eq:bound_general} on the horizon $T$ follows due to the compounding of errors when predicting through the learned model instead of the true one. 
+If the right-hand side is monotonically decreasing with $N$, \Cref{thm:main_theorem} guarantees that the information gain at episode $N$ is also shrinking with $N$, and the algorithm is converging. 
+Empirically, \cite{pathak2019self} show that the epistemic uncertainties go to zero as more data is acquired.
+In general, deriving a worst-case bound on the model complexity is a challenging and active open research problem. However, in the case of GPs, convergence results can be shown for a very rich class of functions. We show this in the following for the frequentist setting.
+%we prove that when using GPs, convergence can be shown for a very rich class of functions.
+%\vspace{-0.1cm}
+\looseness=-1
+\paragraph{Frequentist Setting with Gaussian Process Models}
+We extend our analysis to the frequentist kernelized setting, where $\vf^*$ resides in a Reproducing Kernel Hilbert Space (RKHS) of vector-valued functions.
+\begin{assumption}
+We assume that the functions $f^*_j$, $j \in \set{1, \ldots, d_x}$ lie in a RKHS with kernel $k$ and have a bounded norm $B$, that is $\vf^* \in \setH^{d_x}_{k, B}$, with $\setH^{d_x}_{k, B} = \{\vf \mid \norm{f_j}_k \leq B, j=1, \dots, d_x\}$.
+\label{ass:rkhs_func}
+\end{assumption}
+In this setting, we model the posterior mean and epistemic uncertainty of the vector-valued function $\vf^*$ with ${\bm \mu}_n(\vz) = [\mu_{n,j} (\vz)]_{j\leq d_x}$, and $\vsigma_n(\vz) = [\sigma_{n,j} (\vz)]_{j\leq d_x}$, where,
+% In particular, given a kernel $k$ and dataset $\setD_{1:n}$, the posterior mean, and epistemic variance for the function $f_j = [\vf^*]_j$ can be calculated using the following equations (\citet{rasmussen2005gp}):
+\begin{equation}
+\begin{aligned}
+\label{eq:GPposteriors}
+        \mu_{n,j} (\vz)& = {\bm{k}}_{n}^\top(\vz)({\bm K}_{n} + \sigma^2 \bm{I})^{-1}\vy_{1:n}^j,  \\
+     \sigma^2_{n, j}(\vz) & =  k(\vx, \vx) - {\bm k}^\top_{n}(\vz)({\bm K}_{n}+\sigma^2 \bm{I})^{-1}{\bm k}_{n}(\vx),
+\end{aligned}
+\end{equation}
+Here, $\vy_{1:n}^j$ corresponds to the noisy measurements of $f^*_j$, i.e., the observed next state from the transitions dataset $\setD_{1:n}$, $\vk_n = [k(\vz, \vz_i)]_{i\leq nT}, \vz_i \in \setD_{1:n}$, and $\bm{K}_n = [k(\vz_i, \vz_l)]_{i, l\leq nT}, \vz_i, \vz_l \in \setD_{1:n}$ is the data kernel matrix. 
+% Next, we introduce an additional assumption on $\vf^*$, which allows us to model it using a GP.
+It is known that if $\vf^*$ satisfies \Cref{ass:rkhs_func}, then \Cref{eq:GPposteriors} yields well-calibrated confidence intervals, i.e.,  that \Cref{assumption: Well Calibration Assumption} is satisfied. 
+\begin{lemma}[Well calibrated confidence intervals for RKHS, \citet{rothfuss2023hallucinated}]
+    Let $\vf^* \in \setH_{k,B}^{d_x}$.
+Suppose ${\vmu}_n$ and $\vsigma_n$ are the posterior mean and variance of a GP with kernel $k$, c.f., \Cref{eq:GPposteriors}.
+There exists $\beta_n(\delta)$, for which the tuple $(\vmu_n, \vsigma_n, \beta_n(\delta))$ satisfies~\Cref{assumption: Well Calibration Assumption} w.r.t. function $\vf^*$.
+\label{lem:rkhs_confidence_interval}
+\end{lemma}
+\Cref{thm:gp_theorem} presents our convergence guarantee for the kernelized case to the $T$-step reachability set $\setR$ for the policy class $\pi \in \Pi$. In particular, $\setR$ is defined as
+\begin{equation*}
+   \setR = \{ \vz \in \setZ \mid \exists (\vpi \in \Pi, t \leq T), \text{ s.t.}, p(\vz_t=\vz|\vpi, \vf^*) > 0\} 
+\end{equation*}
+There are two key differences from \Cref{thm:main_theorem}; (\emph{i}) we can derive an upper bound on the epistemic uncertainties $\vsigma_n$, and (\emph{ii}) we can bound the model complexity ${\setM \setC}_{N}(\vf^*)$, with the {\em maximum information gain} of kernel $k$ introduced by \citet{srinivas}, defined as
+\begin{equation*}
+    {\gamma}_{N}(k) = \max_{\setD_1, \dots, \setD_N; |\setD_n| \leq T}  \frac{1}{2}\log\det(\mI + \sigma^{-2} {\bm K}_N).
+\end{equation*}
+\begin{theorem}
+\label{thm:gp_theorem}
+Let \Cref{ass:noise_properties} and \ref{ass:rkhs_func} hold, Then, for all $N \geq 1$, with probability at least $1-\delta$,
+\begin{equation}
+   \max_{\vpi \in \Pi} \E_{\vtau^{\vpi}}\left[ \max_{\vz \in \vtau^{\vpi}}\sum^{d_x}_{j=1} \frac{1}{2}\sigma_{N, j}^2(\vz) \right] \le \setO \left(\beta_N T^{\sfrac{3}{2}}\sqrt{\frac{{\gamma}_{N}(k)}{N}}\right)
+    %\setO \left(L^{T}_{\vsigma} \beta^{T}_{N}(\delta) T^{\sfrac{3}{2}}\sqrt{\frac{{\setM\setC}_N(\vf^*)}{N}}\right).
+    \label{eq:bound_gp_general}.
+\end{equation}
+If we relax noise \Cref{ass:noise_properties} to $\sigma$-sub Gaussian. 
+Then, if \Cref{ass:lipschitz_continuity} holds, we have for all $N \geq 1$, with probability at least $1-\delta$,
+\begin{equation}
+   \max_{\vpi \in \Pi} \E_{\vtau^{\vpi}}\left[ \max_{\vz \in \vtau^{\vpi}}\sum^{d_x}_{j=1} \frac{1}{2}\sigma_{N, j}^2(\vz) \right] \le \setO \left(\beta^{T}_{N} T^{\sfrac{3}{2}}\sqrt{\frac{{\gamma}_{N}(k)}{N}}\right) \label{eq:bound_gp}.
+\end{equation}
+% where ${\gamma}_{N}$ is the maximum information gain. That is,
+% \begin{equation*}
+%     {\gamma}_{N} = \max_{\setD_1, \dots, \setD_N; |\setD_n| \leq T} I\left(\vf^*; \vy_{\setD_{1:N}}\right).
+% \end{equation*}
+Moreover, 
+%let $\setR$ denote the set of $T$-step reachable state-action pair for the policy class $\Pi$, i.e., $\setR = \{ \vz \in \setZ \mid \exists (\vpi \in \Pi, t \leq T), \text{ s.t.}, p(\vz_t=\vz|\vpi, \vf^*) > 0\}$, and
+% assume that the RKHS $\setH^{d_x}_{k, B}$ is of a kernel with 
+if $\gamma_N(k) = \setO\left(\text{polylog}(N)\right)$, then for all $\vz \in \setR$, and $1 \leq j \leq d_x$,
+    \begin{equation}
+    \sigma_{N, j}(\vz) \xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } N \to \infty \label{eq:reachabilty_set_convergence}.
+\end{equation}
+\end{theorem}
+We only state \Cref{thm:gp_theorem} for the expected epistemic uncertainty along the trajectory at iteration $N$. For deterministic systems, the expectation is redundant and for stochastic systems, we can leverage concentration inequalities to give a bound without the expectation (see \Cref{sec:proofs} for more detail).
+
+For the Gaussian noise case, we obtain a tighter bound by leveraging the change of measure inequality from \citet[Lemma~C.2.]{kakade2020information} (c.f.,~\Cref{lem:absolute_diff_gaussians} in \Cref{sec:proofs} for more detail). In the more general case of sub-Gaussian noise, we cannot use the same analysis. To this end, we use the Lipschitz continuity assumptions (\Cref{ass:lipschitz_continuity}) similar to \citet{curi2020efficient}. This results in comparing the deviation between two trajectories under the same policy and dynamics but different initial states (see \Cref{lem:optimistic_planning_regret}). For many systems (even linear) this can grow exponentially in the horizon $T$. Accordingly, we obtain a $\beta^T_N$ term in our bound (\Cref{eq:bound_gp}). Nonetheless, for cases where the RKHS is of a kernel with maximum information gain  $\gamma_N(k) 
+= \setO\left(\text{polylog}(N)\right)$, we can give sample complexity bounds and an almost sure convergence result in the reachable set $\setR$ (\Cref{eq:reachabilty_set_convergence}).
+%A direct consequence of \Cref{thm:gp_theorem} is the following corollary.
+%\begin{corollary}
+%    Let \Cref{ass:lipschitz_continuity}-\ref{ass:rkhs_func} hold. 
+ %   Furthermore, assume that the RKHS $\setH^{d_x}_{k, B}$ is of a kernel with maximum information gain which is $\setO\left(\text{polylog}(n)\right)$.
+  %  Then we have for all $\vpi \in \Pi$
+%\begin{equation}
+  % \frac{1}{2}\sum_{t=0}^{T-1} \sum^{d_x}_{j=1} \log \left(1 + \frac{\sigma_{N, j}^2(\vx_t, \vpi(\vx_t))}{\sigma^2}\right) \xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } N\to\infty. \label{eq:convergence}
+%\end{equation}
+%Moreover, let $\setR$ denote the set of $T$-step reachable state-action pair for the policy class $\Pi$, i.e., $\setR = \{ \vz \in \setZ \mid \exists (\vpi \in \Pi, t \leq T), \text{ s.t.}, p(\vz_t=\vz|\vpi, \vf^*) > 0\}$. Then we have 
+%\begin{equation*}
+%    \forall \vz \in \setR, 1 \leq j \leq d_x, \sigma_{N, j}(\vz) \xrightarrow[]{\mathrm{a.s.}} 0 \text{ for } N \to \infty.
+%\end{equation*}
+%\label{cor:convergence}
+%\end{corollary}
+%Following \Cref{cor:convergence}, \opacex guarantees \emph{almost sure convergence of the epistemic uncertainty} for all state-action pairs in the $T$-step reachable set for certain types of kernels.
+%show convergence for our algorithm. In this setting, convergence implies that we have learned the dynamics function, i.e., the epistemic uncertainty has converged to zero. 
+Kernels such as the RBF kernel or the linear kernel (kernel with a finite-dimensional feature map $\phi(x)$) have maximum information gain which grows polylogarithmically with $n$ (\citet{vakili2021information}). Therefore, our convergence guarantees hold for a very rich class of functions.
+The exponential dependence of our bound on $T$ imposes the restriction on the kernel class. For the case of Gaussian noise, we can include a richer class of kernels, such as Matèrn.
+
+In addition to the convergence results above, we also give guarantees on the zero-shot performance of \opacex in \Cref{sec:zero_shot_performance_theory}.
+% We end this section by giving guarantees on the zero-shot performance of \opacex for Lipschitz continuous costs.
+% \begin{corollary}
+% Consider the following optimal control problem
+% \begin{align*}
+%     \underset{\vpi \in \Pi}{\arg\min} \hspace{0.2em} &J_c(\vpi, \vf^*) = \underset{\vpi \in \Pi} {\arg\min} \hspace{0.2em}\E_{\vtau^{\vpi}}\left[\sum^{T-1}_{t=0} c(\vx_t, \vpi(\vx_t)) \right],\\
+%         \vx_{t+1} &= \vf^*(\vx_t, \vpi(\vx_t)) + \vw_t \quad \forall 0\leq t\leq T,
+% \end{align*}
+% with bounded and positive costs.
+% Let \Cref{assumption: Well Calibration Assumption}-\ref{ass:noise_properties} hold. 
+% Furthermore, assume for every $\epsilon > 0$, there exists a finite integer $N^*$ such that
+% \begin{equation}
+%     \forall N \geq N^*;  \beta_N T^{\sfrac{3}{2}}\sqrt{\frac{{\gamma}_N(k)}{N}} = \setO(\epsilon), \label{eq:decreanse_condition}
+% \end{equation}
+% and denote with $\hat{\vpi}_n$ the max-min optimal policy, i.e., the solution to $\max_{\eta}\min_{\vpi \in \Pi} J_c(\vpi, \eta)$. Then for all $N \geq N^*$, $J_c(\hat{\vpi}_N) - J_c(\vpi^*) = \setO(\epsilon)$.
+% \label{cor:zero_shot_performance}
+% \end{corollary}
+% \looseness=-1
+% \Cref{cor:zero_shot_performance} shows that \opacex also results in nearly-optimal zero-shot performance for bounded and positive cost functions. The convergence criteria in \Cref{eq:decreanse_condition} is satisfied for kernels $k$ that induce a very rich class of RKHS (c.f., \Cref{table: gamma magnitude bounds for different kernels} in \Cref{sec:proofs}).

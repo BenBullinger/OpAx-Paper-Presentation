@@ -1,4 +1,0 @@
-Videos need to be converted to .mov - the following command can be used:
-
-!ffmpeg -i hucrl-zero-shot-swingup-4.mp4 -pix_fmt yuv420p hucrl-zero-shot-swingup-4.mov
-!ffmpeg -i opax-zero-shot-swingup-4.mp4 -pix_fmt yuv420p opax-zero-shot-swingup-4.mov

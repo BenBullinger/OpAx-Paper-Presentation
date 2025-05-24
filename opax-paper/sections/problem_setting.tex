@@ -1,0 +1,121 @@
+%\vspace{-0.1cm}
+\section{Problem Setting}
+\label{problem_setting}
+%\vspace{-0.1cm}
+We study an \emph{unknown} discrete-time dynamical system $\vf^*$, with state $\vx \in \setX \subset \R^{d_x}$ and control inputs $\vu \in \setU \subset \R^{d_u}$.
+\begin{equation}
+    \vx_{k+1} = \vf^*(\vx_k, \vu_k) + \vw_k. 
+    \label{eq:system_eq}
+\end{equation}
+Here, $\vw_k$ represents the stochasticity of the system for which we assume  $\vw_k \stackrel{\mathclap{i.i.d.}}{\sim} \normal{\vzero}{\sigma^2\mI}$ (\Cref{ass:noise_properties}). Most common approaches in control, such as trajectory optimization and model-predictive control (MPC), assume that the dynamics model $\vf^*$  is known and leverages the model to control the system state. Given a cost function $c: \setX \times \setU \to \R$, such approaches formulate and solve an optimal control problem to obtain a sequence of control inputs that drive the system's state
+\begin{align}
+    \underset{\vu_{0:T-1}}{\arg\min} \hspace{0.2em} &\E_{\vw_{0:T-1}}\left[\sum^{T-1}_{t=0} c(\vx_t, \vu_t) \right],         \label{eq:OC_problem} \\
+        \vx_{t+1} &= \vf^*(\vx_t, \vu_t) + \vw_t \quad \forall 0\leq t\leq T. \notag
+\end{align}
+Moreover, if the dynamics are known, many important characteristics of the system such as stability, and robustness ~\citep{khalil2015nonlinear} can be studied.
+However, in many real-world scenarios, an accurate dynamics model $\vf^*$ is not available. Accordingly, in this work, we consider the problem of actively learning the dynamics model from data a.k.a.~system identification~\citep{ASTROMSystemID}. Specifically, we are interested in devising a cost-agnostic algorithm that focuses solely on learning the dynamics model. Once a good model is learned, it can be used for solving different downstream tasks by varying the cost function in~\Cref{eq:OC_problem}. 
+
+We study an episodic setting, with episodes $n=1, \ldots, N$. At the beginning of the episode $n$, we deploy an exploratory policy $\vpi_n$, chosen from a policy space $\Pi$ for a horizon of $T$ on the system.  Next, we obtain trajectory $\vtau_n = (\vx_{n,0}, \ldots, \vx_{n, T})$, which we save to a dataset of transitions  $\setD_n = \set{(\vz_{n, i } = (\vx_{n, i}, \vpi_n(\vx_{n, i})), \vy_{n, i} = \vx_{n, i + 1})_{0 \le i < T}}$.
+We use the collected data to learn an estimate $\vmu_n$ of $\vf^*$. 
+To this end, the goal of this work is to propose an algorithm $\textit{Alg}$, that at each episode $n$ leverages the data acquired thus far, i.e., $\setD_{1:n-1}$ to determine a policy $\vpi_n \in \Pi$ for the next step of data collection, that is,  $\textit{Alg}(\setD_{1:n-1}, n) \to \vpi_n$. The proposed algorithm should be consistent, i.e., $\vmu_n(\vz) \to \vf^*(\vz)$ for $n \to \infty$ for all $\vz \in \setR$, where $\setR$ is the reachability set defined as
+\begin{equation*}
+   \setR = \{ \vz \in \setZ \mid \exists (\vpi \in \Pi, t \leq T), \text{ s.t.}, p(\vz_t=\vz|\vpi, \vf^*) > 0\}, 
+\end{equation*} 
+and efficient w.r.t.~rate of convergence of $\vmu_n$ 
+ to $\vf^*$.
+
+ To devise such an algorithm, we take inspiration from Bayesian experiment design ~\citep{chaloner1995bayesian}. In the Bayesian setting, given a prior over $\vf^*$, a natural objective for active exploration is the mutual information~\citep{lidley_info_gain} between $\vf^*$ and observations $\vy_{\setD_n}$.
+\begin{definition}[Mutual Information, \cite{elementsofIT}]
+\label{def:MI}
+The mutual information between $\vf^{*}$ and its noisy measurements $\vy_{\setD_n}$ for points in $\setD_n$, where $\vy_{\setD_n}$ is the concatenation of $(\vy_{\setD_n, i})_{i<T}$ is defined as,
+%\vspace{-0.1cm}
+\begin{align}
+  F(\setD_n) := I \left({\vf^{*}}; {\vy_{\setD_n}}\right) = H\left(\vy_{\setD_n}\right) - H\left( \vy_{\setD_n}\mid\vf^{*}\right),
+\end{align}
+where $H$ is the Shannon differential entropy. 
+\end{definition}
+The mutual information quantifies the reduction in entropy of $\vf^*$ conditioned on the observations.
+Hence, maximizing the mutual information w.r.t.~the dataset $\setD_{n}$ leads to the maximal entropy reduction of our prior. Accordingly, a natural objective for active exploration in RL can be the mutual information between $\vf^*$ and the collected transitions over a budget of $N$ episodes, i.e., $I \left({\vf^{*}}; {\vy_{\setD_{1:N}}}\right)$. This requires maximizing the mutual information over a sequence of policies, which is a challenging planning problem even in settings where the dynamics are known~\citep{pmlr-v206-mutny23a}. A common approach is to greedily pick a policy that maximizes the information gain conditioned on the previous observations at each episode:
+\begin{equation}
+    \underset{\vpi \in \Pi}{\max} \hspace{0.2em} \E_{\tau^{\vpi}}\left[I\left(\vf^*_{\tau^{\vpi}}; \vy_{\tau^{\vpi}} \mid \setD_{1:n-1}\right)\right].
+    \label{eq:greedy_info_gain}
+\end{equation}
+Here $\vf^*_{\tau^{\vpi}} = (\vf^*(\vz_{n, 0}), \ldots, \vf^*(\vz_{n, T-1}))$, $\vy_{\tau^{\vpi}} = (\vy_{n, 0},\ldots, \vy_{n, T-1})$, $\tau^{\vpi}$ is the trajectory under the policy $\vpi$, and the expectation is taken w.r.t.~the process noise $\vw$.
+%\begin{equation}
+%    \vpi_{n}^* = \underset{\vpi \in \Pi}{\arg\max} \hspace{0.2em} \E\left[I\left(\vf^*_{\tau^{\vpi}}; \vy_{\tau^{\vpi}} \mid \setD_{1:n-1}\right)\right].
+%    \label{eq:greedy_info_gain}
+%\end{equation}
+% Mutual information quantifies the reduction in entropy of $\vf^*$ conditioned on the observations.
+% Hence, maximizing the mutual information w.r.t.~the dataset $\setD_{n}$ leads to the maximal entropy reduction of our prior. 
+% Even though mutual information is a Bayesian construct, it is a natural choice of objective in the frequentist setting as well.
+% Moreover, in the frequentist setting, the mutual information is a proxy of the posterior epistemic uncertainty of the model.
+% Therefore, maximizing the mutual information results in maximal uncertainty reduction for the frequentist setting. 
+%\vspace{-0.1cm}
+\paragraph{Interpretation in frequentist setting}
+\looseness=-1
+While information gain is Bayesian in nature (requires a prior over $\vf^*$), it also has a frequentist interpretation. In particular, later in \Cref{sec:opacex} we relate it to the epistemic uncertainty of the learned model. Accordingly, while this notion of information gain stems from Bayesian literature, we can use it to motivate our objective in both Bayesian and frequentist settings.
+%as we can show in the \Cref{lemma:tractable_obj}, in our setting, we can upper bound it with the sum of the posterior second moments. 
+%We obtain the second moment as the estimate of the uncertainty in the frequentist setting (we call it the confidence estimate).
+%This allows us to use the (Bayesian) information-theoretic inspired objective also in the frequentist setting to induce exploration in directions where the prediction error is the largest.
+
+
+
+
+
+%For GPs, in the frequentist setting, this boils down to the model's epistemic uncertainty. Hence, maximizing the mutual information w.r.t.~a dataset of $\setD_{1:N} = \cup_{n=1}^N \setD_n$, 
+%leads to the maximal entropy reduction of our prior, or for GPs maximal uncertainty reduction. Accordingly, mutual information is a natural objective for active exploration.
+%In contrast to standard active learning literature, active exploration for RL imposes additional challenges. Specifically,
+%in RL the dynamics $\vf^*$ can only be sampled episodically using policies. Therefore, we are interested in finding a sequence of \emph{exploration} policies $\vpi_{1:N}$ such that mutual information between $\vf^*$ and the collected dataset $\setD_{1:N}$ is the largest. %i.e., we would like to solve
+%\begin{equation}
+%    \max_{\vpi_{1:N} \in \Pi^{N}}  F(\setD_{1:N}).
+%    \label{eq:true_objective}
+%\end{equation} 
+%This is a challenging planning problem even in settings where the dynamics are known~\citep{pmlr-v206-mutny23a}. Accordingly, we suggest a greedy approach, where at each episode $n$, we pick a policy that maximizes the mutual information conditioned on the previous observations, i.e., 
+%\begin{equation}
+%    \vpi_{n}^* = \underset{\vpi \in \Pi}{\arg\max} \hspace{0.2em} \E\left[I\left(\vf^*_{\tau^{\vpi}}; \vy_{\tau^{\vpi}} \mid \setD_{1:n-1}\right)\right].
+%    \label{eq:greedy_info_gain}
+%\end{equation}
+%Here $\vf^*_{\tau^{\vpi}} = (\vf^*(\vz_{n, 0}), \ldots, \vf^*(\vz_{n, T-1}))$, $\vy_{\tau^{\vpi}} = (\vy_{n, 0},\ldots, \vy_{n, T-1})$, and $\tau^{\vpi}$ the trajectory under the policy $\vpi$. The expectation is taken w.r.t.~the process noise $\vw$.
+%In summary, we maximize the immediate gain in information at episode $n$ conditioned on the data $\setD_{1:n-1}$ collected this far.
+%Unfortunately, solving the objective in \Cref{eq:true_objective} is NP-hard~\citep{ko1995exact}. We simplify it to a tractable problem in \Cref{sec:opacex}. However, first, 
+%Next, we make some general assumptions on $\vf^{*}$ that enable us to study the convergence of \opacex.
+%\vspace{-0.1cm}
+\subsection{Assumptions}
+%\vspace{-0.1cm}
+In this work, we learn a probabilistic model of the function $\vf^{*}$ from data. Moreover, at each episode $n$, we learn the mean estimator $\vmu_n(\vx, \vu)$ and the epistemic uncertainty $\vsigma_n(\vx, \vu)$, which quantifies our uncertainty on the mean prediction. 
+To this end, we use Bayesian models such as Gaussian processes \citep[GPs,][]{rasmussen2005gp} or Bayesian neural networks  \citep[BNNs,][]{bnnsurvey}. More generally, we assume our model is {\em well-calibrated}:
+\begin{definition}[All-time calibrated statistical model of $\vf^*$, \citet{rothfuss2023hallucinated}]
+Let, $\vz = (\vx, \vu)$ and $\setZ := \setX \times \setU$. 
+ An all-time calibrated statistical model of the function $\vf^*$ is a sequence $\left(\vmu_n, \vsigma_n, \beta_n(\delta)\right)_{n\geq 0}$, such that
+\begin{align*}
+    \Pr \left(\forall \vz \in \setZ, \forall l \in \set{1, \ldots, d_x}, \forall n \in \N: \abs{\mu_{n, l}(\vz) - f_l(\vz)} \le \beta_n(\delta) \sigma_{n, l}(\vz) \right) \geq 1 - \delta 
+\end{align*}
+ Here $\mu_{n, l}$ and $\sigma_{n, l}$ are the l-th element in the vector valued functions $\vmu_n$ and $\vsigma_n$ respectively. The scalar function, $\beta_n(\delta) \in \Rzero$ quantifies the width of the $1-\delta$ confidence intervals. We assume w.l.o.g.~that $\beta_n$ monotonically increases with $n$, and that $\sigma_{n, l}(\vz) \leq \sigma_{\max}$ for all $\vz \in \setZ$, $n \geq 0$, and $l \in \set{1, \ldots, d_x}$.
+ \label{def:all_time_calibrated_model}
+\end{definition}
+\begin{assumption}[Well calibration assumption]
+\label{assumption: Well Calibration Assumption}
+   Our learned model is an all-time-calibrated statistical model of $\vf^*$, i.e., there exists a sequence of $\left(\beta_{n}(\delta)\right)_{n\geq0}$ such that our model satisfies the well-calibration condition, c.f., \Cref{def:all_time_calibrated_model}.
+\end{assumption}
+This is a natural assumption on our modeling. It states that we can make a mean prediction and also quantify how far it is off from the true one with high probability. A GP model satisfies this requirement for a very rich class of functions, c.f., \Cref{lem:rkhs_confidence_interval}. For BNNs, calibration methods \citep{kuleshov2018accurate} are often used and perform very well in practice. 
+Next, we make a simple continuity assumption on our function $\vf^*$.
+\begin{assumption}[Lipschitz Continuity]
+\label{ass:lipschitz_continuity}
+The dynamics model $\vf^*$ and our epistemic uncertainty prediction $\vsigma_n$ are $L_{\vf}$ and $L_{\vsigma}$ Lipschitz continuous, respectively. Moreover,
+we define $\Pi$ to be the policy class of $L_{\vpi}$ Lipschitz continuous functions. 
+\end{assumption}
+The Lipschitz continuity assumption on $\vf^*$ is quite common in control theory~\citep{khalil2015nonlinear} and learning literature~\citep{curi2020efficient,pasztor2021efficient,sussex2022model}. Furthermore, the Lipschitz continuity of $\vsigma_n$ also holds for GPs with common kernels such as the linear or radial basis function (RBF) kernel~\citep{rothfuss2023hallucinated}.
+
+Finally, we reiterate the assumption of the system's stochasticity.
+\begin{assumption}[Process noise distribution]
+\looseness=-1
+The process noise is i.i.d. Gaussian with variance $\sigma^2$, i.e., $\vw_k \stackrel{\mathclap{i.i.d}}{\sim} \setN(\vzero, \sigma^2\mI)$.
+\label{ass:noise_properties}
+\end{assumption}
+We focus on the setting where $\vw$ is homoscedastic for simplicity. However, our framework can also be applied to the more general heteroscedastic and sub-Gaussian case (c.f., \Cref{thm:gp_theorem}).
+
+
+
+
+
+

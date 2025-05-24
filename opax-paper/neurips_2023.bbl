@@ -1,0 +1,316 @@
+\begin{thebibliography}{}
+
+\bibitem[Balcan et~al., 2010]{balcan2010true}
+Balcan, M.-F., Hanneke, S., and Vaughan, J.~W. (2010).
+\newblock The true sample complexity of active learning.
+\newblock {\em Machine learning}, 80:111--139.
+
+\bibitem[Berkenkamp et~al., 2017]{berkenkamp2017safe}
+Berkenkamp, F., Turchetta, M., Schoellig, A., and Krause, A. (2017).
+\newblock Safe model-based reinforcement learning with stability guarantees.
+\newblock {\em NeurIPS}, 30.
+
+\bibitem[Biagiotti and Melchiorri, 2008]{trajectorPlanningForRobots}
+Biagiotti, L. and Melchiorri, C. (2008).
+\newblock {\em Trajectory Planning for Automatic Machines and Robots}.
+\newblock Springer Publishing Company, Incorporated, 1st edition.
+
+\bibitem[Bradbury et~al., 2018]{jax2018github}
+Bradbury, J., Frostig, R., Hawkins, P., Johnson, M.~J., Leary, C., Maclaurin, D., Necula, G., Paszke, A., Vander{P}las, J., Wanderman-{M}ilne, S., and Zhang, Q. (2018).
+\newblock {JAX}: composable transformations of {P}ython+{N}um{P}y programs.
+
+\bibitem[Brockman et~al., 2016]{brockman2016openai}
+Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., and Zaremba, W. (2016).
+\newblock Openai gym.
+\newblock {\em arXiv preprint arXiv:1606.01540}.
+
+\bibitem[Buisson-Fenet et~al., 2020]{active_learning_gp}
+Buisson-Fenet, M., Solowjow, F., and Trimpe, S. (2020).
+\newblock Actively learning gaussian process dynamics.
+\newblock In Bayen, A.~M., Jadbabaie, A., Pappas, G., Parrilo, P.~A., Recht, B., Tomlin, C., and Zeilinger, M., editors, {\em L4DC}.
+
+\bibitem[Chakraborty et~al., 2023]{chakraborty2023steering}
+Chakraborty, S., Bedi, A., Koppel, A., Wang, M., Huang, F., and Manocha, D. (2023).
+\newblock {STEERING} : Stein information directed exploration for model-based reinforcement learning.
+\newblock pages 3949--3978.
+
+\bibitem[Chaloner and Verdinelli, 1995]{chaloner1995bayesian}
+Chaloner, K. and Verdinelli, I. (1995).
+\newblock Bayesian experimental design: A review.
+\newblock {\em Statistical science}, pages 273--304.
+
+\bibitem[Chen et~al., 2022]{chen2022statistical}
+Chen, J., Modi, A., Krishnamurthy, A., Jiang, N., and Agarwal, A. (2022).
+\newblock On the statistical efficiency of reward-free exploration in non-linear rl.
+\newblock {\em Advances in Neural Information Processing Systems}, 35:20960--20973.
+
+\bibitem[Chen et~al., 2015]{chen15mis}
+Chen, Y., Hassani, S.~H., Karbasi, A., and Krause, A. (2015).
+\newblock Sequential information maximization: When is greedy near-optimal?
+\newblock In {\em COLT}.
+
+\bibitem[Chiuso and Pillonetto, 2019]{chiuso2019system}
+Chiuso, A. and Pillonetto, G. (2019).
+\newblock System identification: A machine learning perspective.
+\newblock {\em Annual Review of Control, Robotics, and Autonomous Systems}, 2:281--304.
+
+\bibitem[Chowdhury and Gopalan, 2017]{chowdhury2017kernelized}
+Chowdhury, S.~R. and Gopalan, A. (2017).
+\newblock On kernelized multi-armed bandits.
+\newblock In {\em ICML}, pages 844--853. PMLR.
+
+\bibitem[Chua et~al., 2018]{chua2018pets}
+Chua, K., Calandra, R., McAllister, R., and Levine, S. (2018).
+\newblock Deep reinforcement learning in a handful of trials using probabilistic dynamics models.
+\newblock In {\em NeurIPS}.
+
+\bibitem[Cover and Thomas, 2006]{elementsofIT}
+Cover, T.~M. and Thomas, J.~A. (2006).
+\newblock {\em Elements of Information Theory (Wiley Series in Telecommunications and Signal Processing)}.
+\newblock Wiley-Interscience.
+
+\bibitem[Curi et~al., 2020]{curi2020efficient}
+Curi, S., Berkenkamp, F., and Krause, A. (2020).
+\newblock Efficient model-based reinforcement learning through optimistic policy search and planning.
+\newblock {\em NeurIPS}, 33:14156--14170.
+
+\bibitem[Eysenbach et~al., 2018]{eysenbach2018diversity}
+Eysenbach, B., Gupta, A., Ibarz, J., and Levine, S. (2018).
+\newblock Diversity is all you need: Learning skills without a reward function.
+\newblock {\em arXiv preprint arXiv:1802.06070}.
+
+\bibitem[Garc\'ia et~al., 1989]{mpc}
+Garc\'ia, C.~E., Prett, D.~M., and Morari, M. (1989).
+\newblock Model predictive control: Theory and practice - a survey.
+\newblock {\em Automatica}, pages 335--348.
+
+\bibitem[Haarnoja et~al., 2018]{sac}
+Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. (2018).
+\newblock Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor.
+\newblock In {\em ICML}, pages 1861--1870.
+
+\bibitem[Hanneke et~al., 2014]{hanneke2014theory}
+Hanneke, S. et~al. (2014).
+\newblock Theory of disagreement-based active learning.
+\newblock {\em Foundations and Trends{\textregistered} in Machine Learning}, 7(2-3):131--309.
+
+\bibitem[Jain et~al., 2018]{learning_and_control_using_gps}
+Jain, A., Nghiem, T., Morari, M., and Mangharam, R. (2018).
+\newblock Learning and control using gaussian processes.
+\newblock In {\em ICCPS}, pages 140--149.
+
+\bibitem[Jin et~al., 2020]{jin2020reward}
+Jin, C., Krishnamurthy, A., Simchowitz, M., and Yu, T. (2020).
+\newblock Reward-free exploration for reinforcement learning.
+\newblock In {\em ICML}, pages 4870--4879. PMLR.
+
+\bibitem[Kakade et~al., 2020]{kakade2020information}
+Kakade, S., Krishnamurthy, A., Lowrey, K., Ohnishi, M., and Sun, W. (2020).
+\newblock Information theoretic regret bounds for online nonlinear control.
+\newblock {\em NeurIPS}, 33:15312--15325.
+
+\bibitem[Kaufmann et~al., 2021]{kaufmann2021adaptive}
+Kaufmann, E., M{\'e}nard, P., Domingues, O.~D., Jonsson, A., Leurent, E., and Valko, M. (2021).
+\newblock Adaptive reward-free exploration.
+\newblock In {\em ALT}, pages 865--891. PMLR.
+
+\bibitem[Khalil, 2015]{khalil2015nonlinear}
+Khalil, H.~K. (2015).
+\newblock {\em Nonlinear control}, volume 406.
+\newblock Pearson New York.
+
+\bibitem[Krause et~al., 2008]{krause2008near}
+Krause, A., Singh, A., and Guestrin, C. (2008).
+\newblock Near-optimal sensor placements in gaussian processes: Theory, efficient algorithms and empirical studies.
+\newblock {\em Journal of Machine Learning Research}, 9(2).
+
+\bibitem[Kuleshov et~al., 2018]{kuleshov2018accurate}
+Kuleshov, V., Fenner, N., and Ermon, S. (2018).
+\newblock Accurate uncertainties for deep learning using calibrated regression.
+\newblock In {\em ICML}, pages 2796--2804. PMLR.
+
+\bibitem[Lakshminarayanan et~al., 2017]{lakshminarayanan2017simple}
+Lakshminarayanan, B., Pritzel, A., and Blundell, C. (2017).
+\newblock Simple and scalable predictive uncertainty estimation using deep ensembles.
+\newblock {\em NeurIPS}, 30.
+
+\bibitem[Li et~al., 2020]{li2020towards}
+Li, R., Jabri, A., Darrell, T., and Agrawal, P. (2020).
+\newblock Towards practical multi-object manipulation using relational reinforcement learning.
+\newblock In {\em ICRA}, pages 4051--4058. IEEE.
+
+\bibitem[Lindley, 1956]{lidley_info_gain}
+Lindley, D.~V. (1956).
+\newblock {On a Measure of the Information Provided by an Experiment}.
+\newblock {\em The Annals of Mathematical Statistics}, pages 986 -- 1005.
+
+\bibitem[Mania et~al., 2020]{mania2020active}
+Mania, H., Jordan, M.~I., and Recht, B. (2020).
+\newblock Active learning for nonlinear system identification with guarantees.
+\newblock {\em arXiv preprint arXiv:2006.10277}.
+
+\bibitem[Mehta et~al., 2021]{mehta2021experimental}
+Mehta, V., Paria, B., Schneider, J., Ermon, S., and Neiswanger, W. (2021).
+\newblock An experimental design perspective on model-based reinforcement learning.
+\newblock {\em arXiv preprint arXiv:2112.05244}.
+
+\bibitem[Mutny et~al., 2023]{pmlr-v206-mutny23a}
+Mutny, M., Janik, T., and Krause, A. (2023).
+\newblock Active exploration via experiment design in markov chains.
+\newblock In {\em AISTATS}.
+
+\bibitem[Pasztor et~al., 2021]{pasztor2021efficient}
+Pasztor, B., Bogunovic, I., and Krause, A. (2021).
+\newblock Efficient model-based multi-agent mean-field reinforcement learning.
+\newblock {\em arXiv preprint arXiv:2107.04050}.
+
+\bibitem[Pathak et~al., 2017]{pathak2017curiosity}
+Pathak, D., Agrawal, P., Efros, A.~A., and Darrell, T. (2017).
+\newblock Curiosity-driven exploration by self-supervised prediction.
+\newblock In {\em ICML}, pages 2778--2787. PMLR.
+
+\bibitem[Pathak et~al., 2019]{pathak2019self}
+Pathak, D., Gandhi, D., and Gupta, A. (2019).
+\newblock Self-supervised exploration via disagreement.
+\newblock In {\em ICML}, pages 5062--5071. PMLR.
+
+\bibitem[Pinneri et~al., 2021]{iCem}
+Pinneri, C., Sawant, S., Blaes, S., Achterhold, J., Stueckler, J., Rolinek, M., and Martius, G. (2021).
+\newblock Sample-efficient cross-entropy method for real-time planning.
+\newblock In {\em CORL}, Proceedings of Machine Learning Research, pages 1049--1065.
+
+\bibitem[Qiu et~al., 2021]{qiu2021reward}
+Qiu, S., Ye, J., Wang, Z., and Yang, Z. (2021).
+\newblock On reward-free rl with kernel and neural function approximations: Single-agent mdp and markov game.
+\newblock In {\em ICML}, pages 8737--8747. PMLR.
+
+\bibitem[Rasmussen and Williams, 2005]{rasmussen2005gp}
+Rasmussen, C.~E. and Williams, C. K.~I. (2005).
+\newblock {\em Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)}.
+\newblock The MIT Press.
+
+\bibitem[\r{A}str\"{o}m and Eykhoff, 1971]{ASTROMSystemID}
+\r{A}str\"{o}m, K. and Eykhoff, P. (1971).
+\newblock System identification - a survey.
+\newblock {\em Automatica}, 7(2):123--162.
+
+\bibitem[Rothfuss et~al., 2023]{rothfuss2023hallucinated}
+Rothfuss, J., Sukhija, B., Birchler, T., Kassraie, P., and Krause, A. (2023).
+\newblock Hallucinated adversarial control for conservative offline policy evaluation.
+\newblock {\em UAI}.
+
+\bibitem[Sancaktar et~al., 2022]{Sancaktaretal22}
+Sancaktar, C., Blaes, S., and Martius, G. (2022).
+\newblock Curious exploration via structured world models yields zero-shot object manipulation.
+\newblock In {\em NeurIPS 35 (NeurIPS 2022)}.
+
+\bibitem[Schmidhuber, 1991]{schmidhuber1991possibility}
+Schmidhuber, J. (1991).
+\newblock A possibility for implementing curiosity and boredom in model-building neural controllers.
+\newblock In {\em Proc. of the international conference on simulation of adaptive behavior: From animals to animats}, pages 222--227.
+
+\bibitem[Sch\"on et~al., 2011]{SCHON201139}
+Sch\"on, T.~B., Wills, A., and Ninness, B. (2011).
+\newblock System identification of nonlinear state-space models.
+\newblock {\em Automatica}, pages 39--49.
+
+\bibitem[Schoukens and Ljung, 2019]{schoukens}
+Schoukens, J. and Ljung, L. (2019).
+\newblock Nonlinear system identification: A user-oriented road map.
+\newblock {\em IEEE Control Systems Magazine}, 39(6):28--99.
+
+\bibitem[Sekar et~al., 2020]{sekar2020planning}
+Sekar, R., Rybkin, O., Daniilidis, K., Abbeel, P., Hafner, D., and Pathak, D. (2020).
+\newblock Planning to explore via self-supervised world models.
+\newblock In {\em ICML}, pages 8583--8592. PMLR.
+
+\bibitem[Settles, 2009]{settles2009active}
+Settles, B. (2009).
+\newblock Active learning literature survey.
+
+\bibitem[Shyam et~al., 2019]{max}
+Shyam, P., Ja{\'s}kowski, W., and Gomez, F. (2019).
+\newblock Model-based active exploration.
+\newblock In {\em ICML}, pages 5779--5788. PMLR.
+
+\bibitem[Simchowitz and Foster, 2020]{linearExploration}
+Simchowitz, M. and Foster, D. (2020).
+\newblock Naive exploration is optimal for online {LQR}.
+\newblock In {\em ICML}, Proceedings of Machine Learning Research, pages 8937--8948. PMLR.
+
+\bibitem[Simchowitz et~al., 2018]{simchowitz2018learning}
+Simchowitz, M., Mania, H., Tu, S., Jordan, M.~I., and Recht, B. (2018).
+\newblock Learning without mixing: Towards a sharp analysis of linear system identification.
+\newblock In {\em COLT}, pages 439--473. PMLR.
+
+\bibitem[Srinivas et~al., 2012]{srinivas}
+Srinivas, N., Krause, A., Kakade, S.~M., and Seeger, M.~W. (2012).
+\newblock Information-theoretic regret bounds for gaussian process optimization in the bandit setting.
+\newblock {\em IEEE Transactions on Information Theory}.
+
+\bibitem[Stadie et~al., 2015]{stadie2015incentivizing}
+Stadie, B.~C., Levine, S., and Abbeel, P. (2015).
+\newblock Incentivizing exploration in reinforcement learning with deep predictive models.
+\newblock {\em arXiv preprint arXiv:1507.00814}.
+
+\bibitem[Sussex et~al., 2023]{sussex2022model}
+Sussex, S., Makarova, A., and Krause, A. (2023).
+\newblock Model-based causal bayesian optimization.
+\newblock In {\em ICLR}.
+
+\bibitem[Tarbouriech et~al., 2020]{tarbouriech2020active}
+Tarbouriech, J., Shekhar, S., Pirotta, M., Ghavamzadeh, M., and Lazaric, A. (2020).
+\newblock Active model estimation in markov decision processes.
+\newblock In {\em UAI}, pages 1019--1028. PMLR.
+
+\bibitem[Tassa et~al., 2018]{tassa2018deepmind}
+Tassa, Y., Doron, Y., Muldal, A., Erez, T., Li, Y., Casas, D. d.~L., Budden, D., Abdolmaleki, A., Merel, J., Lefrancq, A., et~al. (2018).
+\newblock Deepmind control suite.
+\newblock {\em arXiv preprint arXiv:1801.00690}.
+
+\bibitem[Vakili et~al., 2021]{vakili2021information}
+Vakili, S., Khezeli, K., and Picheny, V. (2021).
+\newblock On information gain and regret bounds in gaussian process bandits.
+\newblock In {\em AISTATS}.
+
+\bibitem[Wagenmaker and Jamieson, 2020]{wagenmaker2020active}
+Wagenmaker, A. and Jamieson, K. (2020).
+\newblock Active learning for identification of linear dynamical systems.
+\newblock In {\em COLT}, pages 3487--3582. PMLR.
+
+\bibitem[Wagenmaker et~al., 2023]{wagenmaker2023optimal}
+Wagenmaker, A., Shi, G., and Jamieson, K. (2023).
+\newblock Optimal exploration for model-based rl in nonlinear systems.
+\newblock {\em arXiv preprint arXiv:2306.09210}.
+
+\bibitem[Wagenmaker et~al., 2022]{wagenmaker2022reward}
+Wagenmaker, A.~J., Chen, Y., Simchowitz, M., Du, S., and Jamieson, K. (2022).
+\newblock Reward-free rl is no harder than reward-aware rl in linear markov decision processes.
+\newblock In {\em ICML}, pages 22430--22456. PMLR.
+
+\bibitem[Wang and Yeung, 2020]{bnnsurvey}
+Wang, H. and Yeung, D.-Y. (2020).
+\newblock A survey on bayesian deep learning.
+\newblock {\em ACM computing surveys (csur)}, pages 1--37.
+
+\bibitem[Weiss et~al., 2016]{weiss2016survey}
+Weiss, K., Khoshgoftaar, T.~M., and Wang, D. (2016).
+\newblock A survey of transfer learning.
+\newblock {\em Journal of Big data}, pages 1--40.
+
+\bibitem[Zhang and Yang, 2021]{zhang2021survey}
+Zhang, Y. and Yang, Q. (2021).
+\newblock A survey on multi-task learning.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering}, pages 5586--5609.
+
+\bibitem[Ziemann and Tu, 2022]{ziemann2022learning}
+Ziemann, I. and Tu, S. (2022).
+\newblock Learning with little mixing.
+\newblock {\em NeurIPS}, 35:4626--4637.
+
+\bibitem[Ziemann et~al., 2022]{ziemann2022single}
+Ziemann, I.~M., Sandberg, H., and Matni, N. (2022).
+\newblock Single trajectory nonparametric learning of nonlinear dynamics.
+\newblock In {\em COLT}, pages 3333--3364. PMLR.
+
+\end{thebibliography}
